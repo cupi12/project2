@@ -37,7 +37,7 @@ public class MemberDAO extends DAO {
 				membervo.setAge(rs.getString("age"));
 				membervo.setGender(rs.getString("gender"));
 				membervo.setPhone(rs.getString("phone"));
-				membervo.setRegDt(rs.getString("regDt"));
+				membervo.setRegDt(rs.getString("regdt"));
 			}
 		}catch(SQLException e) {
 			e.printStackTrace();
@@ -57,13 +57,37 @@ public class MemberDAO extends DAO {
 				membervo.setAge(rs.getString("age"));
 				membervo.setGender(rs.getString("gender"));
 				membervo.setPhone(rs.getString("phone"));
-				membervo.setRegDt(rs.getString("regDt"));
+				membervo.setRegDt(rs.getString("regdt"));
 			}
 		}catch(SQLException e) {
 			e.printStackTrace();
 		}
 		return membervo;
 	}
+	
+	//등록
+	public MemberVO getInsert(MemberVO membervo) {
+		try {
+			psmt = conn.prepareStatement(MEMBER_INSERT);
+			rs = psmt.executeQuery();
+			if(rs.next()) {
+				membervo.setId(rs.getString("id"));
+				membervo.setPwd(rs.getString("pwd"));
+				membervo.setName(rs.getString("nema"));
+				membervo.setAge(rs.getString("age"));
+				membervo.setGender(rs.getString("gender"));
+				membervo.setPhone(rs.getString("phone"));
+				membervo.setRegDt(rs.getString("regdt"));
+			}
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}
+		return membervo;
+		
+	}
+	
+	
+	
 	public MemberVO getDelete(MemberVO membervo) {
 		try {
 			psmt = conn.prepareStatement(MEMBER_DELETE);
@@ -90,7 +114,7 @@ public class MemberDAO extends DAO {
 				membervo.setAge(rs.getString("age"));
 				membervo.setGender(rs.getString("gender"));
 				membervo.setPhone(rs.getString("phone"));
-				membervo.setRegDt(rs.getString("regDt"));
+				membervo.setRegDt(rs.getString("regdt"));
 			}
 		}catch(SQLException e) {
 			e.printStackTrace();

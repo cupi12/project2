@@ -1,5 +1,6 @@
 package co.yedam.project2.menu;
 
+import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -22,18 +23,22 @@ public class MenuDAO extends DAO{
 	public List<MenuVO> getList() {
 		List<MenuVO> list = new ArrayList<MenuVO>();
 		try {
-			MenuVO vo = new MenuVO();
+			PreparedStatement psmt = null;
+			Connection conn = null;		
 			psmt = conn.prepareStatement(Menu_Select_MName);
 			rs = psmt.executeQuery();
 			while(rs.next()) {
+				MenuVO vo = new MenuVO();
 				vo.setmName(rs.getString("mName"));
-				vo.setmPrice(rs.getInt("mprice"));
-			}
-			
+				vo.setmPrice(rs.getInt("mPrice"));
+				
+				list.add(vo);
+			}			
 		}catch(SQLException e) {
 			e.printStackTrace();
+		}finally {
+			
 		}
-		
 		return list;
 	}
 

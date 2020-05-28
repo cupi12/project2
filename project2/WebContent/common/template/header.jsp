@@ -11,8 +11,8 @@
 <meta name="keywords" content="" />
 <meta name="description" content="" />
 <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900" rel="stylesheet" />
-<link href="../common/template/default.css" rel="stylesheet" type="text/css" media="all" />
-<link href="../common/template/fonts.css" rel="stylesheet" type="text/css" media="all" />
+<link href="common/template/default.css" rel="stylesheet" type="text/css" media="all" />
+<link href="common/template/fonts.css" rel="stylesheet" type="text/css" media="all" />
 
 <!--[if IE 6]><link href="default_ie6.css" rel="stylesheet" type="text/css" /><![endif]-->
 
@@ -28,10 +28,13 @@
 		<div id="menu" class="container">
 			<ul>
 				<li class="current_page_item"><a href="#" accesskey="1" title="">메인</a></li>
+				<li><a href="#" accesskey="2" title="">로그인</a></li>
+				<li><a href="#" accesskey="2" title="">회원가입</a></li>
+				<li><a href="Menu.do" accesskey="2" title="">메뉴</a></li>
+				<li><a href="Member.do" accesskey="8" title="">회원관리</a></li>
 				
 				<!-- 사용자메뉴 -->
 				<c:if test="loginId == ${vo.getId() }">
-				<li><a href="#" accesskey="2" title="">메뉴</a></li>
 				<li><a href="#" accesskey="3" title="">결제</a></li>
 				<li><a href="#" accesskey="4" title="">후기</a></li>
 				<li><a href="#" accesskey="5" title="">정보수정</a></li>
@@ -41,7 +44,6 @@
 				<!-- admin메뉴 -->
 				<c:if test="loginId == admin">
 				<li><a href="#" accesskey="7" title="">메뉴관리</a></li>
-				<li><a href="#" accesskey="8" title="">회원관리</a></li>
 				<li><a href="#" accesskey="9" title="">게시판 관리</a></li>
 				<li><a href="#" accesskey="10" title="">매장관리</a></li>
 				<li><a href="#" accesskey="11" title="">로그아웃</a></li>

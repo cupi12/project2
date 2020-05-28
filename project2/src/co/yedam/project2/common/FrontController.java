@@ -6,10 +6,13 @@ import java.util.HashMap;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import co.yedam.project2.member.MemberList;
+import co.yedam.project2.menu.Menu;
+
 
 
 
@@ -19,6 +22,11 @@ public class FrontController extends HttpServlet {
 
 
 	public void init(ServletConfig config) throws ServletException {
+	comm = new HashMap<String,Command>();
+	comm.put("/main.do", new Main());   //컨트롤러 밑에 추가해주세요^^
+	comm.put("/Menu.do", new Menu());
+	comm.put("/MemberList.do", new MemberList());
+	
 	
 	
 	}
