@@ -14,10 +14,10 @@ public class MemberDAO extends DAO {
 	private	PreparedStatement psmt;
 	private	ResultSet rs;
 	
-	private final String MEMBER_SELECT_LIST = "SELECT * FROM MEMBER ORDER BY SEQ DESC";
+	private final String MEMBER_SELECT_LIST = "SELECT * FROM MEMBER ORDER BY ID DESC";
 	private final String MEMBER_SELECT ="SELECT * FROM MEMBER WHERE SEQ=?";
 	private final String MEMBER_INSERT = "INSERT INTO MEMBER"
-										+"VALUES(member_seq.nextval,?,?,?,?,?,?,SYSDATE)";
+										+"VALUES(?,?,?,?,?,?,SYSDATE)";
 	private final String MEMBER_UPDATE = "UDDATE MEMBER SET PWD=?, NAME=?, AGE=?, GENDER=?,PHONE=?, WHERE ID=?";
 	private final String MEMBER_DELETE = "DELECT FROM MEMBER WHERE ID=?";
 	
@@ -33,11 +33,11 @@ public class MemberDAO extends DAO {
 				MemberVO membervo = new MemberVO();
 				membervo.setId(rs.getString("id"));
 				membervo.setPwd(rs.getString("pwd"));
-				membervo.setName(rs.getString("nema"));
+				membervo.setName(rs.getString("name"));
 				membervo.setAge(rs.getString("age"));
 				membervo.setGender(rs.getString("gender"));
 				membervo.setPhone(rs.getString("phone"));
-				membervo.setRegDt(rs.getString("regdt"));
+				membervo.setRegdt(rs.getString("regdt"));
 			}
 		}catch(SQLException e) {
 			e.printStackTrace();
@@ -53,11 +53,11 @@ public class MemberDAO extends DAO {
 			if(rs.next()) {
 				membervo.setId(rs.getString("id"));
 				membervo.setPwd(rs.getString("pwd"));
-				membervo.setName(rs.getString("nema"));
+				membervo.setName(rs.getString("name"));
 				membervo.setAge(rs.getString("age"));
 				membervo.setGender(rs.getString("gender"));
 				membervo.setPhone(rs.getString("phone"));
-				membervo.setRegDt(rs.getString("regdt"));
+				membervo.setRegdt(rs.getString("regdt"));
 			}
 		}catch(SQLException e) {
 			e.printStackTrace();
@@ -66,18 +66,18 @@ public class MemberDAO extends DAO {
 	}
 	
 	//등록
-	public MemberVO getInsert(MemberVO membervo) {
+	public MemberVO getSelectInsert(MemberVO membervo) {
 		try {
 			psmt = conn.prepareStatement(MEMBER_INSERT);
 			rs = psmt.executeQuery();
 			if(rs.next()) {
 				membervo.setId(rs.getString("id"));
 				membervo.setPwd(rs.getString("pwd"));
-				membervo.setName(rs.getString("nema"));
+				membervo.setName(rs.getString("name"));
 				membervo.setAge(rs.getString("age"));
 				membervo.setGender(rs.getString("gender"));
 				membervo.setPhone(rs.getString("phone"));
-				membervo.setRegDt(rs.getString("regdt"));
+				membervo.setRegdt(rs.getString("regdt"));
 			}
 		}catch(SQLException e) {
 			e.printStackTrace();
@@ -102,7 +102,7 @@ public class MemberDAO extends DAO {
 		return membervo;
 	}
 	
-	public MemberVO getUpdate(MemberVO membervo) {
+	public MemberVO getSelectUpdate(MemberVO membervo) {
 		try {
 			psmt = conn.prepareStatement(MEMBER_UPDATE);
 			psmt.setString(1, membervo.getId());
@@ -110,11 +110,11 @@ public class MemberDAO extends DAO {
 			if(rs.next()) {
 				membervo.setId(rs.getString("id"));
 				membervo.setPwd(rs.getString("pwd"));
-				membervo.setName(rs.getString("nema"));
+				membervo.setName(rs.getString("name"));
 				membervo.setAge(rs.getString("age"));
 				membervo.setGender(rs.getString("gender"));
 				membervo.setPhone(rs.getString("phone"));
-				membervo.setRegDt(rs.getString("regdt"));
+				membervo.setRegdt(rs.getString("regdt"));
 			}
 		}catch(SQLException e) {
 			e.printStackTrace();

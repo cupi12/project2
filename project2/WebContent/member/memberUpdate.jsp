@@ -18,8 +18,8 @@
 		 성별: <input type="radio" name="gender" value="m" />남자 
 			  <input type="radio" name="gender" value="f" /> 여자<br /> 
 		전화번호:	<input type="text" name="phone" id="phone"/><br/> 
-		<button type="button" onclick="validCheck()">회원가입</button> 
-		<input type="reset" value="지우기" />
+		<input type="button" onclick="location.href='MemberDelete.do?id=${member.id}' " value = "회원탈퇴" />
+      	<input type="button" onclick="location.href='MemberUpdate.do?id=${member.id}' "value="수정" />
 	</div>
 </div>
 

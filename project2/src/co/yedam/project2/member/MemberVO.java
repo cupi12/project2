@@ -1,6 +1,6 @@
 package co.yedam.project2.member;
 
-import java.util.Date;
+
 
 public class MemberVO {
 	private String id;
@@ -9,7 +9,7 @@ public class MemberVO {
 	private String age;
 	private String gender;
 	private String phone;
-	private String regDt;
+	private String regdt;
 	
 	public MemberVO() {
 		
@@ -63,12 +63,12 @@ public class MemberVO {
 		this.phone = phone;
 	}
 
-	public String getRegDt() {
-		return regDt;
+	public String getRegdt() {
+		return regdt;
 	}
 
-	public void setRegDt(String regDt) {
-		this.regDt = regDt;
+	public void setRegdt(String regdt) {
+		this.regdt = regdt;
 	}
 	
 	
