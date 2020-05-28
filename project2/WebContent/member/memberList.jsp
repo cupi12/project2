@@ -34,7 +34,7 @@
 				<th>전화번호</th>
 				<th>가입날짜</th>
 			</tr>
-			<%--  <c:forEach var="member" items="${memberList}"> 
+			<c:forEach var="member" items="${memberList}"> 
 				<tr>
 				<td>${member.id}</td>
 				<td>${member.pwd}</td>
@@ -45,7 +45,7 @@
 				<td> <fmt:parseDate value="${member.regdt}" var="fmtRd" pattern="yyyy-MM-dd"/>
          			 <fmt:formatDate value="${fmtRd}" pattern="yyyy-MM-dd"/></td>
 				</tr>
-			 </c:forEach>  --%>
+			 </c:forEach>
 		</table>
 	</div>	
 	<div>

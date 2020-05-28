@@ -6,11 +6,12 @@
 <!DOCTYPE html>
 <html>
 <jsp:include page="/common/template/header.jsp" />
-<table border="1" align="center">
+<table border="1">
 	<tr>
-		<td colspan="1">메뉴목록</td>
+		<td colspan="2">메뉴목록</td>
+		<td></td>
 	</tr>
-	<c:forEach items="menuList" var="vo">
+	<c:forEach items="${menuList }" var="vo">
 		<tr>
 			<td>${vo.mName }</td>
 			<td>${vo.mPrice }</td>

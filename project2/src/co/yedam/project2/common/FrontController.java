@@ -26,6 +26,7 @@ public class FrontController extends HttpServlet {
 	comm.put("/main.do", new Main());   //컨트롤러 밑에 추가해주세요^^
 	comm.put("/Menu.do", new Menu());
 	comm.put("/MemberList.do", new MemberList());
+	comm.put("/Login.do", new Login());
 	
 	
 	

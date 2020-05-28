@@ -2,8 +2,8 @@ package co.yedam.project2.menu;
 
 public class MenuVO {
 	
-	String mName;
-	int mPrice;
+	private String mName;
+	private int mPrice;
 	
 	public String getmName() {
 		return mName;
