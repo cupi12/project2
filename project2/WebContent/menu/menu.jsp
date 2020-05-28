@@ -9,7 +9,6 @@
 <table border="1">
 	<tr>
 		<td colspan="2">메뉴목록</td>
-		<td></td>
 	</tr>
 	<c:forEach items="${menuList }" var="vo">
 		<tr>
@@ -18,7 +17,9 @@
 		</tr>
 	</c:forEach>
 
-</table>
+</table><br>
+합계:<input type="text" readonly><button>주문하기</button>
+
 
 
 <jsp:include page="/common/template/footer.jsp" />
