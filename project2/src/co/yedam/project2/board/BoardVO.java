@@ -7,7 +7,7 @@ public class BoardVO {
 	private String star;
 	private int	recommand;
 	private String id;
-	private String regDt;
+	private String regdt;
 	
 	public int getSeq() {
 		return seq;
@@ -45,11 +45,11 @@ public class BoardVO {
 	public void setId(String id) {
 		this.id = id;
 	}
-	public String getRegDt() {
-		return regDt;
+	public String getRegdt() {
+		return regdt;
 	}
-	public void setRegDt(String regDt) {
-		this.regDt = regDt;
+	public void setRegdt(String regDt) {
+		this.regdt = regdt;
 	}
 	
 	

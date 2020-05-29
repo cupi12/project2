@@ -38,6 +38,7 @@ public class MemberDAO extends DAO {
 				membervo.setGender(rs.getString("gender"));
 				membervo.setPhone(rs.getString("phone"));
 				membervo.setRegdt(rs.getString("regdt"));
+				list.add(membervo);
 			}
 		}catch(SQLException e) {
 			e.printStackTrace();
@@ -78,6 +79,7 @@ public class MemberDAO extends DAO {
 				membervo.setGender(rs.getString("gender"));
 				membervo.setPhone(rs.getString("phone"));
 				membervo.setRegdt(rs.getString("regdt"));
+				
 			}
 		}catch(SQLException e) {
 			e.printStackTrace();
