@@ -1,6 +1,7 @@
 package co.yedam.project2.admin;
 
 import java.io.IOException;
+import java.sql.SQLException;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -23,9 +24,13 @@ public class AdminMenuUpdate implements Command {
 		vo.setmName(mName);
 		vo.setmPrice(mPrice);
 		
-		dao.menuUpdate(vo);
+		try {
+			dao.menuUpdate(vo);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 		
-		return null;
+		return "admin/adminMenuEdit.jsp";
 	}
 
 }

@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import co.yedam.project2.admin.AdminMenu;
 import co.yedam.project2.admin.AdminMenuEdit;
+import co.yedam.project2.member.MemberDelete;
 import co.yedam.project2.member.MemberList;
 import co.yedam.project2.menu.Menu;
 
@@ -31,7 +32,7 @@ public class FrontController extends HttpServlet {
 	comm.put("/Login.do", new Login());
 	comm.put("/AdminMenu.do", new AdminMenu());
 	comm.put("/AdminMenuEdit.do", new AdminMenuEdit());
-	
+	comm.put("/MemberDelete.do", new MemberDelete());	
 	
 	}
 

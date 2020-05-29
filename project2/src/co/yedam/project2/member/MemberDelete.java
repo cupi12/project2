@@ -15,12 +15,9 @@ public class MemberDelete implements Command {
 		String id = request.getParameter("id");
 		
 		MemberDAO dao = new MemberDAO();
-		MemberVO membervo = new MemberVO();
 		
-		membervo.setId(id);
-		
-		dao.getDelete(membervo);
-		return "member/memberUpdate.jsp";
+		dao.getDelete(id);
+		return "MemberList.do";
 	}
 
 }

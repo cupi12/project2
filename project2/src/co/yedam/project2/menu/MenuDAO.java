@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import co.yedam.project2.common.DAO;
+import co.yedam.project2.memo.MemoVO;
 
 public class MenuDAO extends DAO{
 	
@@ -24,7 +25,7 @@ public class MenuDAO extends DAO{
 		super();
 	}
 	
-	public void menuUpdate() throws SQLException {
+	public void menuUpdate(MenuVO menuvo) throws SQLException {
 		MenuVO vo = new MenuVO();
 		try {
 			psmt = conn.prepareStatement(menuUpdate);

@@ -31,6 +31,7 @@ public class MemberInsert implements Command {
 		membervo.setGender(gender);
 		membervo.setPhone(phone);
 		membervo.setRegdt(regdt);
+		
 	
 		dao.getSelectInsert(membervo); //jsp에쓰는거 이름 , 돌려주는 객체
 		return "member/memberInsert.jsp";

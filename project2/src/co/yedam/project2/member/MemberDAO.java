@@ -19,7 +19,7 @@ public class MemberDAO extends DAO {
 	private final String MEMBER_INSERT = "INSERT INTO MEMBER"
 										+"VALUES(?,?,?,?,?,?,SYSDATE)";
 	private final String MEMBER_UPDATE = "UDDATE MEMBER SET PWD=?, NAME=?, AGE=?, GENDER=?,PHONE=?, WHERE ID=?";
-	private final String MEMBER_DELETE = "DELECT FROM MEMBER WHERE ID=?";
+	private final String MEMBER_DELETE = "DELETE FROM MEMBER WHERE ID=?";
 	
 	public MemberDAO() {
 		super();
@@ -38,6 +38,8 @@ public class MemberDAO extends DAO {
 				membervo.setGender(rs.getString("gender"));
 				membervo.setPhone(rs.getString("phone"));
 				membervo.setRegdt(rs.getString("regdt"));
+				
+				list.add(membervo);
 			}
 		}catch(SQLException e) {
 			e.printStackTrace();
@@ -88,18 +90,15 @@ public class MemberDAO extends DAO {
 	
 	
 	
-	public MemberVO getDelete(MemberVO membervo) {
+	public void getDelete(String id) {
 		try {
 			psmt = conn.prepareStatement(MEMBER_DELETE);
-			psmt.setString(1, membervo.getId());
+			psmt.setString(1, id);
 			rs = psmt.executeQuery();
-			if(rs.next()) {
-				membervo.setId(rs.getString("id"));
-			}
+			
 		}catch(SQLException e) {
 			e.printStackTrace();
 		}
-		return membervo;
 	}
 	
 	public MemberVO getSelectUpdate(MemberVO membervo) {
