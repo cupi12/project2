@@ -19,14 +19,13 @@ public class AdminMenuEdit implements Command {
 		String mName = request.getParameter("mName");
 		MenuDAO dao = new MenuDAO();
 		MenuVO vo = new MenuVO();
-	
-			try {
-				vo = dao.getMenu(mName);
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
+		try {
+			vo = dao.getMenu(mName);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 		
-		request.setAttribute("vo",vo);
+		request.setAttribute("getMenu", vo);
 
 		return "admin/adminMenuEdit.jsp";
 	}

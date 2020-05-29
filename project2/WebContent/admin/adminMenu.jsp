@@ -8,22 +8,29 @@
 <title>Insert title here</title>
 <jsp:include page="/common/template/header.jsp" />
 
+<script type="text/javascript">
+	function formSubmit(str) {
+		frm.mName.value = str;
+		frm.submit();
+	}
+</script>
+<body>
 <h2>메뉴 관리</h2>
-
+	<form id="frm" name="frm" action="AdminMenuEdit.do" method="post">
+		<input type="hidden" id="mName" name="mName">
+	</form>
 <table>
 <tr>
 <td>메뉴명</td><td>메뉴가격</td>
 </tr>
-<c:forEach items="${menuList }" var="vo">
-<tr>		
-<td>
-<a href="URL" onclick="window.open('AdminEditMenu.do?mName=${vo.mName }', '_blank', 'width=auto,height=auto,toolbars=no,scrollbars=no'); return false;">
-${vo.mName }</a></td>
-<td>${vo.mPrice }</td> 
-</tr>
+<c:forEach items="${vo }" var="vo">
+	<tr>		
+		<td onclick="formSubmit('${vo.mName}')">${vo.mName }</td>
+		<td>${vo.mPrice }</td> 
+	</tr>
 </c:forEach>
 </table>
-<br>
+<br/>
 
 
 
@@ -32,4 +39,5 @@ ${vo.mName }</a></td>
 
 
 <jsp:include page="/common/template/footer.jsp" />
+</body>
 </html>

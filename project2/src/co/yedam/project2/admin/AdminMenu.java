@@ -17,10 +17,8 @@ public class AdminMenu implements Command {
 	public String exec(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		MenuDAO dao = new MenuDAO();
 		List<MenuVO> list = dao.getList();
-		request.setAttribute("menuList", list);
-
+		request.setAttribute("vo", list);
 	
-
 		return "admin/adminMenu.jsp";
 	}
 

@@ -9,8 +9,8 @@
 </head>
 <jsp:include page="/common/template/header.jsp"/>
 <body>
-메뉴명:<input type="text" value="${vo.mName } name="mName" id="mName"><br>  
-가격: <input type="text" value="${vo.mPrice } name="mPrice" id="mPrice"><br>
+메뉴명:<input type="text" value="${getMenu.mName }" name="mName" id="mName"><br>  
+가격: <input type="text" value="${getMenu.mPrice }" name="mPrice" id="mPrice"><br> 
 <button>메뉴 수정</button>
 <button>메뉴 삭제</button><br>
 

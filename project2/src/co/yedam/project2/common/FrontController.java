@@ -30,7 +30,7 @@ public class FrontController extends HttpServlet {
 	comm.put("/MemberList.do", new MemberList());
 	comm.put("/Login.do", new Login());
 	comm.put("/AdminMenu.do", new AdminMenu());
-	comm.put("/AdminMenuEdit", new AdminMenuEdit());
+	comm.put("/AdminMenuEdit.do", new AdminMenuEdit());
 	
 	
 	}
