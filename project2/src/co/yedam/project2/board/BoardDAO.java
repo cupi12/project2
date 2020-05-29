@@ -30,18 +30,19 @@ public class BoardDAO extends DAO {
 	
 	public List<BoardVO> getSelectList() {
 		List<BoardVO> list = new ArrayList<BoardVO>();
+		BoardVO boardvo = new BoardVO();
 		try {
 			psmt = conn.prepareStatement(BOARD_SELECT_LIST);
 			rs = psmt.executeQuery();
 			while(rs.next()){
-				BoardVO boardvo = new BoardVO();
 				boardvo.setSeq(rs.getInt("seq"));
 				boardvo.setTitle(rs.getString("title"));
 				boardvo.setContents(rs.getString("contents"));
-				boardvo.setRegDt(rs.getString("regdt"));
+				boardvo.setRegdt(rs.getString("regdt"));
 				boardvo.setId(rs.getString("id"));
 				boardvo.setStar(rs.getString("star"));
 				boardvo.setRecommand(rs.getInt("recommand"));
+				
 				list.add(boardvo);
 			}
 		}catch (SQLException e){
@@ -58,7 +59,7 @@ public class BoardDAO extends DAO {
 				boardvo.setSeq(rs.getInt("seq"));
 				boardvo.setTitle(rs.getString("title"));
 				boardvo.setContents(rs.getString("contents"));
-				boardvo.setRegDt(rs.getString("regdt"));
+				boardvo.setRegdt(rs.getString("regdt"));
 				boardvo.setId(rs.getString("id"));
 				boardvo.setStar(rs.getString("star"));
 				boardvo.setRecommand(rs.getInt("recommand"));
@@ -72,7 +73,7 @@ public class BoardDAO extends DAO {
 	}
 	
 	
-		public BoardVO getInsert(BoardVO boardvo) {
+		public BoardVO getSelectInsert(BoardVO boardvo) {
 			try {
 				psmt = conn.prepareStatement(BOARD_INSERT);
 				rs = psmt.executeQuery();
@@ -80,7 +81,7 @@ public class BoardDAO extends DAO {
 					boardvo.setSeq(rs.getInt("seq"));
 					boardvo.setTitle(rs.getString("title"));
 					boardvo.setContents(rs.getString("contents"));
-					boardvo.setRegDt(rs.getString("regdt"));
+					boardvo.setRegdt(rs.getString("regdt"));
 					boardvo.setId(rs.getString("id"));
 					boardvo.setStar(rs.getString("star"));
 					boardvo.setRecommand(rs.getInt("recommand"));
@@ -94,7 +95,7 @@ public class BoardDAO extends DAO {
 		
 	}
 
-		public BoardVO getUpdate(BoardVO boardvo) {
+		public BoardVO getSelectUpdate(BoardVO boardvo) {
 			try {
 			psmt = conn.prepareStatement(BOARD_UPDATE);
 			psmt.setInt(1, boardvo.getSeq());
@@ -103,7 +104,7 @@ public class BoardDAO extends DAO {
 				boardvo.setSeq(rs.getInt("seq"));
 				boardvo.setTitle(rs.getString("title"));
 				boardvo.setContents(rs.getString("contents"));
-				boardvo.setRegDt(rs.getString("regdt"));
+				boardvo.setRegdt(rs.getString("regdt"));
 				boardvo.setId(rs.getString("id"));
 				boardvo.setStar(rs.getString("star"));
 				boardvo.setRecommand(rs.getInt("recommand"));
@@ -114,7 +115,7 @@ public class BoardDAO extends DAO {
 		return boardvo;	
 	}
 
-	public BoardVO boardDelete(BoardVO boardvo) {
+	public BoardVO getSelectDelete(BoardVO boardvo) {
 		try {
 			psmt = conn.prepareStatement(BOARD_DELETE);
 			psmt.setInt(1,boardvo.getSeq());

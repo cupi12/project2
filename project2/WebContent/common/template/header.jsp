@@ -51,7 +51,7 @@
 					<%-- <c:if test="loginId == admin"> --%>
 					<li><a href="AdminMenu.do" accesskey="7" title="">메뉴관리</a></li>
 					<li><a href="MemberList.do" accesskey="8" title="">회원관리</a></li>
-					<li><a href="#" accesskey="9" title="">게시판 관리</a></li>
+					<li><a href="BoardList.do" accesskey="9" title="">게시판 관리</a></li>
 					<li><a href="#" accesskey="10" title="">매장관리</a></li>
 					<li><a href="Logout.do" accesskey="11" title="">로그아웃</a></li>
 					<%-- </c:if> --%>

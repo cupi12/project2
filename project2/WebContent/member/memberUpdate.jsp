@@ -9,7 +9,7 @@
 <body>
 <div align="center"></div>
 <h1>회원 정보 수정</h1>
-<div>
+
 <div>
 		<span>ID:</span><input type="text" name="id" id="id" readonly="readonly" value="${member.id}" /><br />
 		 비밀번호: <input type="password" name="pwd" id="pwd"  value="${member.pwd}" /><br /> 
@@ -21,7 +21,7 @@
 		<input type="button" onclick="location.href='MemberDelete.do?id=${member.id}' " value = "회원탈퇴" />
       	<input type="button" onclick="location.href='MemberUpdate.do?id=${member.id}' "value="수정" />
 	</div>
-</div>
+
 
 </body>
 
