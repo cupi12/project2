@@ -1,6 +1,7 @@
 package co.yedam.project2.menu;
 
 
+import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -8,7 +9,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import co.yedam.project2.common.DAO;
-import co.yedam.project2.memo.MemoVO;
 
 public class MenuDAO extends DAO{
 	
@@ -16,34 +16,40 @@ public class MenuDAO extends DAO{
 	private ResultSet rs;
 	
 	private final String menuList ="select * from menu order by mname desc";  //메뉴 보여주는 쿼리
-	private final String insertMenu = "insert into menu(mname, mprice) values( ?, ?)";
+	private final String menuInsert = "insert into menu(mname, mprice) values( ?, ?)";
 	private final String menuSelect = "SELECT * FROM menu WHERE mName=?";
-	private final String menuUpdate = "Update into memo(MNAME,MPRICE) Values(?,?);";
-	private final String menuDelete = "DELETE FROM MEMO WHERE MNAME =?";
+	private final String menuUpdate = "Update into memu (MNAME,MPRICE) Values(?,?)";
+	private final String menuDelete = "DELETE FROM MEnu  WHERE MNAME =?";
 	
 	public MenuDAO() {
 		super();
 	}
 	
-	public void menuUpdate(MenuVO menuvo) throws SQLException {
-		MenuVO vo = new MenuVO();
-		try {
+
+	//메뉴 수정
+	public void menuUpdate(MenuVO menu) {
+		try {			
 			psmt = conn.prepareStatement(menuUpdate);
-			
-			psmt.setString(1, vo.getmName());
-			psmt.setInt(2, vo.getmPrice());
-			
-			psmt.executeUpdate();
-		} catch (SQLException e) {
+			rs = psmt.executeQuery();
+			while(rs.next()) {
+				MenuVO vo = new MenuVO();
+				psmt.setString(1, vo.getmName());
+				psmt.setInt(2, vo.getmPrice());
+				
+			}			
+		}catch(SQLException e) {
 			e.printStackTrace();
-		}finally {
-			conn.close();
 		}
-	}
+	}//end of getList
+	
+	
+	
+	
+	
 	
 	public void menuInsert(MenuVO vo) throws SQLException {//메뉴 넣기
 		try {
-			psmt = conn.prepareStatement(insertMenu);
+			psmt = conn.prepareStatement(menuInsert);
 			
 			psmt.setString(1, vo.getmName());
 			psmt.setInt(2, vo.getmPrice());
@@ -55,6 +61,25 @@ public class MenuDAO extends DAO{
 			conn.close();
 		}
 	}//end of menuInsert
+	
+	
+	
+	public void menuDelete(String mName) throws SQLException {//메뉴 넣기
+		try {
+			psmt = conn.prepareStatement(menuDelete);
+			
+			psmt.setString(1, mName);
+
+			
+			psmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			conn.close();
+		}
+	}//end of menuDelete
+	
+	
 	
 	public List<MenuVO> getList() {//메뉴 전체조회
 		List<MenuVO> list = new ArrayList<MenuVO>();
