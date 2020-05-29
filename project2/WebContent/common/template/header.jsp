@@ -49,7 +49,7 @@
 
 					<!-- admin메뉴 -->
 					<%-- <c:if test="loginId == admin"> --%>
-					<li><a href="#" accesskey="7" title="">메뉴관리</a></li>
+					<li><a href="adminMenu.do" accesskey="7" title="">메뉴관리</a></li>
 					<li><a href="MemberList.do" accesskey="8" title="">회원관리</a></li>
 					<li><a href="#" accesskey="9" title="">게시판 관리</a></li>
 					<li><a href="#" accesskey="10" title="">매장관리</a></li>

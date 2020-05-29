@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import co.yedam.project2.admin.AdminMenu;
 import co.yedam.project2.member.MemberList;
 import co.yedam.project2.menu.Menu;
 
@@ -27,6 +28,7 @@ public class FrontController extends HttpServlet {
 	comm.put("/Menu.do", new Menu());
 	comm.put("/MemberList.do", new MemberList());
 	comm.put("/Login.do", new Login());
+	comm.put("/AdminMenu.do", new AdminMenu());
 	
 	
 	
