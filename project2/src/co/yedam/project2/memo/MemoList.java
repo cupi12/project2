@@ -1,4 +1,4 @@
-package co.yedam.project2.worker;
+package co.yedam.project2.wmemo;
 
 import java.io.IOException;
 import java.util.List;
@@ -9,17 +9,17 @@ import javax.servlet.http.HttpServletResponse;
 
 import co.yedam.project2.common.Command;
 
-public class WorkerList implements Command {
+public class MemoList implements Command {
 
 	@Override
 	public String exec(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		WorkerDAO dao = new WorkerDAO();
+		MemoDAO dao = new MemoDAO();
 		
-		List<WorkerVO> list = dao.getWorkerList();
-		request.setAttribute("workerList", list);
+		List<MemoVO> list = dao.getMemoList();
+		request.setAttribute("memoList", list);
 		
-		return "worker/workerList.jsp";
+		return "memo/memoList.jsp";
 	}
 
 }

@@ -17,9 +17,27 @@ public class MenuDAO extends DAO{
 	private final String menuList ="select * from menu order by mname desc";  //메뉴 보여주는 쿼리
 	private final String insertMenu = "insert into menu(mname, mprice) values( ?, ?)";
 	private final String menuSelect = "SELECT * FROM menu WHERE mName=?";
+	private final String menuUpdate = "Update into memo(MNAME,MPRICE) Values(?,?);";
+	private final String menuDelete = "DELETE FROM MEMO WHERE MNAME =?";
 	
 	public MenuDAO() {
 		super();
+	}
+	
+	public void menuUpdate() throws SQLException {
+		MenuVO vo = new MenuVO();
+		try {
+			psmt = conn.prepareStatement(menuUpdate);
+			
+			psmt.setString(1, vo.getmName());
+			psmt.setInt(2, vo.getmPrice());
+			
+			psmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			conn.close();
+		}
 	}
 	
 	public void menuInsert(MenuVO vo) throws SQLException {//메뉴 넣기

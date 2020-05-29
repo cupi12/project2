@@ -1,7 +1,6 @@
-package co.yedam.project2.worker;
+package co.yedam.project2.wmemo;
 
 import java.io.IOException;
-import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -9,17 +8,26 @@ import javax.servlet.http.HttpServletResponse;
 
 import co.yedam.project2.common.Command;
 
-public class WorkerList implements Command {
+public class MemoInsert implements Command {
 
 	@Override
 	public String exec(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		WorkerDAO dao = new WorkerDAO();
 		
-		List<WorkerVO> list = dao.getWorkerList();
-		request.setAttribute("workerList", list);
+		WmemoDAO dao = new WmemoDAO();
 		
-		return "worker/workerList.jsp";
+		//파라미터 받기
+		
+		//첨무파일 처리
+		
+		//서비스 로직 처리
+		
+		//등록처리
+		
+		//목록페이지 이동
+		
+		//리턴
+		return "wmemo/wmemoInsert.jsp";
 	}
 
 }

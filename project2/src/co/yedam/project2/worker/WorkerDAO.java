@@ -18,7 +18,7 @@ public class WorkerDAO {
 	public WorkerDAO() {
 
 	public int WorkerInsert(WorkerVO worker) {   //직원등록
-			int r = 0;
+			int 	r = 0;
 			Connection conn = null;
 			PreparedStatement pamt = null;
 			
