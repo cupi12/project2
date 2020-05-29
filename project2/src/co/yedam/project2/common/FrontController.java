@@ -12,8 +12,10 @@ import javax.servlet.http.HttpServletResponse;
 
 import co.yedam.project2.admin.AdminMenu;
 import co.yedam.project2.admin.AdminMenuEdit;
+import co.yedam.project2.board.BoardInsert;
 import co.yedam.project2.board.BoardList;
 import co.yedam.project2.member.MemberDelete;
+import co.yedam.project2.member.MemberInsert;
 import co.yedam.project2.member.MemberList;
 import co.yedam.project2.menu.Menu;
 
@@ -30,11 +32,14 @@ public class FrontController extends HttpServlet {
 	comm.put("/main.do", new Main());   //컨트롤러 밑에 추가해주세요^^
 	comm.put("/Menu.do", new Menu());
 	comm.put("/MemberList.do", new MemberList());
+	comm.put("/MemberInsert.do", new MemberInsert());
 	comm.put("/Login.do", new Login());
 	comm.put("/AdminMenu.do", new AdminMenu());
 	comm.put("/AdminMenuEdit.do", new AdminMenuEdit());
 	comm.put("/MemberDelete.do", new MemberDelete());	
 	comm.put("/BoardList.do",new BoardList());
+	comm.put("/BoardInsert.do", new BoardInsert());
+	comm.put("Login", new Login());
 	
 	}
 

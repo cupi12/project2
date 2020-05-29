@@ -4,26 +4,6 @@
 <html>
 <head>
 <title></title>
-</head>
-<jsp:include page="/common/template/header.jsp"/>
-<body>
-<div align="center">
-	<div>
-	<h1>회원 가입</h1>
-	</div>
-	
-	<div>
-		<span>ID:</span><input type="text" name="id" id="id" /><br />
-		 비밀번호: <input type="password" name="pwd" id="pwd" /><br /> 
-		 이름:<input type="text" name="name" id="name" /><br /> 
-		 나이: <input type="text" name="age" id="age"/> <br/> 
-		 성별: <input type="radio" name="gender" value="m" />남자 
-			  <input type="radio" name="gender" value="f" /> 여자<br /> 
-		전화번호:	<input type="text" name="phone" id="phone"/><br/> 
-		<button type="button" onclick="validCheck()">회원가입</button> 
-		<input type="reset" value="지우기" />
-	</div>
-</body>
 <script>
 
 	function validCheck() {
@@ -53,5 +33,29 @@
 			return;
 		}
 	}
+	</script>
+</head>
+<jsp:include page="/common/template/header.jsp"/>
+<body>
+<div align="center">
+	<div>
+	<h1>회원 가입</h1>
+	</div>
+	
+	<div>
+		<span>ID:</span><input type="text" name="id" id="id" /><br />
+		<form action="MemberInsert.do" Method="post">
+		 비밀번호: <input type="password" name="pwd" id="pwd" /><br /> 
+		 이름:<input type="text" name="name" id="name" /><br /> 
+		 나이: <input type="text" name="age" id="age"/> <br/> 
+		 성별: <input type="radio" name="gender" value="m" />남자 
+			  <input type="radio" name="gender" value="f" /> 여자<br /> 
+		전화번호:	<input type="text" name="phone" id="phone"/><br/> 
+		<button type="button" onclick="validCheck()">회원가입</button> 
+		<input type="reset" value="지우기" />
+		</form>
+	</div>
+</body>
+
 <jsp:include page="/common/template/footer.jsp"/>
 </html>

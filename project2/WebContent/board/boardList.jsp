@@ -4,15 +4,16 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
+<meta charset="UTF-8">
 <title>Insert title here</title>
+
 </head>
 <jsp:include page="/common/template/header.jsp" />
 <body>
 	<div align="center">
 		<h1>후기 게시판</h1>
  		<div>
-		<button onclick="">후기 등록</button>
+		<button onclick="location.href='BoardInsert.do'">후기 등록</button>
 		</div>
 		<!-- <form name="searchfrm">
 			<input name="p" value="1" type="hidden">
@@ -54,7 +55,7 @@
 					</tr>
 				</c:forEach>
 			</table>
-			<button type="button" onclick="location.href='main.do'">홈으로</button>
+			<button type="button" onclick="memberInsert()">홈으로</button>
 		</div>
 	</div>
 		
