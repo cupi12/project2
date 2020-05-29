@@ -16,6 +16,7 @@ public class MenuDAO extends DAO{
 	
 	private final String menuList ="select * from menu order by mname desc";  //메뉴 보여주는 쿼리
 	private final String insertMenu = "insert into menu(seq, mname, mprice) values((select nvl(max(seq),0)+1, ?, ?)";
+	private final String menuSelect = "SELECT * FROM menu WHERE mName=?";
 	
 	public MenuDAO() {
 		super();
@@ -53,5 +54,25 @@ public class MenuDAO extends DAO{
 		}
 		return list;
 	}//end of getList
+	
+	public MenuVO getMenu(String mName) throws SQLException {
+		MenuVO vo = new MenuVO();
+		try {
+			psmt = conn.prepareStatement(menuSelect);
+			psmt.setString(1, mName);
+			rs = psmt.executeQuery();
+			if(rs.next()) {
+				vo.setmName(rs.getString("mName"));
+				vo.setmPrice(rs.getInt("mPrice"));				
+			}
+		} catch (SQLException e) {
+			
+			e.printStackTrace();
+		}finally {
+			conn.close();
+		}
+		return vo;
+		
+	}
 
 }

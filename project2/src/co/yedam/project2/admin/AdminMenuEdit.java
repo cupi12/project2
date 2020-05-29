@@ -1,6 +1,7 @@
 package co.yedam.project2.admin;
 
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -11,17 +12,23 @@ import co.yedam.project2.common.Command;
 import co.yedam.project2.menu.MenuDAO;
 import co.yedam.project2.menu.MenuVO;
 
-public class AdminMenu implements Command {
+public class AdminMenuEdit implements Command {
 
 	@Override
 	public String exec(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String mName = request.getParameter("mName");
 		MenuDAO dao = new MenuDAO();
-		List<MenuVO> list = dao.getList();
-		request.setAttribute("menuList", list);
-
+		MenuVO vo = new MenuVO();
 	
+			try {
+				vo = dao.getMenu(mName);
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		
+		request.setAttribute("vo",vo);
 
-		return "admin/adminMenu.jsp";
+		return "admin/adminMenuEdit.jsp";
 	}
 
 }
