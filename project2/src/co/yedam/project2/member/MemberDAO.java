@@ -15,10 +15,9 @@ public class MemberDAO extends DAO {
 	private	ResultSet rs;
 	
 	private final String MEMBER_SELECT_LIST = "SELECT * FROM MEMBER ORDER BY ID DESC";
-	private final String MEMBER_SELECT ="SELECT * FROM MEMBER WHERE SEQ=?";
-	private final String MEMBER_INSERT = "INSERT INTO MEMBER"
-										+"VALUES(?,?,?,?,?,?,SYSDATE)";
-	private final String MEMBER_UPDATE = "UDDATE MEMBER SET PWD=?, NAME=?, AGE=?, GENDER=?,PHONE=?, WHERE ID=?";
+	private final String MEMBER_SELECT ="SELECT * FROM MEMBER WHERE id=?";
+	private final String MEMBER_INSERT = "INSERT INTO MEMBER(id,pwd,name,age,gender,phone,regdt) VALUES(?,?,?,?,?,?,SYSDATE)";
+	private final String MEMBER_UPDATE = "UPDATE MEMBER SET(ID=?, PWD=?, NAME=?, AGE=?, GENDER=?,PHONE=?)";
 	private final String MEMBER_DELETE = "DELETE FROM MEMBER WHERE ID=?";
 	
 	public MemberDAO() {
@@ -68,18 +67,27 @@ public class MemberDAO extends DAO {
 	}
 	
 	//등록
-	public MemberVO getSelectInsert(MemberVO membervo) {
+	public MemberVO memberInsert(MemberVO membervo) {
+		MemberVO vo = new MemberVO();
 		try {
 			psmt = conn.prepareStatement(MEMBER_INSERT);
-			rs = psmt.executeQuery();
+			
+			psmt.setString(1, vo.getId());
+			psmt.setString(2, vo.getPwd());
+			psmt.setString(3, vo.getName());
+			psmt.setString(4, vo.getAge());
+			psmt.setString(5, vo.getGender());
+			psmt.setString(6, vo.getPhone());
+			
+			psmt.executeUpdate();
 			if(rs.next()) {
-				membervo.setId(rs.getString("id"));
-				membervo.setPwd(rs.getString("pwd"));
-				membervo.setName(rs.getString("name"));
-				membervo.setAge(rs.getString("age"));
-				membervo.setGender(rs.getString("gender"));
-				membervo.setPhone(rs.getString("phone"));
-				membervo.setRegdt(rs.getString("regdt"));
+				vo.setId(rs.getString("id"));
+				vo.setPwd(rs.getString("pwd"));
+				vo.setName(rs.getString("name"));
+				vo.setAge(rs.getString("age"));
+				vo.setGender(rs.getString("gender"));
+				vo.setPhone(rs.getString("phone"));
+				vo.setRegdt(rs.getString("regdt"));
 				
 			}
 		}catch(SQLException e) {
