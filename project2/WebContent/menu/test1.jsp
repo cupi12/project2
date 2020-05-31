@@ -1,9 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+    pageEncoding="UTF-8"%>
+<!doctype html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 
-<!DOCTYPE html>
-<html>
+<title>http://www.blueb.co.kr</title>
 
 <style type="text/css">
 body{
@@ -128,20 +130,61 @@ table tr:hover td{
 </style>
 
 </head>
-<jsp:include page="/common/template/header.jsp" />
-<table border="1">
+
+<body>
+
+<table cellspacing='0'>
 	<tr>
-		<td colspan="2">메뉴목록</td><td>주문</td>
+		<th>Task Details</th>
+		<th>Progress</th>
+		<th>Vital Task</th>
 	</tr>
-	<c:forEach items="${menuList }" var="vo">
-		<tr>
-			<td>${vo.mName }</td>
-			<td>${vo.mPrice }</td>
-		</tr>
-	</c:forEach>
+    
+	<tr>
+		<td>Create pretty table design</td>
+		<td>100%</td>
+		<td>Yes</td>
+	</tr>
+	<tr class='even'>
+		<td>Take the dog for a walk</td>
+		<td>100%</td>
+		<td>Yes</td>
+	</tr>
 
-</table><br>
-합계:<input type="text" readonly><button>주문하기</button>
+	<tr>
+		<td>Waste half the day on Twitter</td>
+		<td>20%</td>
+		<td>No</td>
+	</tr>
+	<tr class='even'>
+		<td>Feel inferior after viewing Dribble</td>
+		<td>80%</td>
+		<td>No</td>
+	</tr>
+	
+    <tr>
+		<td>Wince at "to do" list</td>
+		<td>100%</td>
+		<td>Yes</td>
+	</tr>
+	<tr class='even'>
+		<td>Vow to complete personal project</td>
+		<td>23%</td>
+		<td>yes</td>
+	</tr>
 
-<jsp:include page="/common/template/footer.jsp" />
+	<tr>
+		<td>Procrastinate</td>
+		<td>80%</td>
+		<td>No</td>
+	</tr>
+    <tr class='even'>
+		<td><a href="#">Hyperlink Example</a></td>
+		<td>80%</td>
+		<td><a href="#inexistent-id">Another</a></td>
+	</tr>
+</table>
+
+
+</body>
 </html>
