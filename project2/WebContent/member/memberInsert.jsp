@@ -6,8 +6,19 @@
 <head>
 <title></title>
 <script>
-	function memberCheck() {
+	function memberCheck() {		
+		/* if(frm.id.value =="admin"){
+		alert("admin이 들어간 아이디 사용 불가");
+		frm.id.focus(); */
 		//필수입력 체크
+
+		var id = document.getElementById('id'); // input type text id >> dd
+		var admin = "admin";
+		if (id.value.includes(admin)) {
+			alert('admin을 포함할수없음');
+
+			return;
+		}
 		if (frm.id.value == "") { //trim함수
 			alert("아이디 입력");
 			frm.id.focus();
@@ -41,15 +52,13 @@
 			alert("성별 선택");
 			return;
 		}
-		if (confirm("회원가입을 하시겠습니까?")) {			
-			
+		if (confirm("회원가입을 하시겠습니까?")) {
+
 			frm.submit();
 			alert(frm.id.value + "님, 회원가입을 환영합니다!");
 		}
 
 	}//end of idValidCheck
-	
-
 </script>
 </head>
 <jsp:include page="/common/template/header.jsp" />
@@ -59,12 +68,10 @@
 		<div>
 			<h1>회원 가입</h1>
 		</div>
-		<div>
-		
-		</div> 
+		<div></div>
 
 		<div>
-			
+
 			<span id="result"></span><br>
 			<form action="MemberInsert.do" Method="post" name="frm">
 				<input type="text" name="id" id="id" placeholder="아이디"><br>
@@ -74,15 +81,14 @@
 				<input type="text" name="age" id="age" placeholder="나이" /><br>
 				<input type="text" name="phone" id="phone" placeholder="전화번호"><br>
 				성별:<input type="radio" name="gender" value="남">남자 <input
-					type="radio" name="gender" value="여"> 여자<br>
-					<span></span>
-					<br>
+					type="radio" name="gender" value="여"> 여자<br> <span></span>
+				<br>
 				<button type="button" onclick="memberCheck()">회원가입</button>
 				<input type="reset" value="지우기" />
 			</form>
 		</div>
 	</div>
-	
+
 </body>
 
 <jsp:include page="/common/template/footer.jsp" />

@@ -109,7 +109,7 @@ public class MemberDAO extends DAO {
 		try {
 			psmt = conn.prepareStatement(MEMBER_UPDATE);
 			psmt.setString(1, membervo.getId());
-			rs = psmt.executeQuery();
+			psmt.executeUpdate();
 			if (rs.next()) {
 				membervo.setId(rs.getString("id"));
 				membervo.setPwd(rs.getString("pwd"));

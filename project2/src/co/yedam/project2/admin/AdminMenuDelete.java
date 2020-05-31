@@ -25,14 +25,13 @@ public class AdminMenuDelete implements Command {
 		try {
 			dao.menuDelete(mName);
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
 		
 		
 		
-		return "menu/menu.jsp";
+		return "AdminMenu.do";
 	}
 
 }

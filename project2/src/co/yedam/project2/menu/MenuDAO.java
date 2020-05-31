@@ -15,11 +15,11 @@ public class MenuDAO extends DAO{
 	private PreparedStatement psmt;
 	private ResultSet rs;
 	
-	private final String menuList ="select * from menu order by mname desc";  //메뉴 보여주는 쿼리
-	private final String menuInsert = "insert into menu(mname, mprice) values( ?, ?)";
+	private final String menuList ="select * from menu order by seq asc";  //메뉴 보여주는 쿼리
+	private final String menuInsert = "insert into menu(seq,mname, mprice) values(seq.nextval, ?, ?)";
 	private final String menuSelect = "SELECT * FROM menu WHERE mName=?";
-	private final String menuUpdate = "Update into memu (MNAME,MPRICE) Values(?,?)";
-	private final String menuDelete = "DELETE FROM MEnu  WHERE MNAME =?";
+	private final String menuUpdate = "Update menu set MNAME=?, MPRICE=? where mName=?";
+	private final String menuDelete = "DELETE FROM MENU  WHERE MNAME =?";
 	
 	public MenuDAO() {
 		super();
@@ -30,13 +30,11 @@ public class MenuDAO extends DAO{
 	public void menuUpdate(MenuVO menu) {
 		try {			
 			psmt = conn.prepareStatement(menuUpdate);
-			rs = psmt.executeQuery();
-			while(rs.next()) {
-				MenuVO vo = new MenuVO();
-				psmt.setString(1, vo.getmName());
-				psmt.setInt(2, vo.getmPrice());
-				
-			}			
+			psmt.setString(1, menu.getmName());
+			psmt.setInt(2, menu.getmPrice());
+			psmt.setString(3, menu.getmName());
+			
+			psmt.executeUpdate();
 		}catch(SQLException e) {
 			e.printStackTrace();
 		}
