@@ -137,7 +137,7 @@ table tr:hover td{
 		<tr>
 			<td>${vo.mName }</td>
 			<td>${vo.mPrice }</td>
-		</tr>
+		</tr> 
 	</c:forEach>
 
 </table><br>
