@@ -47,11 +47,24 @@ public class MemberDAO extends DAO {
 		return list;
 	}
 
+	
+	public MemberVO getSelect(String id) {
+		MemberVO membervo = new MemberVO();
+		
+		
+
+
 	public MemberVO getMember(String id) {
 		MemberVO membervo = new MemberVO();
+
 		try {
+
+			psmt = conn.prepareStatement(MEMBER_SELECT);
+			psmt.setString(1,id);
+
 			psmt = conn.prepareStatement(getMember);
 			psmt.setString(1, id);
+
 			rs = psmt.executeQuery();
 			if (rs.next()) {
 				membervo.setId(rs.getString("id"));
