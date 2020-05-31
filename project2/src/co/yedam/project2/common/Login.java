@@ -22,7 +22,7 @@ public class Login implements Command {
 				
 				// 2. 서비스 로직
 				MemberDAO dao = new MemberDAO();
-				MemberVO vo = dao.getSelect(id);
+				MemberVO vo = dao.getMember(id);
 				response.setContentType("text/html; charset=UTF-8");
 				PrintWriter out = response.getWriter();
 					// ID 조회
@@ -40,12 +40,6 @@ public class Login implements Command {
 						request.getRequestDispatcher("/common/menu.jsp").include(request, response);
 						out.print("로그인 성공");
 					}
-		
-		
-		
-
-
-
 		
 		vo = dao.getMember(id);
 		
