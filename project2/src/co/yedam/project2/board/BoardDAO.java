@@ -76,7 +76,7 @@ public class BoardDAO extends DAO {
 		public BoardVO boardInsert(BoardVO boardvo) {
 			try {
 				psmt = conn.prepareStatement(BOARD_INSERT);
-				rs = psmt.executeQuery();
+				psmt.executeUpdate();
 				if(rs.next()) {
 					boardvo.setSeq(rs.getInt("seq"));
 					boardvo.setTitle(rs.getString("title"));

@@ -16,7 +16,7 @@ public class BoardDelete implements Command {
 		BoardDAO dao = new BoardDAO();
 
 		dao.boardDelete(Integer.parseInt(request.getParameter("seq")));
-		return "board/boardrUpdate.jsp";
+		return "BoardList.do";
 
 	}
 

@@ -6,7 +6,13 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-
+<script>
+function deleteCheck(){
+	if(confirm("정말 삭제하시겠습니까?")){
+		frm.submit();
+	}
+}
+</script>
 </head>
 <jsp:include page="/common/template/header.jsp" />
 <body>
@@ -32,6 +38,7 @@
 				</tr>
 
 				<c:forEach var="board" items="${Board}">
+							<form name="frm" method="post" action="">
 					<tr>
 						<td>${board.seq}</td>
 						<td>${board.title}</td>
@@ -41,11 +48,10 @@
 						<td>${board.star}</td>
 						<td>${board.recommand}</td>
 						<c:if test="${loginId==admin }">
-							<form name="frm" method="post" action="">
-							<td><button type="submit">게시글 삭제</button></td>
-							</form>
+							<td><button type="submit" onclick="deleteCheck()">게시글 삭제</button></td>
 						</c:if>
 					</tr>
+							</form>
 				</c:forEach>
 			</table>
 			<button type="button" onclick="memberInsert()">홈으로</button>

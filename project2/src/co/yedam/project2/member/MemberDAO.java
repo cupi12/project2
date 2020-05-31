@@ -76,16 +76,15 @@ public class MemberDAO extends DAO {
 
 	// 등록
 	public void memberInsert(MemberVO membervo) throws SQLException {
-		MemberVO vo = new MemberVO();
 		try {
 			psmt = conn.prepareStatement(MEMBER_INSERT);
 
-			psmt.setString(1, vo.getId());
-			psmt.setString(2, vo.getPwd());
-			psmt.setString(3, vo.getName());
-			psmt.setString(4, vo.getAge());
-			psmt.setString(5, vo.getGender());
-			psmt.setString(6, vo.getPhone());
+			psmt.setString(1, membervo.getId());
+			psmt.setString(2, membervo.getPwd());
+			psmt.setString(3, membervo.getName());
+			psmt.setString(4, membervo.getAge());
+			psmt.setString(5, membervo.getGender());
+			psmt.setString(6, membervo.getPhone());
 
 			psmt.executeUpdate();
 

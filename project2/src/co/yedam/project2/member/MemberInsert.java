@@ -1,20 +1,21 @@
 package co.yedam.project2.member;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.sql.SQLException;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
- 
+
 import co.yedam.project2.common.Command;
-import co.yedam.project2.member.MemberVO;
 
 public class MemberInsert implements Command {
 
 	@Override
 	public String exec(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+		PrintWriter out = response.getWriter();
+		
 		MemberDAO dao = new MemberDAO();
 		MemberVO vo = new MemberVO();
 		
@@ -30,7 +31,6 @@ public class MemberInsert implements Command {
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
-
 		
 		return "main.do";
 	}

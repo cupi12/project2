@@ -322,7 +322,7 @@ if("${errorMsg}" != ""){
       <h1>Login</h1>
     </div>
     <div class="form-content">
-      <form action="Login.do" method="post">
+      <form action="../Login.do" method="post" name="frm">
         <div class="form-group">
           <label for="username">ID</label>
           <input type="text" id="id" name="id" required="required"/>
@@ -336,9 +336,6 @@ if("${errorMsg}" != ""){
         <div class="form-group">
           <button type="submit">LogIn</button>
         </div>
-      <div class="memberinsert">
-         <a href="MemberInsert.do">회원가입</a>
-      </div>
       </form>
 
     </div>
