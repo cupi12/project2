@@ -322,7 +322,7 @@ if("${errorMsg}" != ""){
       <h1>Login</h1>
     </div>
     <div class="form-content">
-      <form action="MemberLogin.do" method="post">
+      <form action="Login.do" method="post">
         <div class="form-group">
           <label for="username">ID</label>
           <input type="text" id="id" name="id" required="required"/>
