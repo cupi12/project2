@@ -44,11 +44,6 @@ public class Login implements Command {
 		
 		
 
-		MemberVO vo = new MemberVO();
-		MemberDAO dao = new MemberDAO();
-
-		String pwd = request.getParameter("pwd");
-		String id = request.getParameter("id");
 
 
 		
@@ -61,7 +56,7 @@ public class Login implements Command {
 		} else {
 			HttpSession session = request.getSession();
 			session.setAttribute("loginId", id);
-			session.setAttribute("loginPwd", pwd);
+			session.setAttribute("loginPwd", pwd); 
 		}
 
 		return "main.do";
