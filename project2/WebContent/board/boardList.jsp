@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-	pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
@@ -11,36 +11,36 @@
 <jsp:include page="/common/template/header.jsp" />
 <body>
 	<div align="center">
-		<h1>ÈÄ±â °Ô½ÃÆÇ</h1>
+		<h1>í›„ê¸° ê²Œì‹œíŒ</h1>
  		<div>
-		<button onclick="location.href='BoardInsert.do'">ÈÄ±â µî·Ï</button>
+		<button onclick="location.href='BoardInsertMenu.do'">í›„ê¸° ë“±ë¡</button>
 		</div>
 		<!-- <form name="searchfrm">
 			<input name="p" value="1" type="hidden">
 
 			<samp> ID </samp>
 			<input name="id" /><br>
-			<samp>¼ºº°</samp>
+			<samp>ì„±ë³„</samp>
 			<samp>
 				<select name="gender">
-					<option value="">ÀüÃ¼</option>
-					<option value="m">³²ÀÚ
-					<option value="f">¿©ÀÚ</option>
+					<option value="">ì „ì²´</option>
+					<option value="m">ë‚¨ìž
+					<option value="f">ì—¬ìž</option>
 				</select>
 			</samp>
-			<button>°Ë»ö</button>
+			<button>ê²€ìƒ‰</button>
 		</form> -->
 
 		<div>
 			<table border="1">
 				<tr>
-					<th>±Û¹øÈ£</th>
-					<th>Á¦¸ñ</th>
-					<th>³»¿ë</th>
-					<th>ÀÛ¼ºÀÏÀÚ</th>
-					<th>ÀÛ¼ºID</th>
-					<th>ÆòÁ¡</th>
-					<th>ÃßÃµ</th>
+					<th>ê¸€ë²ˆí˜¸</th>
+					<th>ì œëª©</th>
+					<th>ë‚´ìš©</th>
+					<th>ìž‘ì„±ì¼ìž</th>
+					<th>ìž‘ì„±ID</th>
+					<th>í‰ì </th>
+					<th>ì¶”ì²œ</th>
 				</tr>
 
 				<c:forEach var="board" items="${Board}">
@@ -55,7 +55,7 @@
 					</tr>
 				</c:forEach>
 			</table>
-			<button type="button" onclick="memberInsert()">È¨À¸·Î</button>
+			<button type="button" onclick="memberInsert()">í™ˆìœ¼ë¡œ</button>
 		</div>
 	</div>
 		

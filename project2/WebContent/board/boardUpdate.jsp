@@ -1,25 +1,27 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+    
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
+<meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
 <jsp:include page="/common/template/header.jsp" />
 <body>
 <div align="center"></div>
-<h1>ÈÄ±â ¼öÁ¤</h1>
+<h1>í›„ê¸° ìˆ˜ì •</h1>
 <div>
 	<div>
-		<span>ÀÌ¸§:</span><input type="text" name="name" id="name" readonly="readonly" value="${board.name}" /><br />
-		 ºñ¹Ð¹øÈ£: <input type="password" name="pwd" id="pwd"  value="${board.pwd}" /><br />  
-		 ³ªÀÌ: <input type="text" name="age" id="age"/> <br/>  
-		ÀüÈ­¹øÈ£:	<input type="text" name="phone" id="phone"/><br/> 
-		ÀÛ¼º:<input type="text" name="title" id="title" /><br/>
-			<textarea rows="35" cols="80">³»¿ëÀÔ·Â</textarea><br/>
-      	<input type="button" onclick="location.href='BoardUpdate.do?id=${board.id}' "value="¼öÁ¤" />
-		<input type="button" onclick="location.href='BoardUpdate.do?id=${board.id}' "value="ÈÄ±â »èÁ¦" />
+		<span>ì´ë¦„:</span><input type="text" name="name" id="name" readonly="readonly" value="${board.name}" /><br />
+		 ë¹„ë°€ë²ˆí˜¸: <input type="password" name="pwd" id="pwd"  value="${board.pwd}" /><br />  
+		 ë‚˜ì´: <input type="text" name="age" id="age"/> <br/>  
+		ì „í™”ë²ˆí˜¸:	<input type="text" name="phone" id="phone"/><br/> 
+		ìž‘ì„±:<input type="text" name="title" id="title" /><br/>
+			<textarea rows="35" cols="80">ë‚´ìš©ìž…ë ¥</textarea><br/>
+      	<input type="button" onclick="location.href='BoardUpdate.do?id=${board.id}' "value="ìˆ˜ì •" />
+		<input type="button" onclick="location.href='BoardUpdate.do?id=${board.id}' "value="í›„ê¸° ì‚­ì œ" />
 	</div>
 
 </div>
