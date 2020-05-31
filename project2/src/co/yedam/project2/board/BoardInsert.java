@@ -31,7 +31,7 @@ public class BoardInsert implements Command {
 		boardvo.setStar(star);
 		boardvo.setRecommand(recommand);
 		
-		dao.getSelectInsert(boardvo);
+		dao.boardInsert(boardvo);
 		
 		
 		return "BoardList.do";

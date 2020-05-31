@@ -30,7 +30,7 @@ public class BoardUpdate implements Command {
 		boardvo.setStar(star);
 		boardvo.setRecommand(recommand);
 		
-		dao.getSelectUpdate(boardvo);
+		dao.boardUpdate(boardvo);
 		return "board/boardUpdate.jsp";
 	}
 

@@ -16,6 +16,7 @@ import co.yedam.project2.admin.AdminMenuEdit;
 import co.yedam.project2.admin.AdminMenuInsert;
 import co.yedam.project2.admin.AdminMenuUpdate;
 import co.yedam.project2.admin.StoreManage;
+import co.yedam.project2.board.BoardDelete;
 import co.yedam.project2.board.BoardInsert;
 import co.yedam.project2.board.BoardInsertMenu;
 import co.yedam.project2.board.BoardList;
@@ -63,6 +64,7 @@ public class FrontController extends HttpServlet {
 	comm.put("/BoardList.do",new BoardList());
 	comm.put("/BoardInsert.do", new BoardInsert());
 	comm.put("/BoardInsertMenu.do", new BoardInsertMenu());
+	comm.put("/BoardDelete.do", new BoardDelete());
 	
 	}
 

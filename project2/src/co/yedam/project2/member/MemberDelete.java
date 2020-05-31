@@ -16,7 +16,7 @@ public class MemberDelete implements Command {
 		
 		MemberDAO dao = new MemberDAO();
 		
-		dao.getDelete(id);
+		dao.memberDelete(id);
 		return "MemberList.do";
 	}
 

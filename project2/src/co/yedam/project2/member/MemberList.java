@@ -15,7 +15,7 @@ public class MemberList implements Command {
 	@Override
 	public String exec(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {	
 		MemberDAO dao = new MemberDAO();
-		 List<MemberVO> list = dao.getSelectList(); 
+		 List<MemberVO> list = dao.getMemberList(); 
 		request.setAttribute("Member", list); //jsp에쓰는거 이름 , 돌려주는 객체
 		return "member/memberList.jsp";
 	}

@@ -12,16 +12,12 @@ public class BoardDelete implements Command {
 
 	@Override
 	public String exec(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-     String id = request.getParameter("id");
-		
+
 		BoardDAO dao = new BoardDAO();
-		BoardVO boardvo = new BoardVO();
-		
-		boardvo.setId(id);
-		
-		dao.getSelectDelete(boardvo);		
-		return "board/boardrUpdate.jsp";
-		
+
+		dao.boardDelete(Integer.parseInt(request.getParameter("seq")));
+		return "BoardList.do";
+
 	}
 
 }

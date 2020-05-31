@@ -6,30 +6,21 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-
+<script>
+function deleteCheck(){
+	if(confirm("정말 삭제하시겠습니까?")){
+		frm.submit();
+	}
+}
+</script>
 </head>
 <jsp:include page="/common/template/header.jsp" />
 <body>
 	<div align="center">
 		<h1>후기 게시판</h1>
- 		<div>
-		<button onclick="location.href='BoardInsertMenu.do'">후기 등록</button>
+		<div>
+			<button onclick="location.href='BoardInsertMenu.do'">후기 등록</button>
 		</div>
-		<!-- <form name="searchfrm">
-			<input name="p" value="1" type="hidden">
-
-			<samp> ID </samp>
-			<input name="id" /><br>
-			<samp>성별</samp>
-			<samp>
-				<select name="gender">
-					<option value="">전체</option>
-					<option value="m">남자
-					<option value="f">여자</option>
-				</select>
-			</samp>
-			<button>검색</button>
-		</form> -->
 
 		<div>
 			<table border="1">
@@ -41,9 +32,13 @@
 					<th>작성ID</th>
 					<th>평점</th>
 					<th>추천</th>
+					<c:if test="${loginId==admin }">
+						<th>게시판 관리</th>
+					</c:if>
 				</tr>
 
 				<c:forEach var="board" items="${Board}">
+							<form name="frm" method="post" action="">
 					<tr>
 						<td>${board.seq}</td>
 						<td>${board.title}</td>
@@ -52,14 +47,18 @@
 						<td>${board.id}</td>
 						<td>${board.star}</td>
 						<td>${board.recommand}</td>
+						<c:if test="${loginId==admin }">
+							<td><button type="submit" onclick="deleteCheck()">게시글 삭제</button></td>
+						</c:if>
 					</tr>
+							</form>
 				</c:forEach>
 			</table>
 			<button type="button" onclick="memberInsert()">홈으로</button>
 		</div>
 	</div>
-		
-	
+
+
 	<script type="text/javascript">
 		function gopage(p) {
 			document.searchfrm.p.value = p;

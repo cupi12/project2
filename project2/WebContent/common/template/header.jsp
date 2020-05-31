@@ -20,11 +20,11 @@
 
 <!--[if IE 6]><link href="default_ie6.css" rel="stylesheet" type="text/css" /><![endif]-->
 <script>
-function logout(){
-	if(confirm("정말 로그아웃 하시겠습니까?")){
-		location.href="Logout.do";
+	function logout() {
+		if (confirm("정말 로그아웃 하시겠습니까?")) {
+			location.href = "Logout.do";
+		}
 	}
-}
 </script>
 </head>
 <body>
@@ -39,28 +39,30 @@ function logout(){
 		<div id="menu-wrapper">
 			<div id="menu" class="container">
 				<ul>
-					<li class="current_page_item"><a href="#" accesskey="1"
-						title="">메인</a></li>
-					<li><a href="Login.do" accesskey="2" title="">로그인</a></li>
-					<li><a href="MemberInsertMenu.do" accesskey="2" title="">회원가입</a></li>
-
+					<c:if test="${loginId == null }">
+						<li class="current_page_item"><a href="main.do">메인</a></li>
+						<li><a href="common/login.jsp">로그인</a></li>
+						<li><a href="MemberInsertMenu.do">회원가입</a></li>
+					</c:if>
 					<!-- 사용자메뉴 -->
-					<%-- <c:if test="loginId == ${vo.getId() }"> --%>
-					<li><a href="Menu.do" >메뉴</a></li>
-					<li><a href="#" >결제</a></li>
-					<li><a href="BoardList.do" >후기</a></li>
-					<li><a href="MemberUpdate.do">정보수정</a></li>
-					<li><a href="Logout.do" onclick="logout()">로그아웃</a></li>
-					<%-- </c:if> --%>
+
+					<c:if test=" ${loginId != null && vo.getId != 'admin' }">
+						<li><a href="Menu.do">메뉴</a></li>
+						<li><a href="#">결제</a></li>
+						<li><a href="BoardList.do">후기</a></li>
+						<li><a href="MemberUpdate.do">정보수정</a></li>
+						<li><a href="Logout.do" onclick="logout()">로그아웃</a></li>
+					</c:if>
 
 					<!-- admin메뉴 -->
-					<%-- <c:if test="loginId == admin"> --%>
-					<li><a href="AdminMenu.do" accesskey="7" title="">메뉴관리</a></li>
-					<li><a href="MemberList.do" accesskey="8" title="">회원관리</a></li>
-					<li><a href="" accesskey="9" title="">게시판 관리</a></li>
-					<li><a href="StoreManage.do" accesskey="10" title="">매장관리</a></li>
+					<c:if test="${loginId == 'admin' }">
+					<li><a href="AdminMenu.do">메뉴관리</a></li>
+					<li><a href="MemberList.do">회원관리</a></li>
+					<li><a href="AdminBoardList.do">게시판 관리</a></li>
+					<li><a href="StoreManage.do">매장관리</a></li>
 					<li><a href="Logout.do" onclick="logout()">로그아웃</a></li>
-					<%-- </c:if> --%>
+					</c:if>
+
 
 				</ul>
 			</div>

@@ -15,7 +15,7 @@ public class BoardList implements Command {
 	public String exec(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		BoardDAO dao = new BoardDAO();
 		
-		 List<BoardVO> list = dao.getSelectList(); 
+		 List<BoardVO> list = dao.getBoardList(); 
 		request.setAttribute("Board", list); //jsp에쓰는거 이름 , 돌려주는 객체
 		
 		return "board/boardList.jsp";

@@ -6,7 +6,7 @@
 <head>
 <title></title>
 <script>
-	function validCheck() {
+	function memberCheck() {
 		//필수입력 체크
 		if (frm.id.value == "") { //trim함수
 			alert("아이디 입력");
@@ -41,19 +41,31 @@
 			alert("성별 선택");
 			return;
 		}
-		frm.submit();
-	}
+		if (confirm("회원가입을 하시겠습니까?")) {			
+			
+			frm.submit();
+			alert(frm.id.value + "님, 회원가입을 환영합니다!");
+		}
+
+	}//end of idValidCheck
+	
+
 </script>
 </head>
 <jsp:include page="/common/template/header.jsp" />
 <body>
+
 	<div align="center">
 		<div>
 			<h1>회원 가입</h1>
 		</div>
+		<div>
+		
+		</div> 
 
 		<div>
-			<span></span><br>
+			
+			<span id="result"></span><br>
 			<form action="MemberInsert.do" Method="post" name="frm">
 				<input type="text" name="id" id="id" placeholder="아이디"><br>
 				<input type="password" name="pwd" id="pwd" placeholder="비밀번호" /><br>
@@ -63,11 +75,14 @@
 				<input type="text" name="phone" id="phone" placeholder="전화번호"><br>
 				성별:<input type="radio" name="gender" value="남">남자 <input
 					type="radio" name="gender" value="여"> 여자<br>
-				<button type="button" onclick="validCheck()">회원가입</button>
+					<span></span>
+					<br>
+				<button type="button" onclick="memberCheck()">회원가입</button>
 				<input type="reset" value="지우기" />
 			</form>
 		</div>
 	</div>
+	
 </body>
 
 <jsp:include page="/common/template/footer.jsp" />

@@ -30,7 +30,7 @@ public class MemberUpdate implements Command {
 		membervo.setPhone(phone);
 		membervo.setRegdt(regdt);
 	
-		dao.getSelectUpdate(membervo); //jsp에쓰는거 이름 , 돌려주는 객체
+		dao.memberUpdate(membervo); //jsp에쓰는거 이름 , 돌려주는 객체
 		return "member/memberUpdate.jsp";
 	}
 
