@@ -19,6 +19,8 @@ public class BoardInsert implements Command {
 		String star = request.getParameter("star");
 		int recommand = Integer.parseInt(request.getParameter("recommand"));
 		
+		
+		
 		BoardDAO dao = new BoardDAO();
 		BoardVO boardvo = new BoardVO();
 		

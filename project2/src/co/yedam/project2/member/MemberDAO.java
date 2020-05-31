@@ -15,7 +15,8 @@ public class MemberDAO extends DAO {
 	private final String MEMBER_SELECT_LIST = "SELECT * FROM MEMBER ORDER BY ID DESC";
 	private final String getMember = "SELECT * FROM MEMBER WHERE id=?";
 	private final String insert = "insert into member(id,pwd,name,age,gender,phone,regdt) values(?, ?, ?, ?, ?, ?, sysdate)";
-	private final String MEMBER_INSERT = "INSERT INTO MEMBER(id,pwd,name,age,gender,phone,regdt) VALUES(?,?,?,?,?,?,SYSDATE)";
+	private final String MEMBER_INSERT = "INSERT INTO MEMBER(id,pwd,name,age,gender,phone,regdt) "
+											+ "VALUES(?,?,?,?,?,?,SYSDATE)";
 	private final String MEMBER_UPDATE = "UPDATE MEMBER SET(ID=?, PWD=?, NAME=?, AGE=?, GENDER=?,PHONE=?)";
 	private final String MEMBER_DELETE = "DELETE FROM MEMBER WHERE ID=?";
 
