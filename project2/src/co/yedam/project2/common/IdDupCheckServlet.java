@@ -12,10 +12,8 @@ import javax.servlet.http.HttpServletResponse;
 import co.yedam.project2.member.MemberDAO;
 import co.yedam.project2.member.MemberVO;
 
-
-
 @WebServlet("/IdDupCheck.do")
-public class IdDupCheckServlet extends HttpServlet {
+public class IdDupCheckServlet extends HttpServlet implements Command {
 	private static final long serialVersionUID = 1L;
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -34,7 +32,7 @@ public class IdDupCheckServlet extends HttpServlet {
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
-		
+
 		if (vo.getId() == null) {
 			out.print("아이디 사용가능");
 		} else {
@@ -46,6 +44,12 @@ public class IdDupCheckServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		doGet(request, response);
+	}
+
+	@Override
+	public String exec(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		doGet(request, response);
+		return null;
 	}
 
 }

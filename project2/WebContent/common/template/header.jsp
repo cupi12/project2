@@ -30,23 +30,22 @@
 <body>
 	<div id="header-wrapper">
 		<div id="header" class="container">
-			<div id="logo">
+			<div id="logo" align="center">
 				<h1>
-					<a href="#">Picturesque</a>
+					<a href="main.do">동해감자국밥</a>
 				</h1>
 			</div>
 		</div>
 		<div id="menu-wrapper">
-			<div id="menu" class="container">
+			<div id="menu" class="container" align="right">
 				<ul>
 					<c:if test="${loginId == null }">
-						<li class="current_page_item"><a href="main.do">메인</a></li>
 						<li><a href="common/login.jsp">로그인</a></li>
 						<li><a href="MemberInsertMenu.do">회원가입</a></li>
 					</c:if>
 					<!-- 사용자메뉴 -->
 
-<%-- 					<c:if test=" ${loginId != null && vo.getId != 'admin' }"> --%>
+					<%-- <c:if test=" ${loginId != null && vo.getId != 'admin' }"> --%>
 						<li><a href="Menu.do">메뉴</a></li>
 						<li><a href="#">결제</a></li>
 						<li><a href="BoardList.do">후기</a></li>
@@ -56,11 +55,11 @@
 
 					<!-- admin메뉴 -->
 					<%-- <c:if test="${loginId == 'admin' }"> --%>
-					<li><a href="AdminMenu.do">메뉴관리</a></li>
-					<li><a href="MemberList.do">회원관리</a></li>
-					<li><a href="AdminBoardList.do">게시판 관리</a></li>
-					<li><a href="StoreManage.do">매장관리</a></li>
-					<li><a href="Logout.do" onclick="logout()">로그아웃</a></li>
+						<li><a href="AdminMenu.do">메뉴관리</a></li>
+						<li><a href="MemberList.do">회원관리</a></li>
+						<li><a href="BoardList.do">게시판 관리</a></li>
+						<li><a href="StoreManage.do">매장관리</a></li>
+						<li><a href="Logout.do" onclick="logout()">로그아웃</a></li>
 					<%-- </c:if> --%>
 
 
