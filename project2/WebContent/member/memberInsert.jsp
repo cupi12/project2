@@ -44,6 +44,7 @@
 		if (confirm("회원가입을 하시겠습니까?")) {			
 			
 			frm.submit();
+			alert(frm.id.value + "님, 회원가입을 환영합니다!");
 		}
 
 	}//end of idValidCheck

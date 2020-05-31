@@ -14,8 +14,6 @@ public class MemberInsert implements Command {
 
 	@Override
 	public String exec(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		PrintWriter out = response.getWriter();
-		
 		MemberDAO dao = new MemberDAO();
 		MemberVO vo = new MemberVO();
 		

@@ -8,9 +8,6 @@
 </head>
 <jsp:include page="/common/template/header.jsp"/>
 <body>
-<c:if test="${loginId !=null }">
-
-</c:if>
 </body>
 <jsp:include page="/common/template/footer.jsp"/>
 </html>
