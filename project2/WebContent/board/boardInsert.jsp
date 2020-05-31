@@ -1,29 +1,23 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+	pageEncoding="utf-8"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
+<meta charset="utf-8">
 <title>Insert title here</title>
 </head>
 <jsp:include page="/common/template/header.jsp" />
 <body>
-<div align="center"></div>
-	<div>
-	<h1>ÈÄ±â ÀÛ¼º</h1>
-	</div>
-	<span> 
-		 ÀÌ¸§:<input type="text" name="name" id="name" /><br /> 
-		 ³ªÀÌ: <input type="text" name="age" id="age"/> <br/>  
-		 ÀüÈ­¹øÈ£:	<input type="text" name="phone" id="phone"/><br/> 
-		 ºñ¹Ð¹øÈ£: <input type="password" name="pwd" id="pwd" /><br /> 
-		ÀÛ¼º:<input type="text" name="title" id="title" /><br/>
-			<textarea rows="35" cols="80">³»¿ëÀÔ·Â</textarea>
-		<button type="button" onclick="validCheck()">µî·Ï</button> 
-		<input type="reset" value="Áö¿ì±â" />
-	<div>
-	
-	
+	<div align="center">
+		<div>
+			<h1>í›„ê¸° ìž‘ì„±</h1>
+		</div>
+		ID : <input type="text" name="name" id="name" /><br> 
+		ìž‘ì„± : <input type="text" name="title" id="title" /><br>
+		<textarea rows="35" cols="80">ë‚´ìš©ìž…ë ¥</textarea>
+		<br>
+		<button type="button" onclick="validCheck()">ë“±ë¡</button>
+		<input type="reset" value="ì§€ìš°ê¸°" />
 	</div>
 </body>
 <jsp:include page="/common/template/footer.jsp" />

@@ -1,57 +1,74 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
 <title></title>
-</head>
-<jsp:include page="/common/template/header.jsp"/>
-<body>
-<div align="center">
-	<div>
-	<h1>회원 가입</h1>
-	</div>
-	
-	<div>
-		<span>ID:</span><input type="text" name="id" id="id" /><br />
-		 비밀번호: <input type="password" name="pwd" id="pwd" /><br /> 
-		 이름:<input type="text" name="name" id="name" /><br /> 
-		 나이: <input type="text" name="age" id="age"/> <br/> 
-		 성별: <input type="radio" name="gender" value="m" />남자 
-			  <input type="radio" name="gender" value="f" /> 여자<br /> 
-		전화번호:	<input type="text" name="phone" id="phone"/><br/> 
-		<button type="button" onclick="validCheck()">회원가입</button> 
-		<input type="reset" value="지우기" />
-	</div>
-</body>
 <script>
-
 	function validCheck() {
 		//필수입력 체크
 		if (frm.id.value == "") { //trim함수
-			alert("id입력");
+			alert("아이디 입력");
 			frm.id.focus();
 			return;
 		}
 
 		if (frm.pwd.value == "") {
-			alert("pwd입력");
+			alert("패스워드 입력");
 			frm.pwd.focus();
 			return;
 		}
-		
+		if (frm.name.value == "") {
+			alert("이름 입력");
+			frm.name.focus();
+			return;
+		}
+		if (frm.age.value == "") {
+			alert("나이 입력");
+			frm.age.focus();
+			return;
+		}
 		//성별
 		gender = document.getElementsByName("gender");
-		 cnt = 0;
-		for(i = 0; i<gender.length; i++){
-			if(gender[i].checked == true){
+		cnt = 0;
+		for (i = 0; i < gender.length; i++) {
+			if (gender[i].checked == true) {
 				cnt++;
 			}
 		}
 		if (cnt == 0) {
-			alert("성별 적어도 1개 선택");
+			alert("성별 선택");
 			return;
 		}
+		frm.submit();
 	}
-<jsp:include page="/common/template/footer.jsp"/>
+</script>
+</head>
+<jsp:include page="/common/template/header.jsp" />
+<body>
+	<div align="center">
+		<div>
+			<h1>회원 가입</h1>
+		</div>
+
+		<div>
+			<span></span><br>
+			<form action="MemberInsert.do" Method="post" name="frm">
+				<input type="text" name="id" id="id" placeholder="아이디"><br>
+				<input type="password" name="pwd" id="pwd" placeholder="비밀번호" /><br>
+				<input type="password" name="pwd2" id="pwd2" placeholder="비밀번호 확인" /><br>
+				<input type="text" name="name" id="name" placeholder="이름" /><br>
+				<input type="text" name="age" id="age" placeholder="나이" /><br>
+				<input type="text" name="phone" id="phone" placeholder="전화번호"><br>
+				성별:<input type="radio" name="gender" value="남">남자 <input
+					type="radio" name="gender" value="여"> 여자<br>
+				<button type="button" onclick="validCheck()">회원가입</button>
+				<input type="reset" value="지우기" />
+			</form>
+		</div>
+	</div>
+</body>
+
+<jsp:include page="/common/template/footer.jsp" />
 </html>

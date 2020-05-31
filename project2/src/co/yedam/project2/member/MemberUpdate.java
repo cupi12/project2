@@ -31,7 +31,7 @@ public class MemberUpdate implements Command {
 		membervo.setRegdt(regdt);
 	
 		dao.getSelectUpdate(membervo); //jsp에쓰는거 이름 , 돌려주는 객체
-		return "member/memberInsert.jsp";
+		return "member/memberUpdate.jsp";
 	}
 
 }

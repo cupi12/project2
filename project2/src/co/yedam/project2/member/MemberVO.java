@@ -1,7 +1,5 @@
 package co.yedam.project2.member;
 
-
-
 public class MemberVO {
 	private String id;
 	private String pwd;
@@ -10,9 +8,9 @@ public class MemberVO {
 	private String gender;
 	private String phone;
 	private String regdt;
-	
+
 	public MemberVO() {
-		
+
 	}
 
 	public String getId() {
@@ -70,6 +68,5 @@ public class MemberVO {
 	public void setRegdt(String regdt) {
 		this.regdt = regdt;
 	}
-	
-	
+
 }

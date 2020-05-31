@@ -7,8 +7,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import co.yedam.project2.common.Command;
-import co.yedam.project2.member.MemberDAO;
-import co.yedam.project2.member.MemberVO;
 
 public class BoardDelete implements Command {
 
@@ -16,12 +14,12 @@ public class BoardDelete implements Command {
 	public String exec(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
      String id = request.getParameter("id");
 		
-		MemberDAO dao = new MemberDAO();
-		MemberVO boardvo = new MemberVO();
+		BoardDAO dao = new BoardDAO();
+		BoardVO boardvo = new BoardVO();
 		
 		boardvo.setId(id);
 		
-		dao.getDelete(boardvo);
+		dao.getSelectDelete(boardvo);		
 		return "board/boardrUpdate.jsp";
 		
 	}

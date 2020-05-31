@@ -30,11 +30,11 @@ public class BoardDAO extends DAO {
 	
 	public List<BoardVO> getSelectList() {
 		List<BoardVO> list = new ArrayList<BoardVO>();
+		BoardVO boardvo = new BoardVO();
 		try {
 			psmt = conn.prepareStatement(BOARD_SELECT_LIST);
 			rs = psmt.executeQuery();
 			while(rs.next()){
-				BoardVO boardvo = new BoardVO();
 				boardvo.setSeq(rs.getInt("seq"));
 				boardvo.setTitle(rs.getString("title"));
 				boardvo.setContents(rs.getString("contents"));
@@ -42,6 +42,7 @@ public class BoardDAO extends DAO {
 				boardvo.setId(rs.getString("id"));
 				boardvo.setStar(rs.getString("star"));
 				boardvo.setRecommand(rs.getInt("recommand"));
+				
 				list.add(boardvo);
 			}
 		}catch (SQLException e){

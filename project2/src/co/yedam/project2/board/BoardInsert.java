@@ -30,7 +30,9 @@ public class BoardInsert implements Command {
 		boardvo.setRecommand(recommand);
 		
 		dao.getSelectInsert(boardvo);
-		return "board/boardInsert.jsp";
+		
+		
+		return "BoardList.do";
 	}
 
 }
