@@ -28,7 +28,7 @@ public class BoardDAO extends DAO {
 	}
 	
 	
-	public List<BoardVO> getSelectList() {
+	public List<BoardVO> getBoardList() {
 		List<BoardVO> list = new ArrayList<BoardVO>();
 		BoardVO boardvo = new BoardVO();
 		try {
@@ -51,7 +51,7 @@ public class BoardDAO extends DAO {
 		return list;
 	}
 	
-	public BoardVO getSelect(BoardVO boardvo) {
+	public BoardVO getBoard(BoardVO boardvo) {
 		try {
 			psmt = conn.prepareStatement(BOARD_SELECT);
 			rs = psmt.executeQuery();
@@ -73,7 +73,7 @@ public class BoardDAO extends DAO {
 	}
 	
 	
-		public BoardVO getSelectInsert(BoardVO boardvo) {
+		public BoardVO boardInsert(BoardVO boardvo) {
 			try {
 				psmt = conn.prepareStatement(BOARD_INSERT);
 				rs = psmt.executeQuery();
@@ -95,7 +95,7 @@ public class BoardDAO extends DAO {
 		
 	}
 
-		public BoardVO getSelectUpdate(BoardVO boardvo) {
+		public BoardVO boardUpdate(BoardVO boardvo) {
 			try {
 			psmt = conn.prepareStatement(BOARD_UPDATE);
 			psmt.setInt(1, boardvo.getSeq());
@@ -115,18 +115,19 @@ public class BoardDAO extends DAO {
 		return boardvo;	
 	}
 
-	public BoardVO getSelectDelete(BoardVO boardvo) {
+	public BoardVO boardDelete(int seq) {
+		BoardVO vo = new BoardVO();
 		try {
 			psmt = conn.prepareStatement(BOARD_DELETE);
-			psmt.setInt(1,boardvo.getSeq());
+			psmt.setInt(1,seq);
 			rs = psmt.executeQuery();
 			if(rs.next()) {
-				boardvo.setSeq(rs.getInt("seq"));
+				vo.setSeq(rs.getInt("seq"));
 			}
 		}catch(SQLException e) {
 			e.printStackTrace();
 		}
-		return boardvo;
+		return vo;
 	}
 
 }

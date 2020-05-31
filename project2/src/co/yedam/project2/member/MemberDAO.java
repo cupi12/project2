@@ -24,7 +24,7 @@ public class MemberDAO extends DAO {
 		super();
 	}
 
-	public List<MemberVO> getSelectList() {
+	public List<MemberVO> getMemberList() {
 		List<MemberVO> list = new ArrayList<MemberVO>();
 		try {
 			psmt = conn.prepareStatement(MEMBER_SELECT_LIST);
@@ -95,7 +95,7 @@ public class MemberDAO extends DAO {
 
 	}
 
-	public void getDelete(String id) {
+	public void memberDelete(String id) {
 		try {
 			psmt = conn.prepareStatement(MEMBER_DELETE);
 			psmt.setString(1, id);
@@ -106,7 +106,7 @@ public class MemberDAO extends DAO {
 		}
 	}
 
-	public MemberVO getSelectUpdate(MemberVO membervo) {
+	public MemberVO memberUpdate(MemberVO membervo) {
 		try {
 			psmt = conn.prepareStatement(MEMBER_UPDATE);
 			psmt.setString(1, membervo.getId());
