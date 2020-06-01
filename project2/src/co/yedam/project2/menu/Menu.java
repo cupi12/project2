@@ -15,7 +15,13 @@ public class Menu implements Command {
 	public String exec(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		MenuDAO dao = new MenuDAO();
+		MenuVO vo = new MenuVO();
+		 vo.setFileName(request.getParameter("fileName"));
+		
 		List<MenuVO> list = dao.getList();
+		
+		
+		
 		request.setAttribute("menuList", list);
 		return "menu/menu.jsp";
 	}
