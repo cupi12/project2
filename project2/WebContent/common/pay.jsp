@@ -10,6 +10,7 @@
 </head>
 <body>
  <script>
+ var sum = "<%=(String)session.getAttribute("sum")%>"
     $(function(param){
         var IMP = window.IMP; // 생략가능
         IMP.init('iamport'); // 'iamport' 대신 부여받은 "가맹점 식별코드"를 사용
@@ -20,7 +21,7 @@
             pay_method : 'card',
             merchant_uid : 'merchant_' + new Date().getTime(),
             name : '동해감자국밥',
-            amount : '13000',
+            amount : '130000',
             buyer_email : 'yedam@ac.kr',
             buyer_name : '서강',
             buyer_tel : '010-1598-1521',
