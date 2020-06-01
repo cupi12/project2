@@ -189,7 +189,7 @@ table tr:hover td {
 			<tr>
 				<td colspan="2">메뉴목록</td>
 			</tr>
-			<c:forEach items="${menuList }" var="vo">
+			<c:forEach items="${menuList}" var="vo">
 				<tr class="btnAdd"
 					onclick="total(${vo.mPrice}); amount('${vo.mName }', '${vo.mPrice}'); add();">
 
@@ -211,7 +211,7 @@ table tr:hover td {
 		</c:forEach>
 		<hr>
 		<br> 합계:<input type="text" readonly name="sum" id="sum" value="0">
-		<button type="submit">주문하기</button>
+		<button type="button" onclick="window.open('Pay.do')">주문하기</button>
 	</form>
 </div>
 <jsp:include page="/common/template/footer.jsp" />

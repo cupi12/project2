@@ -1,14 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
-
-<%
-    String name = (String)request.getAttribute("name");
-    String email = (String)request.getAttribute("email");
-    String phone = (String)request.getAttribute("phone");
-    String address = (String)request.getAttribute("address");
-    int totalPrice = (int)request.getAttribute("totalPrice");    
-%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -18,22 +9,22 @@
 <script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js"></script>
 </head>
 <body>
-    <script>
-    $(function(){
+ <script>
+    $(function(param){
         var IMP = window.IMP; // 생략가능
-        IMP.init('TC0ONETIME'); // 'iamport' 대신 부여받은 "가맹점 식별코드"를 사용
+        IMP.init('iamport'); // 'iamport' 대신 부여받은 "가맹점 식별코드"를 사용
         var msg;
         
         IMP.request_pay({
             pg : 'kakaopay',
             pay_method : 'card',
             merchant_uid : 'merchant_' + new Date().getTime(),
-            name : 'KH Books 도서 결제',
-            amount : <%=totalPrice%>,
-            buyer_email : '<%=email%>',
-            buyer_name : '<%=name%>',
-            buyer_tel : '<%=phone%>',
-            buyer_addr : '<%=address%>',
+            name : '동해감자국밥',
+            amount : '${money.sum}',
+            buyer_email : 'yedam@ac.kr',
+            buyer_name : '서강',
+            buyer_tel : '010-1598-1521',
+            buyer_addr : '대구 곽병원',
             buyer_postcode : '123-456',
             //m_redirect_url : 'http://www.naver.com'
         }, function(rsp) {
