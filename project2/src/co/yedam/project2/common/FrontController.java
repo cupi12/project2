@@ -43,6 +43,7 @@ public class FrontController extends HttpServlet {
 	comm.put("/Menu.do", new Menu());
 	comm.put("/Login.do", new Login());
 	comm.put("/Logout.do", new Logout());
+	
 	//Member
 	comm.put("/MemberList.do", new MemberList());
 	comm.put("/MemberInsert.do", new MemberInsert());

@@ -46,12 +46,13 @@ public class MenuDAO extends DAO{
 	
 	
 	public void menuInsert(MenuVO vo) throws SQLException {//메뉴 넣기
+		MenuVO menuVO = new MenuVO();
 		try {
 			psmt = conn.prepareStatement(menuInsert);
 			
-			psmt.setString(1, vo.getmName());
-			psmt.setInt(2, vo.getmPrice());
-			psmt.setString(3, vo.getFileName());
+			psmt.setString(1, menuVO.getmName());
+			psmt.setInt(2, menuVO.getmPrice());
+			psmt.setString(3, menuVO.getFileName());
 			
 			psmt.executeUpdate();
 		} catch (SQLException e) {
