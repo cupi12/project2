@@ -29,18 +29,24 @@
 			<c:forEach items="${vo}" var="vo">
 				<tr>
 					<td onclick="formSubmit('${vo.mName}')">${vo.mName }</td>
-					<td>${vo.mPrice }</td>
+					<td>${vo.mPrice } </td>
+					<td><img src="menu/image/${vo.fileName}" width="300" height="200" /></td>
 				</tr>
 			</c:forEach>
 		</table>
 		<br />
 
-		<form id="frm2" name="frm2" action="AdminMenuInsert.do" method="post">
+		<form id="frm2" name="frm2" action="AdminMenuInsert.do" method="post" enctype="multipart/form-data">
 			<input type="text" placeholder="메뉴명" name="mName" id="mName"><br>
 			<input type="text" placeholder="메뉴가격" name="mPrice" id="mPrice"><br>
+			첨부파일<input type = "file" name = "fileName"><br>
 			<input type="submit" value="메뉴추가" />
 		</form>
 	</div>
 	<jsp:include page="/common/template/footer.jsp" />
+	<%@page import="java.awt.Image"%>
+<%@page import="com.sun.jimi.core.Jimi"%>
+<%@page import="com.sun.jimi.core.JimiException"%>
+<%@page import="com.sun.jimi.core.JimiUtils"%>
 </body>
 </html>
