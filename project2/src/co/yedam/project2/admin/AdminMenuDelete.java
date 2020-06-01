@@ -15,22 +15,15 @@ public class AdminMenuDelete implements Command {
 
 	@Override
 	public String exec(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	
-		
-		String mName = request.getParameter("mName");
-		
+
 		MenuDAO dao = new MenuDAO();
-		
-		
+
 		try {
-			dao.menuDelete(mName);
+			dao.menuDelete(request.getParameter("mName"));
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		
-		
-		
-		
+
 		return "AdminMenu.do";
 	}
 

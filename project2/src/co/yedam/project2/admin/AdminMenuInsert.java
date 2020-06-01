@@ -41,7 +41,7 @@ public class AdminMenuInsert extends HttpServlet  implements Command {
 		//첨부파일 처리
 		Part part = request.getPart("fileName");
 		String fileName = getFileName(part);
-		String path = "C:/Users/User/git/project2/project2/WebContent/menu/image/";
+		String path = "D:/Dev/git/project2/project2/WebContent/menu/image/";
 		if(fileName != null && !fileName.isEmpty()) {
 			//주복 파일명 처리
 			File f = FileRenamePolicy.rename(new File(path, fileName));

@@ -150,19 +150,13 @@ table tr:hover td {
 	}
 	
 	function amount(name, price){
-		var value = parseInt(price);
-		var mname = document.frm.menuname.value;
-		
-		var amount = parseInt(document.frm.amount.value); 
+		var value = parseInt(price);	
+		var amount = parseInt(document.frm.amount.value);
 	 	amount += value/value;
 	 	
-		document.frm.amount.value = amount;		
-		mname = name;
-		if(mname == null){
-			
-		}else{
-			
-		}
+		document.frm.amount.value = amount;			
+		document.frm.menuname.value = name;
+		
 		
 	}
 
@@ -176,6 +170,16 @@ table tr:hover td {
 			
 			document.frm.amount.value= value;
 	}  */
+	$(document).ready (function () {                
+       function add() {                                        
+            $('.buttons').append (                        
+                '메뉴:<input type="text" name="menuname"> 수량<input type="text" name="amount"> <br>'                    
+            ); // end append/*                             
+           
+        }); // end click                                            
+    }); // end ready 
+	
+	
 	
 	
 </script>
@@ -189,18 +193,24 @@ table tr:hover td {
 				<td colspan="2">메뉴목록</td>
 			</tr>
 			<c:forEach items="${menuList }" var="vo">
-				<tr onclick="total(${vo.mPrice}); amount('${vo.mName }', '${vo.mPrice}');">
-					<td>${vo.mName }</td>					
+				<tr class="btnAdd"
+					onclick="total(${vo.mPrice}); amount('${vo.mName }', '${vo.mPrice}'); add()">
+
+					<td>${vo.mName }</td>
+
 					<td><img src="menu/image/${vo.fileName}" width="300"
-               height="200" /></td>
+						height="200" /></td>
 					<td>${vo.mPrice }원</td>
-					
+
 				</tr>
 			</c:forEach>
 		</table>
 		<c:forEach var="menu" items="b">
-		<br> 메뉴:<input type="text" name="menuname" id="menuname" readonly>
-		수량:<input type="text" readonly name="amount" id="amount" value="0" >
+			<div class="buttons">
+				<br> 메뉴:<input type="text" name="menuname" id="menuname"
+					readonly> 수량:<input type="text" readonly name="amount"
+					id="amount" value="0">
+			</div>
 		</c:forEach>
 		<hr>
 		<br> 합계:<input type="text" readonly name="sum" id="sum" value="0">
