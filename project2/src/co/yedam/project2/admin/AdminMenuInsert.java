@@ -58,7 +58,7 @@ public class AdminMenuInsert extends HttpServlet  implements Command {
 			}
 			request.setAttribute("vo", vo);
 			
-			response.sendRedirect("AdminMenu.do");
+			response.sendRedirect("AdminMenu.do"); 
 	}
 	
 	
