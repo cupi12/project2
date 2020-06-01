@@ -169,15 +169,12 @@ table tr:hover td {
 			value ++;
 			
 			document.frm.amount.value= value;
-	}  */
-	$(document).ready (function () {                
+	}  */            
        function add() {                                        
             $('.buttons').append (                        
                 '메뉴:<input type="text" name="menuname"> 수량<input type="text" name="amount"> <br>'                    
-            ); // end append/*                             
-           
-        }); // end click                                            
-    }); // end ready 
+            ); // end append/*  
+        }; // end add()        
 	
 	
 	
@@ -194,7 +191,7 @@ table tr:hover td {
 			</tr>
 			<c:forEach items="${menuList }" var="vo">
 				<tr class="btnAdd"
-					onclick="total(${vo.mPrice}); amount('${vo.mName }', '${vo.mPrice}'); add()">
+					onclick="total(${vo.mPrice}); amount('${vo.mName }', '${vo.mPrice}'); add();">
 
 					<td>${vo.mName }</td>
 

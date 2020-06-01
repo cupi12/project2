@@ -28,15 +28,13 @@ public class AdminMenuInsert extends HttpServlet  implements Command {
 		//응답결과 인코딩
 		response.setContentType("text/html; charset=UTF-8");
 		//요청 정보 인코딩 post방식일때는 request해줘야함
-		request.setCharacterEncoding("utf-8");
-		
+		request.setCharacterEncoding("utf-8");		
 		
 		MenuDAO dao = new MenuDAO();
 		MenuVO vo = new MenuVO();
 		vo.setmName(request.getParameter("mName"));
 		vo.setmPrice(Integer.parseInt(request.getParameter("mPrice")));
-		vo.setFileName(request.getParameter("fileName"));
-		
+		vo.setFileName(request.getParameter("fileName"));		
 		
 		//첨부파일 처리
 		Part part = request.getPart("fileName");

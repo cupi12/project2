@@ -39,7 +39,7 @@
 		<form id="frm2" name="frm2" action="AdminMenuInsert.do" method="post" enctype="multipart/form-data">
 			<input type="text" placeholder="메뉴명" name="mName" id="mName"><br>
 			<input type="text" placeholder="메뉴가격" name="mPrice" id="mPrice"><br>
-			첨부파일<input type = "file" name = "fileName"><br>
+			첨부파일<input type = "file" name = "fileName" id="fileName"><br>
 			<input type="submit" value="메뉴추가" />
 		</form>
 	</div>
