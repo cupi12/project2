@@ -26,5 +26,13 @@
 
 </div>
 </body>
+<script>
+	$(document).ready(function(){
+		if(confirm("삭제하시겠습니까?")){
+			
+		}
+	})
+
+</script>
 <jsp:include page="/common/template/footer.jsp" />
 </html>

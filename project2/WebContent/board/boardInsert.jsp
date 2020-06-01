@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="utf-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,7 +15,7 @@
 		</div>
 		<form action="BoardInsert.do" method="post" name="frm">
 		제목 : <input type="text" name="title" id="title" /><br>
-		작성자 : <input type="text" name="name" id="name" value="${loginId }" readonly/><br> 
+		작성자 : <input type="text" name="name" id="name" value="${loginId}" readonly/><br> 
 		<textarea rows="20" cols="40" name="contents" id="contents" placeholder="내용입력"></textarea><br>
 		별줌주기:<br>
 		추천:<br>

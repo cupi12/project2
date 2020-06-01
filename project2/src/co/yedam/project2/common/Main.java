@@ -15,4 +15,5 @@ public class Main implements Command {
 		return "common/main.jsp";
 	}
 
+	
 }
