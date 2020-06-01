@@ -20,7 +20,7 @@ public class Login implements Command {
 		String pwd = request.getParameter("pwd");
 
 		MemberDAO dao = new MemberDAO();
-		MemberVO vo = dao.getMember(id);
+		MemberVO vo = new MemberVO();
 
 		vo = dao.getMember(id);
 

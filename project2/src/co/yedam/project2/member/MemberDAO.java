@@ -55,9 +55,6 @@ public class MemberDAO extends DAO {
 			psmt = conn.prepareStatement(getMember);
 			psmt.setString(1,id);
 
-			psmt = conn.prepareStatement(getMember);
-			psmt.setString(1, id);
-
 			rs = psmt.executeQuery();
 			if (rs.next()) {
 				membervo.setId(rs.getString("id"));
