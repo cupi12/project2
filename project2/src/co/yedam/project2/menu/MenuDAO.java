@@ -16,7 +16,7 @@ public class MenuDAO extends DAO{
 	private ResultSet rs;
 	
 	private final String menuList ="select * from menu order by seq asc";  //메뉴 보여주는 쿼리
-	private final String menuInsert = "insert into menu(seq,mname, mprice) values(seq.nextval, ?, ?)";
+	private final String menuInsert = "insert into menu(seq,mname, mprice,filename) values(seq.nextval, ?, ?, ?)";
 	private final String menuSelect = "SELECT * FROM menu WHERE mName=?";
 	private final String menuUpdate = "Update menu set MNAME=?, MPRICE=? where mName=?";
 	private final String menuDelete = "DELETE FROM MENU  WHERE MNAME =?";
@@ -51,6 +51,7 @@ public class MenuDAO extends DAO{
 			
 			psmt.setString(1, vo.getmName());
 			psmt.setInt(2, vo.getmPrice());
+			psmt.setString(3, vo.getFileName());
 			
 			psmt.executeUpdate();
 		} catch (SQLException e) {
@@ -88,6 +89,7 @@ public class MenuDAO extends DAO{
 				MenuVO vo = new MenuVO();
 				vo.setmName(rs.getString("mname"));
 				vo.setmPrice(rs.getInt("mprice"));
+				vo.setFileName(rs.getString("filename"));
 				
 				list.add(vo);
 			}			

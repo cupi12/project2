@@ -4,7 +4,14 @@ public class MenuVO {
 	
 	private String mName;
 	private int mPrice;
+	private String fileName;
 	
+	public String getFileName() {
+		return fileName;
+	}
+	public void setFileName(String fileName) {
+		this.fileName = fileName;
+	}
 	public String getmName() {
 		return mName;
 	}

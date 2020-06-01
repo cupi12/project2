@@ -190,8 +190,11 @@ table tr:hover td {
 			</tr>
 			<c:forEach items="${menuList }" var="vo">
 				<tr onclick="total(${vo.mPrice}); amount('${vo.mName }', '${vo.mPrice}');">
-					<td>${vo.mName }</td>
-					<td>${vo.mPrice }</td>
+					<td>${vo.mName }</td>					
+					<td><img src="menu/image/${vo.fileName}" width="300"
+               height="200" /></td>
+					<td>${vo.mPrice }원</td>
+					
 				</tr>
 			</c:forEach>
 		</table>
