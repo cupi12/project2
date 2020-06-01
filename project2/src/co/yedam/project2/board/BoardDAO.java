@@ -51,8 +51,10 @@ public class BoardDAO extends DAO {
 		return list;
 	}
 	
-	public BoardVO getBoard(BoardVO boardvo) {
+	public BoardVO getBoard(int seq) {
+		BoardVO boardvo= new BoardVO();
 		try {
+			psmt.setInt(1, seq);
 			psmt = conn.prepareStatement(BOARD_SELECT);
 			rs = psmt.executeQuery();
 			if(rs.next()) {

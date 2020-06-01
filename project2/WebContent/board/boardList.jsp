@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+ <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
@@ -162,15 +162,18 @@ function deleteCheck(){
 
 				<c:forEach var="board" items="${Board}">
 							<form name="frm" method="post" action="">
-					<tr>
-						<td>${board.seq}</td>
+					<tr onclick="${board.seq}">
+						<td><a href="BoardView.do?seq=${board.seq}">${board.seq}</a></td>
 						<td>${board.title}</td>
 						<td>${board.contents}</td>
 						<td>${board.regdt}</td>
+						<td>
+						<fmt:parseDate value="${board.date}" var="fmtDt" pattern="yyyy-MM-dd HH:mm"/>
+	 					<fmt:formatDate value="${fmtDt}" pattern="MM-dd일 HH시"/></td>
 						<td>${board.id}</td>
 						<td>${board.star}</td>
 						<td>${board.recommand}</td>
-						<c:if test="${loginId==admin }">
+						<c:if test="${loginId=='admin'}">
 							<td><button type="submit" onclick="deleteCheck()">게시글 삭제</button></td>
 						</c:if>
 					</tr>
