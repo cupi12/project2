@@ -8,11 +8,9 @@
 <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js" ></script>
 <script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js"></script>
 </head>
-<body>
+
  <script>
- var sum = "<%=(String)session.getAttribute("sum")%>"
-    $(function(param){
-        var IMP = window.IMP; // 생략가능
+    function pay(param){        
         IMP.init('iamport'); // 'iamport' 대신 부여받은 "가맹점 식별코드"를 사용
         var msg;
         
@@ -21,7 +19,7 @@
             pay_method : 'card',
             merchant_uid : 'merchant_' + new Date().getTime(),
             name : '동해감자국밥',
-            amount : '130000',
+            amount : param,
             buyer_email : 'yedam@ac.kr',
             buyer_name : '서강',
             buyer_tel : '010-1598-1521',
@@ -67,6 +65,8 @@
         
     });
     </script>
- 
+<body> 
+주문금액 : ${sum }<br/>
+<button type="button" onclick="pay(${sum})">결제하기</button>
 </body>
 </html>

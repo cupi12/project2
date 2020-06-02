@@ -72,7 +72,7 @@ table th {
 }
 
 table th:first-child {
-	text-align: left;
+	text-align: center;
 	padding-left: 20px;
 }
 
@@ -94,7 +94,7 @@ table tr {
 }
 
 table tr td:first-child {
-	text-align: left;
+	text-align: center;
 	padding-left: 20px;
 	border-left: 0;
 }
@@ -140,7 +140,139 @@ table tr:hover td {
 	background: -moz-linear-gradient(top, #f2f2f2, #f0f0f0);
 }
 </style>
+<script src="https://code.jquery.com/jquery-latest.js"></script>
+
+<style>
+/* The Modal (background) */
+.modal {
+	display: none; /* Hidden by default */
+	position: fixed; /* Stay in place */
+	z-index: 1; /* Sit on top */
+	left: 0;
+	top: 0;
+	width: 100%; /* Full width */
+	height: 100%; /* Full height */
+	overflow: auto; /* Enable scroll if needed */
+	background-color: rgb(0, 0, 0); /* Fallback color */
+	background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+}
+
+/* Modal Content/Box */
+.modal-content {
+	background-color: #fefefe;
+	margin: 15% auto; /* 15% from the top and centered */
+	padding: 20px;
+	border: 1px solid #888;
+	width: 30%; /* Could be more or less, depending on screen size */
+}
+</style>
+
+
+
+<!-- The Modal -->
+<div id="myModal" class="modal">
+
+	<!-- Modal content -->
+	<div class="modal-content">
+		<p style="text-align: center;">
+			<span style="font-size: 14pt;"><b><span
+					style="font-size: 24pt;">공지</span></b></span>
+		</p>
+
+		<p style="text-align: center; line-height: 1.5;">
+			<br />
+		</p>
+		<p>
+			<br />
+		</p>
+		<div
+			style="cursor: pointer; background-color: #DDDDDD; text-align: center; padding-bottom: 10px; padding-top: 10px;"
+			onClick="close_pop();">
+			<span class="pop_bt" style="font-size: 13pt;"> 닫기 </span>
+		</div>
+	</div>
+
+</div>
+<!--End Modal-->
 <script>
+    $(function (param){
+        var IMP = window.IMP; // 생략가능
+        IMP.init('iamport'); // 'iamport' 대신 부여받은 "가맹점 식별코드"를 사용
+        var msg;
+        
+        IMP.request_pay({
+            pg : 'kakaopay',
+            pay_method : 'card',
+            merchant_uid : 'merchant_' + new Date().getTime(),
+            name : '동해감자국밥',
+            amount : param,
+            buyer_email : 'yedam@ac.kr',
+            buyer_name : '서강',
+            buyer_tel : '010-1598-1521',
+            buyer_addr : '대구 곽병원',
+            buyer_postcode : '123-456',
+            //m_redirect_url : 'http://www.naver.com'
+        }, function(rsp) {
+            if ( rsp.success ) {
+                //[1] 서버단에서 결제정보 조회를 위해 jQuery ajax로 imp_uid 전달하기
+                jQuery.ajax({
+                    url: "/payments/complete", //cross-domain error가 발생하지 않도록 주의해주세요
+                    type: 'POST',
+                    dataType: 'json',
+                    data: {
+                        imp_uid : rsp.imp_uid
+                        //기타 필요한 데이터가 있으면 추가 전달
+                    }
+                }).done(function(data) {
+                    //[2] 서버에서 REST API로 결제정보확인 및 서비스루틴이 정상적인 경우
+                    if ( everythings_fine ) {
+                        msg = '결제가 완료되었습니다.';
+                        msg += '\n고유ID : ' + rsp.imp_uid;
+                        msg += '\n상점 거래ID : ' + rsp.merchant_uid;
+                        msg += '\결제 금액 : ' + rsp.paid_amount;
+                        msg += '카드 승인번호 : ' + rsp.apply_num;
+                        
+                        alert(msg);
+                    } else {
+                        //[3] 아직 제대로 결제가 되지 않았습니다.
+                        //[4] 결제된 금액이 요청한 금액과 달라 결제를 자동취소처리하였습니다.
+                    }
+                });
+                //성공시 이동할 페이지
+                location.href='<%=request.getContextPath()%>/order/paySuccess?msg='+msg;
+            } else {
+                msg = '결제에 실패하였습니다.';
+                msg += '에러내용 : ' + rsp.error_msg;
+                //실패시 이동할 페이지
+                location.href="<%=request.getContextPath()%>/order/payFail";
+                alert(msg);
+            }
+        });
+        
+    });
+
+    </script>
+
+<script type="text/javascript">
+
+
+     function modal(){
+        jQuery(document).ready(function() {
+                $('#myModal').show();
+        });
+     }
+        //팝업 Close 기능
+        function close_pop(flag) {
+             $('#myModal').hide();
+        };
+      
+        
+      </script>
+
+
+
+<script>
+
 	function total(price) {		
 		var value = parseInt(price);
 		
@@ -154,45 +286,50 @@ table tr:hover td {
 		var amount = parseInt(document.frm.amount.value);
 	 	amount += value/value;
 	 	
+	 	if(name != document.frm.menuname){	 	
 		document.frm.amount.value = amount;			
 		document.frm.menuname.value = name;
-		
+	 	}
 		
 	}
 
 	
-	/*  function order(name){
+	/*   function order(name){
 		var menuname = document.frm.menuname.value;
 		var value = 0;
 		
 		var amount = parseInt(document.frm.amount.value); 
-			value ++;
+			value ++;name
 			
 			document.frm.amount.value= value;
-	}  */            
-       function add() {                                        
+	}          */    
+	
+  /*       function add(param) { //늘어나게함
+		if(param ==frm.menuname.value){
+			
             $('.buttons').append (                        
-                '메뉴:<input type="text" name="menuname"> 수량<input type="text" name="amount"> <br>'                    
+                '<br>메뉴:<input type="text" name="menuname"> 수량<input type="text" name="amount"> '                    
             ); // end append/*  
-        }; // end add()        
-	
-	
-	
-	
+		}
+        }; // end add() 
+	 */
 </script>
 </head>
 <jsp:include page="/common/template/header.jsp" />
 <div align="center">
-
-	<form name="frm" action="Order.do" method="post">
+<c:if test=""></c:if>
+	<form name="frm" action="Pay.do" method="post">
 		<table border="1">
 			<tr>
-				<td colspan="2">메뉴목록</td>
+				<td colspan="3">메뉴목록</td>
 			</tr>
 			<c:forEach items="${menuList}" var="vo">
+					<c:if test="${vo.mName }==frm.menuname.value">
+					<tr class="btnAdd">
+					</c:if>
 				<tr class="btnAdd"
-					onclick="total(${vo.mPrice}); amount('${vo.mName }', '${vo.mPrice}'); add();">
-
+					onclick="total(${vo.mPrice}); amount('${vo.mName }', '${vo.mPrice}'); add('${vo.mName }');">
+					
 					<td>${vo.mName }</td>
 
 					<td><img src="menu/image/${vo.fileName}" width="300"
@@ -211,7 +348,9 @@ table tr:hover td {
 		</c:forEach>
 		<hr>
 		<br> 합계:<input type="text" readonly name="sum" id="sum" value="0">
-		<button type="button" onclick="window.open('Pay.do')">주문하기</button>
+		<button type="button" onclick="window.open()">주문</button>
+		<br>
+		<button type="button" onclick="modal()">test</button>
 	</form>
 </div>
 <jsp:include page="/common/template/footer.jsp" />

@@ -28,9 +28,9 @@
 				<td>메뉴사진</td>
 			</tr>
 			<c:forEach items="${vo}" var="vo">
-				<tr>
-					<td onclick="formSubmit('${vo.mName}')">${vo.mName }</td>
-					<td>${vo.mPrice } </td>
+				<tr onclick="formSubmit('${vo.mName}')">
+					<td >${vo.mName }</td>
+					<td>${vo.mPrice }원</td>
 					<td><img src="menu/image/${vo.fileName}" width="300" height="200" /></td>
 				</tr>
 			</c:forEach>

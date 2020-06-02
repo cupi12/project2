@@ -8,17 +8,16 @@ import javax.servlet.http.HttpServletResponse;
 
 import co.yedam.project2.common.Command;
 
-public class BoardInsertMenu implements Command {
+public class BoardRecommand implements Command {	
 
 	@Override
 	public String exec(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
 		BoardDAO dao = new BoardDAO();
-		BoardVO vo = new BoardVO();
 		
-		dao.getBoard(Integer.parseInt(request.getParameter("seq")));
+		dao.recommand();
 		
-		request.setAttribute("board", vo);
-		return "/board/boardInsert.jsp";
+		return "BoardContents.do";
 	}
 
 }
