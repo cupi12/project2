@@ -14,6 +14,7 @@ public class Menu implements Command {
 	@Override
 	public String exec(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String sum = (String) request.getSession().getAttribute("sum");
+		request.setAttribute("sum", sum);
 		
 		MenuDAO dao = new MenuDAO();
 		MenuVO vo = new MenuVO();

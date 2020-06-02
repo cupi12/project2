@@ -312,6 +312,10 @@ text-align: center;
 if("${errorMsg}" != ""){
    alert("${errorMsg}")
    }
+/*    function login(id){
+	   alert(id+"님 환영합니다")
+	  frm.submit();
+   } */
 </script>
 
 <div></div>
