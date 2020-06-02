@@ -12,17 +12,16 @@ public class BoardContents implements Command {
 
 	@Override
 	public String exec(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		BoardDAO dao = new BoardDAO();
-		BoardVO vo = new BoardVO();
-		
 		int seq = Integer.parseInt(request.getParameter("seq"));
 		
+		BoardDAO dao = new BoardDAO();
+		BoardVO vo = new BoardVO();				
 		
 		vo = dao.getBoard(seq);
 		
 		request.setAttribute("getBoard", vo);
 		
-		return "/board/boardContents.jsp";
+		return "board/boardContents.jsp";
 	}
 
 }

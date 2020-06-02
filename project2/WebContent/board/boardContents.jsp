@@ -21,7 +21,7 @@ function del(){
 		작성자<input readonly	value="${getBoard.id }"><br>
 		<textarea rows="30px" cols="140px" readonly >${getBoard.contents }</textarea><br>
 		<label>별점 : ${getBoard.star }</label><br>
-		<label>추천수 :</label><button type="button" onclick="recommand()">추천 수 : ${getBoard.recommand } </button>
+		<label>추천수 : ${getBoard.recommand }</label><button type="button" onclick="recommand()">추천하기</button>
 		<br>
 		<div>
 			<div>

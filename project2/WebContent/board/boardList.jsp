@@ -151,7 +151,9 @@ function deleteCheck(){
 	}
 }
 function GoContents(param){
-	location.href="BoardContents.do?seq="+param;
+	/* location.href="BoardContents.do?seq="+param; */
+	f.mName.value = param;
+	f.submit();
 }
 </script>
 </head>
@@ -159,6 +161,9 @@ function GoContents(param){
 <body>
 	<div align="center">
 		<h1>후기 게시판</h1>
+		<form id="f" name="f" action="BoardContents.do" method="get">
+			<input type="hidden" id="mName" name="mName"><br>
+		</form>
 		<div>
 			<button onclick="location.href='BoardInsertMenu.do'">후기 등록</button>
 		</div>
@@ -179,7 +184,7 @@ function GoContents(param){
 
 				<c:forEach var="board" items="${Board}">
 					<form name="frm" method="post" action="BoardContents.do">
-					<tr onclick="GoContents(${board.seq})">
+					<tr onclick="GoContents('${board.seq}')">
 						<td>${board.seq}</td>
 						<td>${board.title}</td>
 						<td>${board.regdt}</td>
