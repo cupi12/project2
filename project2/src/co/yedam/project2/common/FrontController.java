@@ -64,14 +64,15 @@ public class FrontController extends HttpServlet {
 	comm.put("/StoreManage.do", new StoreManage());
 	
 	//Chart
-	comm.put("/Chart.do", new Chart());
+	/* comm.put("/Chart.do", new Chart()); */
 	//Board
 	comm.put("/BoardList.do",new BoardList());
 	comm.put("/BoardInsert.do", new BoardInsert());
 	comm.put("/BoardInsertMenu.do", new BoardInsertMenu());
 	comm.put("/BoardDelete.do", new BoardDelete());
 	comm.put("/BoardView.do", new BoardView());	
-	comm.put("/BoardContents.do", new BoardContents());
+	comm.put("/BoardContents.do", new BoardContents());	
+	
 	}
 
 

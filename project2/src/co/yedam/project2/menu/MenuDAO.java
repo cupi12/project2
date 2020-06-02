@@ -40,10 +40,6 @@ public class MenuDAO extends DAO{
 		}
 	}//end of getList
 	
-	
-	
-	
-	
 	//메뉴 넣기
 	public void menuInsert(MenuVO vo) throws SQLException {
 		
@@ -85,7 +81,7 @@ public class MenuDAO extends DAO{
 		List<MenuVO> list = new ArrayList<MenuVO>();
 		try {			
 			psmt = conn.prepareStatement(menuList);
-			rs = psmt.executeQuery();
+			psmt.executeQuery();
 			while(rs.next()) {
 				MenuVO vo = new MenuVO();
 				vo.setmName(rs.getString("mname"));

@@ -4,7 +4,7 @@ public class BoardVO {
 	private int seq;
 	private String title;
 	private String contents;
-	private String star;
+	private int star;
 	private int	recommand;
 	private String id;
 	private String regdt;
@@ -27,10 +27,10 @@ public class BoardVO {
 	public void setContents(String contents) {
 		this.contents = contents;
 	}
-	public String getStar() {
+	public int getStar() {
 		return star;
 	}
-	public void setStar(String star) {
+	public void setStar(int star) {
 		this.star = star;
 	}
 	public int getRecommand() {

@@ -130,16 +130,15 @@ table tr:hover td{
 </head>
 <jsp:include page="/common/template/header.jsp" />
 <body>
-	<div align="center" method="post" action="BoardInsert.do">
+	<div align="center">
 		<div>
 			<h1>후기 작성</h1>
 		</div>
 		<form action="BoardInsert.do" method="post" name="frm">
 		제목 : <input type="text" name="title" id="title" /><br>
-		작성자 : <input type="text" name="name" id="name" value="${loginId}" readonly/><br> 
+		작성자 : <input type="text" name="id" id="id" value="${loginId}" readonly/><br> 
 		<textarea rows="20" cols="40" name="contents" id="contents" placeholder="내용입력"></textarea><br>
-		별줌주기:<br>
-		추천:<br>
+		별줌주기:<input type="text" id="star" name="star"><br>
 		
 		<button type="submit">등록</button>
 		<input type="reset" value="지우기" />

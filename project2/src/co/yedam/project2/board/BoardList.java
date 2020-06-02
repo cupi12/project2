@@ -1,6 +1,7 @@
 package co.yedam.project2.board;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -15,7 +16,8 @@ public class BoardList implements Command {
 	public String exec(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		BoardDAO dao = new BoardDAO();
 		
-		 List<BoardVO> list = dao.getBoardList(); 
+		 List<BoardVO> list= dao.getBoardList(); 
+		 
 		request.setAttribute("Board", list); //jsp에쓰는거 이름 , 돌려주는 객체
 		
 		return "board/boardList.jsp";
