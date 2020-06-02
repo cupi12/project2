@@ -1,3 +1,4 @@
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -312,10 +313,6 @@ text-align: center;
 if("${errorMsg}" != ""){
    alert("${errorMsg}")
    }
-/*    function login(id){
-	   alert(id+"님 환영합니다")
-	  frm.submit();
-   } */
 </script>
 
 <div></div>
@@ -325,24 +322,30 @@ if("${errorMsg}" != ""){
     <div class="form-header">
       <h1>Login</h1>
     </div>
-    <div class="form-content">
+        
+        <div class="form-content">
       <form action="../Login.do" method="post" name="frm">
         <div class="form-group">
           <label for="username">ID</label>
           <input type="text" id="id" name="id" required="required"/>
         </div>
+        
         <div class="form-group">
           <label for="password">Password</label>
           <input type="password" id="pwd" name="pwd" required="required"/>
         </div>
+        <span>${errorMsg}</span>
         <div></div>
         <div></div>
         <div class="form-group">
           <button type="submit">LogIn</button>
         </div>
       </form>
-
     </div>
   </div>
+  <script>
+ 
+  
+  </script>
 </body>
 </html>

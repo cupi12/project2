@@ -12,8 +12,8 @@ import co.yedam.project2.member.MemberVO;
 
 
 public class BoardDAO extends DAO {
-	private	PreparedStatement psmt;
-	private	ResultSet rs;
+	private	PreparedStatement psmt = null;
+	private	ResultSet rs = null;
 	
 	private final String BOARD_SELECT_LIST = "SELECT * FROM BOARD ORDER BY SEQ DESC";
 	private final String BOARD_SELECT = "SELECT * FROM BOARD WHERE SEQ=?";
@@ -22,11 +22,24 @@ public class BoardDAO extends DAO {
 	private final String BOARD_UPDATE = "UPDATE BOARD SET TITLE=?,CONTENTS=?,"
 			+"REGDT=?, ID=?, FILENAME=? WHERE SEQ=?";
 	private final String BOARD_DELETE = "DELECT FROM BOARD WHERE SEQ=?";
+	private final String recommand = "update board set (select nvl(max(seq),0)+1 from board)";
 	
 	public BoardDAO() {
 		super();
 	}
 	
+	public void recommand() {
+		
+		try {
+			psmt = conn.prepareStatement(BOARD_SELECT_LIST);
+			rs = psmt.executeQuery();
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+	}
 	
 	public List<BoardVO> getBoardList() {
 		List<BoardVO> list = new ArrayList<BoardVO>();
@@ -52,12 +65,12 @@ public class BoardDAO extends DAO {
 	}
 	
 	public BoardVO getBoard(int seq) {
-		BoardVO boardvo= new BoardVO();
+		BoardVO boardvo = new BoardVO();
 		try {
-			psmt.setInt(1, seq);
 			psmt = conn.prepareStatement(BOARD_SELECT);
-			rs = psmt.executeQuery();
-			if(rs.next()) {
+			psmt.setInt(1, seq);
+			psmt.executeQuery();
+			if(rs.next()) {			
 				boardvo.setSeq(rs.getInt("seq"));
 				boardvo.setTitle(rs.getString("title"));
 				boardvo.setContents(rs.getString("contents"));
@@ -69,8 +82,13 @@ public class BoardDAO extends DAO {
 			}
 		}catch(SQLException e) {
 			e.printStackTrace();
-		}
-		
+		}finally {
+			try {
+				conn.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}		
 		return boardvo;
 	}
 	
@@ -79,7 +97,6 @@ public class BoardDAO extends DAO {
 			try {
 				psmt = conn.prepareStatement(BOARD_INSERT);
 				psmt.executeUpdate();
-				if(rs.next()) {
 					boardvo.setSeq(rs.getInt("seq"));
 					boardvo.setTitle(rs.getString("title"));
 					boardvo.setContents(rs.getString("contents"));
@@ -87,7 +104,6 @@ public class BoardDAO extends DAO {
 					boardvo.setId(rs.getString("id"));
 					boardvo.setStar(rs.getString("star"));
 					boardvo.setRecommand(rs.getInt("recommand"));
-				}
 			
 			}catch(SQLException e) {
 				e.printStackTrace();

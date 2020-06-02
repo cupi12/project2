@@ -31,8 +31,8 @@ h3 {
 /* banner */
 .banner {
 	position: relative;
-	width: 340px;
-	height: 210px;
+	width: 800px;
+	height: 300px;
 	top: 50px;
 	margin: 0 auto;
 	padding: 0;
@@ -123,26 +123,18 @@ h3 {
 <jsp:include page="/common/template/header.jsp" />
 <body>
 	<div class="contents">
-
-		<h2>동해감자국밥</h2>
-
 		<div class="banner">
 			<ul>
 				<li><img
-					src="https://cdn.pixabay.com/photo/2016/02/01/16/10/eye-1173863__340.jpg"
+					src="WebContent/menu/image/대연곰탕.jpg"
 					width="340" height="210px"></li>
 				<li><img
-					src="https://cdn.pixabay.com/photo/2017/12/30/13/25/portrait-3050076__340.jpg"
+					src="WebContent/menu/image/대연순대.jpg"
 					width="340" height="210px"></li>
 				<li><img
-					src="https://cdn.pixabay.com/photo/2015/07/09/22/45/tree-838667__340.jpg"
+					src="WebContent/menu/image/대연육게장.jpg"
 					width="340" height="210px"></li>
-				<li><img
-					src="https://cdn.pixabay.com/photo/2016/03/05/20/01/art-1238602__340.jpg"
-					width="340" height="210px"></li>
-				<li><img
-					src="https://cdn.pixabay.com/photo/2015/07/31/15/01/guitar-869217__340.jpg"
-					width="340" height="210px"></li>
+				
 			</ul>
 		</div>
 	</div>
