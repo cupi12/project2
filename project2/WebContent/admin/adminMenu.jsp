@@ -17,9 +17,10 @@
 <body>
 	<div align="center">
 		<h2>메뉴 관리</h2>
-		<form id="frm" name="frm" action="AdminMenuEdit.do" method="post">
+		<form id="frm" name="frm" action="AdminMenuEdit.do" method="get">
 			<input type="hidden" id="mName" name="mName"><br>
 		</form>
+		
 		<table>
 			<tr>
 				<td>메뉴명</td>
@@ -36,17 +37,25 @@
 		</table>
 		<br />
 
+
+
+
 		<form id="frm2" name="frm2" action="AdminMenuInsert.do" method="post" enctype="multipart/form-data">
 			<input type="text" placeholder="메뉴명" name="mName" id="mName"><br>
 			<input type="text" placeholder="메뉴가격" name="mPrice" id="mPrice"><br>
-			첨부파일<input type = "file" name = "fileName" id="fileName"><br>
+			첨부파일<input type = "file" name = "filename" id="filename"><br>
 			<input type="submit" value="메뉴추가" />
-		</form>
-	</div>
-	<jsp:include page="/common/template/footer.jsp" />
-	<%@page import="java.awt.Image"%>
+			
+			
+<%@page import="java.awt.Image"%>
 <%@page import="com.sun.jimi.core.Jimi"%>
 <%@page import="com.sun.jimi.core.JimiException"%>
 <%@page import="com.sun.jimi.core.JimiUtils"%>
+		</form>
+		
+		
+		
+	</div>
+	<jsp:include page="/common/template/footer.jsp" />
 </body>
 </html>
