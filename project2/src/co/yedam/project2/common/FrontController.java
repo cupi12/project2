@@ -30,6 +30,7 @@ import co.yedam.project2.board.BoardContents;
 import co.yedam.project2.board.BoardDelete;
 import co.yedam.project2.board.BoardInsert;
 import co.yedam.project2.board.BoardInsertMenu;
+import co.yedam.project2.board.BoardInsertPath;
 import co.yedam.project2.board.BoardList;
 import co.yedam.project2.board.BoardView;
 import co.yedam.project2.deadLine.Chart;
@@ -87,6 +88,7 @@ public class FrontController extends HttpServlet {
 		comm.put("/Chart.do", new Chart());
 		// Board
 		comm.put("/BoardList.do", new BoardList());
+		comm.put("/BoardInsertPath.do", new BoardInsertPath());
 		comm.put("/BoardInsert.do", new BoardInsert());
 		comm.put("/BoardInsertMenu.do", new BoardInsertMenu());
 		comm.put("/BoardDelete.do", new BoardDelete());

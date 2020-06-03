@@ -138,7 +138,7 @@ table tr:hover td{
 		제목 : <input type="text" name="title" id="title" /><br>
 		작성자 : <input type="text" name="id" id="id" value="${loginId}" readonly/><br> 
 		<textarea rows="20" cols="40" name="contents" id="contents" placeholder="내용입력"></textarea><br>
-		별줌주기:<input type="text" id="star" name="star"><br>
+		별점주기:<input type="text" id="star" name="star"><br>
 		
 		<button type="submit">등록</button>
 		<input type="reset" value="지우기" />
