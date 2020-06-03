@@ -206,7 +206,7 @@ a.button:hover {
 			 비밀번호 : <input type="password" name="pwd" id="pwd"  value="${member.pwd}" /><br /> 
 			 이      름 : <input type="text" name="name" id="name" value="${member.name }" /><br /> 
 			 나      이 : <input type="text" name="age" id="age" value="${member.age }"/> <br/>
-			 전화번호 : <input type="text" name="phone" id="phone" ${member.phone }/><br/> 
+			 전화번호 : <input type="text" name="phone" id="phone" value="${member.phone }"/><br/> 
 	      	<button type="submit">회원수정</button>
 		</form>
 		<input type="button" onclick="location.href='MemberDelete.do?id=${member.id}' " value = "회원탈퇴" />

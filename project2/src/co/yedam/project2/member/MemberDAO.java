@@ -15,7 +15,7 @@ public class MemberDAO extends DAO {
 	private final String MEMBER_SELECT_LIST = "SELECT * FROM MEMBER ORDER BY ID DESC";
 	private final String getMember = "SELECT * FROM MEMBER WHERE id=?";
 	private final String MEMBER_INSERT = "INSERT INTO MEMBER(id ,pwd ,name ,age ,phone ,regdt) VALUES(? ,? ,? ,? ,? ,SYSDATE)";
-	private final String MEMBER_UPDATE = "UPDATE MEMBER SET(ID=?, PWD=?, NAME=?, AGE=?, PHONE=?)";
+	private final String MEMBER_UPDATE = "UPDATE MEMBER SET(ID=?, PWD=?, NAME=?, AGE=?, PHONE=?) WHERE ID=?";
 	private final String MEMBER_DELETE = "DELETE FROM MEMBER WHERE ID=?";
 
 	public MemberDAO() {
@@ -109,6 +109,11 @@ public class MemberDAO extends DAO {
 		try {
 			psmt = conn.prepareStatement(MEMBER_UPDATE);
 			psmt.setString(1, membervo.getId());
+			psmt.setString(2, membervo.getPwd());
+			psmt.setString(3, membervo.getName());
+			psmt.setString(4, membervo.getAge());
+			psmt.setString(5, membervo.getPhone());
+			psmt.setString(6, membervo.getId());
 			psmt.executeUpdate();
 			if (rs.next()) {
 				membervo.setId(rs.getString("id"));
