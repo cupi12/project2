@@ -169,7 +169,7 @@ table tr:hover td {
 		</div>
 
 		<div>
-			<table border="1">
+			<table>
 				<tr>
 					<th>글번호</th>
 					<th>제목</th>

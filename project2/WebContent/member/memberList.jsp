@@ -190,7 +190,7 @@ table tr:hover td {
 		</form>
 
 		<div>
-			<table border="1">
+			<table >
 				<tr>
 					<th>ID</th>
 					<th>비밀번호</th>

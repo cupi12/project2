@@ -189,7 +189,39 @@ a.button:hover {
   -webkit-box-shadow: none; 
   -moz-box-shadow: none; 
   box-shadow: none;
-  
+}
+.btn-custom {
+  background-color: hsl(203, 49%, 86%) !important;
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#c9dfec", endColorstr="#c9dfec");
+  background-image: -khtml-gradient(linear, left top, left bottom, from(#c9dfec), to(#c9dfec));
+  background-image: -moz-linear-gradient(top, #c9dfec, #c9dfec);
+  background-image: -ms-linear-gradient(top, #c9dfec, #c9dfec);
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #c9dfec), color-stop(100%, #c9dfec));
+  background-image: -webkit-linear-gradient(top, #c9dfec, #c9dfec);
+  background-image: -o-linear-gradient(top, #c9dfec, #c9dfec);
+  background-image: linear-gradient(#c9dfec, #c9dfec);
+  border-color: #c9dfec #c9dfec hsl(203, 49%, 86%);
+  color: #333 !important;
+  text-shadow: 0 1px 1px rgba(255, 255, 255, 0.00);
+  -webkit-font-smoothing: antialiased;
+font-size: 14px;
+  font-weight: 600;
+  color: white;
+  padding: 6px 25px 0px 20px;
+  margin: 10px 8px 20px 0px;
+  display: inline-block;
+  float: right;
+  text-decoration: none;
+  width: 125px; height: 45px; 
+  -webkit-border-radius: 5px; 
+  -moz-border-radius: 5px; 
+   -webkit-box-shadow: 0 3px rgba(58,87,175,.75); 
+  -moz-box-shadow: 0 3px rgba(58,87,175,.75); 
+  box-shadow: 0 3px rgba(58,87,175,.75);
+  transition: all 0.1s linear 0s; 
+  top: 0px;
+  position: relative;
 }
 
 
@@ -302,8 +334,8 @@ a.button:hover {
 				<input type="text" name="age" id="age" placeholder="나이" /><br>
 				<input type="text" name="phone" id="phone" placeholder="전화번호">		
 				<br>		
-				<button type="button" onclick="memberCheck()">회원가입</button>
-				 <a href="MemberInsert.do" class="button">가입</a>
+				<button class="btn-custom" type="button"  onclick="memberCheck()">회원가입</button>
+				<!--  <a href="MemberInsert.do" class="button">가입</a> -->
 			</form>
 		</div>
 	</div>
