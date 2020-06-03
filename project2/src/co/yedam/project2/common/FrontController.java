@@ -40,6 +40,7 @@ import co.yedam.project2.member.MemberInsertMenu;
 import co.yedam.project2.member.MemberList;
 import co.yedam.project2.member.MemberUpdate;
 import co.yedam.project2.menu.Menu;
+import co.yedam.project2.order.OrderInsert;
 
 public class FrontController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -94,6 +95,9 @@ public class FrontController extends HttpServlet {
 		comm.put("/BoardDelete.do", new BoardDelete());
 		comm.put("/BoardView.do", new BoardView());
 		comm.put("/BoardContents.do", new BoardContents());
+		
+		//Order
+		comm.put("/OrderInsert.do", new OrderInsert());
 
 	}
 

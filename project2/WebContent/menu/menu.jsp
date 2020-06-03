@@ -195,7 +195,8 @@ table tr:hover td {
 </div>
 <!--End Modal-->
 <script>
-    $(function (param){
+
+    $(function (){
         var IMP = window.IMP; // 생략가능
         IMP.init('iamport'); // 'iamport' 대신 부여받은 "가맹점 식별코드"를 사용
         var msg;
@@ -339,6 +340,7 @@ table tr:hover td {
 				</tr>
 			</c:forEach>
 		</table>
+		<form>
 		<c:forEach var="menu" items="b">
 			<div class="buttons">
 				<br> 메뉴:<input type="text" name="menuname" id="menuname"
@@ -348,9 +350,11 @@ table tr:hover td {
 		</c:forEach>
 		<hr>
 		<br> 합계:<input type="text" readonly name="sum" id="sum" value="0">
-		<button type="button" onclick="window.open('Pay.do')">주문</button>
+		<button type="button" onclick="pay('${frm.sum.value}')">주문</button>
+		</form>
 		<br>
-		<button type="button" onclick="modal()">test</button>
+		<button type="button" onclick="IMP.request_pay(amount,paid_amount))">test</button>
+		
 	</form>
 </div>
 <jsp:include page="/common/template/footer.jsp" />
