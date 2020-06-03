@@ -25,9 +25,11 @@
 			location.href = "Logout.do";
 		}
 	}
+
 </script>
 </head>
 <body>
+
 	<div id="header-wrapper">
 		<div id="header" class="container">
 			<div id="logo" align="center">
@@ -52,7 +54,7 @@
 							<li><a href="Menu.do">메뉴</a></li>
 							<li><a href="Pay.do">결제</a></li>
 							<li><a href="BoardList.do">후기</a></li>
-							<li><a href="MemberUpdate.do">정보수정</a></li>
+							<li ><a href="MemberUpdateView.do?id=${loginId }">정보수정</a></li>
 							<li><a href="Logout.do" onclick="logout()">로그아웃</a></li>
 						</c:if>
 					</c:if>

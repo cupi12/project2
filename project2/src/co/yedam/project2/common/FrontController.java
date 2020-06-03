@@ -40,6 +40,7 @@ import co.yedam.project2.member.MemberInsert;
 import co.yedam.project2.member.MemberInsertMenu;
 import co.yedam.project2.member.MemberList;
 import co.yedam.project2.member.MemberUpdate;
+import co.yedam.project2.member.MemberUpdateView;
 import co.yedam.project2.menu.Menu;
 import co.yedam.project2.order.OrderInsert;
 
@@ -63,6 +64,7 @@ public class FrontController extends HttpServlet {
 		comm.put("/MemberDelete.do", new MemberDelete());
 		comm.put("/MemberUpdate.do", new MemberUpdate());
 		comm.put("/MemberInsertMenu.do", new MemberInsertMenu());
+		comm.put("/MemberUpdateView.do", new MemberUpdateView());
 
 		// Admin
 		comm.put("/AdminMenu.do", new AdminMenu());

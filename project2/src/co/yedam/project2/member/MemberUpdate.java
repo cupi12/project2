@@ -23,15 +23,16 @@ public class MemberUpdate implements Command {
 		MemberDAO dao = new MemberDAO();
 		MemberVO membervo = new MemberVO();
 		
-	
 		membervo.setName(name);
 		membervo.setAge(age);
 		membervo.setGender(gender);
 		membervo.setPhone(phone);
 		membervo.setRegdt(regdt);
 	
+		
+		
 		dao.memberUpdate(membervo); //jsp에쓰는거 이름 , 돌려주는 객체
-		return "member/memberUpdate.jsp";
+		return "MemberUpdateView.do";
 	}
 
 }
