@@ -353,7 +353,7 @@ table tr:hover td {
 		<button type="button" onclick="pay('${frm.sum.value}')">주문</button>
 		</form>
 		<br>
-		<button type="button" onclick="IMP.request_pay(amount,paid_amount))">test</button>
+		<button type="button" onclick="IMP.request_pay(amount,paid_amount)">test</button>
 		
 	</form>
 </div>
