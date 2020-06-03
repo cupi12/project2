@@ -1,4 +1,4 @@
-package co.yedam.project2.wmemo;
+package co.yedam.project2.memo;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -15,27 +15,26 @@ import co.yedam.project2.common.DAO;
 
 		private final String MEMO_SELSECT_LIST = "SELECT * FROM MEMO ORDER BY SEQ DESC";
 		private final String MEMO_SELECT = "SELECT * FROM MEMO WHERE SEQ=?";
-		private final String MEMO_INSERT = "INSERT INTO MEMO " + "VALUES(memo_seq.nextval,?,?)";
+		private final String MEMO_INSERT = "INSERT INTO MEMO(seq,regdt,memo)   VALUES((select nvl(max(seq),0)+1 from memo),sysdate,?)";
 		private final String MEMO_UPDATE = "UPDATE MEMO SET REGDT=?, MEMO=?, WHERE=SEQ=?";
 		private final String MEMO_DELETE = "ALTER TABLE MEMO DROP COLUMN SEQ=?"; 
-		
 
 		public MemoDAO() {
 			super();
 		}
 
 		public List<MemoVO> getMemoList() {
-			MemoVO memovo = new MemoVO();
+			MemoVO vo = new MemoVO();
 			List<MemoVO> list = new ArrayList<MemoVO>();
 			try {
 				psmt = conn.prepareStatement(MEMO_SELSECT_LIST);
 				rs = psmt.executeQuery();
 
 				while (rs.next()) {
-					memovo.setSeq(rs.getInt("seq"));
-					memovo.setRegdt(rs.getString("regdt"));
-					memovo.setMemo(rs.getString("memo"));
-
+					vo.setSeq(rs.getInt("seq"));
+					vo.setRegdt(rs.getString("regdt"));
+					vo.setMemo(rs.getString("memo"));
+					list.add(vo);
 				}
 			} catch (SQLException e) {
 				e.printStackTrace();
@@ -48,12 +47,14 @@ import co.yedam.project2.common.DAO;
 
 			try {
 				psmt = conn.prepareStatement(MEMO_INSERT);
+				psmt.setString(1, memovo.getMemo());
 				rs = psmt.executeQuery();
 
 				if (rs.next()) {
 					vo.setSeq(rs.getInt("seq"));
 					vo.setRegdt(rs.getString("regdt"));
 					vo.setMemo(rs.getString("memo"));
+					psmt.executeUpdate();
 				}
 			} catch (SQLException e) {
 				e.printStackTrace();
@@ -62,6 +63,8 @@ import co.yedam.project2.common.DAO;
 		}
 
 		public MemoVO getUpdate(MemoVO memovo) {
+			MemoVO memoUpdate = new MemoVO();
+
 			try {
 				psmt = conn.prepareStatement(MEMO_UPDATE);
 			
@@ -69,13 +72,13 @@ import co.yedam.project2.common.DAO;
 			rs = psmt.executeQuery();
 			
 			if(rs.next()) {
-				memovo.setSeq(rs.getInt("seq"));
-				memovo.setRegdt(rs.getString("regdt"));
-				memovo.setMemo(rs.getString("memo"));
+				memoUpdate.setSeq(rs.getInt("seq"));
+				memoUpdate.setRegdt(rs.getString("regdt"));
+				memoUpdate.setMemo(rs.getString("memo"));
 			}
 		}catch (SQLException e){
 			e.printStackTrace();
-		}return memovo;
+		}return memoUpdate;
 	}
 
 
@@ -85,18 +88,18 @@ import co.yedam.project2.common.DAO;
 		}
 
 		public MemoVO memoDelete(MemoVO memovo) {
-			MemoVO memodel = new MemoVO();
+			MemoVO memoDel = new MemoVO();
 			try {
 				psmt = conn.prepareStatement(MEMO_DELETE);
-				psmt.setInt(1, memodel.getSeq());
+				psmt.setInt(1, memoDel.getSeq());
 				rs = psmt.executeQuery();
 				if (rs.next()) {
-					memodel.setSeq(rs.getInt("seq"));
+					memoDel.setSeq(rs.getInt("seq"));
 				}
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
-			return memodel;
+			return memoDel;
 
 		
 

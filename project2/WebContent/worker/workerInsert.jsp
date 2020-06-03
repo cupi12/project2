@@ -16,10 +16,10 @@
 
 번호 : <input type = ""><br>                                             <!-- 데이터 타입  -->
 직원이름 : <input type = "text" name = "wname" id="wname"><br>
-근무시작 : <input type = "text" name = "wstart id="wstart"><br>             <!-- 데이터 타입 date -->
-근무종료 : <input type = "text" name = "wend" id="wend"><br>                <!-- 데이터 타입 date -->
+근무시작 : <input type = "text" name = "wstart" id="wstart"><br>             <!-- 데이터 타입 String -->
+근무종료 : <input type = "text" name = "wend" id="wend"><br>                <!-- 데이터 타입 String -->
 근무시간 : <input type = "text" name = "totaltime" id = "totaltime"><br>    <!-- 데이터 타입 number -->
-급여 : <input type = "money" name = "money" id = "money">               <!-- 데이터 타입 number -->
+급여 : <input type = "number" name = "money" id = "money">               <!-- 데이터 타입 number -->
 <br>
 <br>
 

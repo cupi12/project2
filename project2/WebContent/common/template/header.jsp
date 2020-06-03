@@ -61,6 +61,8 @@
 						<li><a href="MemberList.do">회원관리</a></li>
 						<li><a href="BoardList.do">게시판 관리</a></li>
 						<li><a href="StoreManage.do">매장관리</a></li>
+						<li><a href="AdminWorkerEdit.do">직원관리</a></li>
+						<li><a href="AdminMemoEdit.do">직원메모</a></li>
 						<li><a href="Logout.do" onclick="logout()">로그아웃</a></li>			
 					  </c:if> 
 				

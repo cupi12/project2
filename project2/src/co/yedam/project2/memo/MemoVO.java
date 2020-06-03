@@ -1,10 +1,14 @@
-package co.yedam.project2.wmemo;
+package co.yedam.project2.memo;
+
+import java.util.Date;
 
 public class MemoVO {
 	
 	private int seq;
 	private String regdt;
 	private String memo;
+	
+	
 	
 	
 	public int getSeq() {
@@ -27,9 +31,13 @@ public class MemoVO {
 	}
 	@Override
 	public String toString() {
-		return "WmemoVO [seq=" + seq + ", regdt=" + regdt + ", memo=" + memo + "]";
+		return "MemoVO [seq=" + seq + ", regdt=" + regdt + ", memo=" + memo + "]";
 	}
 	
 	
+	
+	
+	
+
 
 }

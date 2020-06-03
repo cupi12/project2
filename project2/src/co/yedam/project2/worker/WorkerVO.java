@@ -1,5 +1,7 @@
 package co.yedam.project2.worker;
 
+import java.sql.Date;
+
 public class WorkerVO {
 	
 	private int seq;
@@ -8,6 +10,8 @@ public class WorkerVO {
 	private String wend;
 	private String totalTime;
 	private String money;
+	
+	
 	
 	public int getSeq() {
 		return seq;
@@ -24,20 +28,20 @@ public class WorkerVO {
 	public String getWstart() {
 		return wstart;
 	}
-	public void setWstart(String wstart) {
-		this.wstart = wstart;
+	public void setWstart(String date) {
+		this.wstart = date;
 	}
 	public String getWend() {
 		return wend;
 	}
-	public void setWend(String wend) {
-		this.wend = wend;
+	public void setWend(String date) {
+		this.wend = date;
 	}
 	public String getTotalTime() {
 		return totalTime;
 	}
-	public void setTotalTime(String totalTime) {
-		this.totalTime = totalTime;
+	public void setTotalTime(String date) {
+		this.totalTime = date;
 	}
 	public String getMoney() {
 		return money;
@@ -50,6 +54,8 @@ public class WorkerVO {
 		return "WorkerVO [seq=" + seq + ", wname=" + wname + ", wstart=" + wstart + ", wend=" + wend + ", totalTime="
 				+ totalTime + ", money=" + money + "]";
 	}
+	
+	
 	
 	
 

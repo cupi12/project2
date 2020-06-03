@@ -6,12 +6,13 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
-<body>
+<jsp:include page="/common/template/header.jsp"/>
+
 <body>
 	<table border="1" align="center" >
 
 		<h3 align="center">메모</h3>
-		<form action="Worker/WmemoDAO.java" align="center" method="post"
+		<form action="memo/MemoDAO.java" align="center" method="post"
 			enctype="multijpart/form-data"></form>
 
 		번호 :
@@ -19,9 +20,9 @@
 		<br>
 		<!-- 데이터 타입  -->
 		제목 :
-		<input type="text" name="wname" id="wname">
+		<input type="text" name="name" id="name">
 		<br> 메모 :
-		<input type="text" name="wstart id="wstart">
+		<input type="text" name="start id="start">
 		<br>
 		<!-- 데이터 타입 date -->
 
@@ -34,4 +35,6 @@
 
 	</table>
 </body>
+
+<jsp:include page="/common/template/footer.jsp"/>
 </html>

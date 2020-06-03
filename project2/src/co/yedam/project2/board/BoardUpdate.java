@@ -17,7 +17,7 @@ public class BoardUpdate implements Command {
 		String title = request.getParameter("title");
 		String contents = request.getParameter("contents");
 		String regdt = request.getParameter("regdt");
-		String star = request.getParameter("star");
+		int star = Integer.parseInt(request.getParameter("star"));
 		int recommand = Integer.parseInt(request.getParameter("recommand"));
 		
 		BoardDAO dao = new BoardDAO();

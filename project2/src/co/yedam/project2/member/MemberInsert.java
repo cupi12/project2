@@ -21,7 +21,6 @@ public class MemberInsert implements Command {
 		vo.setPwd(request.getParameter("pwd"));
 		vo.setName(request.getParameter("name"));
 		vo.setAge(request.getParameter("age"));
-		vo.setGender(request.getParameter("gender"));
 		vo.setPhone(request.getParameter("phone"));
 
 			try {

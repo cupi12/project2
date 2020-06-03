@@ -1,185 +1,121 @@
 package co.yedam.project2.worker;
 
-import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 
-import co.yedam.project2.worker.WorkerVO;
+import co.yedam.project2.common.DAO;
 
-public class WorkerDAO {
-	public Connection conn;
+public class WorkerDAO extends DAO {
+	private PreparedStatement psmt;
+	private ResultSet rs;
 
-	private String Driver = "oracle:jdbc.driver.OracleDriver";
-	private String url = "jdbc:oracle:thin:@localhost:1521:xe";
-	private String user = "project";
-	private String pwd = "project";
-
+	private final String WORKER_SELECT_LIST = "SELECT * FROM WORKER ORDER BY SEQ DESC";
+	private final String WORKER_SELECT = "SELCET * FROM WORKER WHERE WNAME=?";
+	private final String WORKER_INSERT = "INSERT INTO WORKER(seq,wname,wstart, wend, totaltime, money) VALUES((select nvl(max(seq),0)+1 from worker) , ?,sysdate,sysdate,sysdate,0)";
+	private final String WORKER_UPDATE = "UPDATE WORKER SET WNAME=?";
+	private final String WORKER_DELETE = "ALTER TABLE WORKER DEOP COLUME SEQ=?";
+	
+	private final String WORKER_WSTART = "INSERT INTO WORKER(WSTART) VALUES(TO_DATE(SYSDATE,'YYYY.MM.DD HH24:MI')) + COMMIT ";				
+	private final String WORKER_WEND = "INSERT INTO WORKER(WSTART) VALUES(TO_DATE(SYSDATE,'YYYY.MM.DD HH24:MI')) + COMMIT ";
+	private final String WORKER_TOTALTIME = "SELECT (TO_DATE(WEND) - TO_DATE(WSTART)) AS HOUR FROM WORKER WHERE SEQ=?"; 
+	private final String WORKER_MONEY = "SELECT (TOTALTIME * 10000) FROM WORKER WHERE SEQ=?";
+	/*
+	 * private final String WORKER_STARTTIME =
+	 * "INSERT INTO WORKER_WSTART VALUES(to_char(sysdata, 'yyyy.mm.dd hh24:mi'));"
+	 * private final String WORKER_ENDTIME = "INSERT INTO WORKER_WEND
+	 * VALUES(to_char(sysdata, 'yyyy.mm.dd hh24:mi')); private final String
+	 * worker_totaltime = DATE_SUB()
+	 */
+	
+	
 	public WorkerDAO() {
-
-	public int WorkerInsert(WorkerVO worker) {   //직원등록
-			int 	r = 0;
-			Connection conn = null;
-			PreparedStatement pamt = null;
-			
-						
-//		try {
-//			Class.forName(Driver);
-//			conn = DriverManager.getConnection(url,user,pwd);
-//		}catch (Exception e){
-//			e.printStackTrace();
-			
-			try {
-			
-			//1.db연결
-			conn = ConnectionManager.getConnnection();
-			
-			//2. sql 구문준비
-			String sql = "INSERT INTO WORKER(SEQ, WNAME, WSTART, WEND, TOTALTIME, MONEY) VALUES(?,?,?,?,?,?)";
-			
-			psmt = conn.prepareStatement(sql);
-			
-			
-			//3. 실행
-			psmt.setInt(1, worker.getSeq());
-			psmt.setString(2, worker.getWname());
-			psmt.setString(3, worker.getWstart());
-			psmt.setString(4, worker.getWend());
-			psmt.setString(5, worker.getTotalTime());
-			psmt.setString(6, worker.getMoney());
-			
-			r = psmt.executeUpdate();
-			
-			//4. 결과처리
-			System.out.println(r+"건이 등록되었습니다.");
-			
-			}catch (Exception e) {
-				e.printStackTrace();
-			}finally {
-			
-			//5.연결해제
-				ConnectionManager.close(conn);
-			//6.반환
-			
-				return r;
-		}
-	// end of insert
-
-	public ArrayList<WorkerVO> getWorkerList() {
-		ArrayList<WorkerVO> list = new ArrayList<WorkerVO>();
-
+		super();
+	}
+	
+	public List<WorkerVO> getWorkerList() {
+		List<WorkerVO> list = new ArrayList<WorkerVO>();
+		WorkerVO vo = null;
 		try {
-			// 1.연결
-			Connection conn = null;
-			PrepareStatement psmt = null;
+			psmt = conn.prepareStatement(WORKER_SELECT_LIST);
+			rs = psmt.executeQuery();
 
-			// 2.쿼리 준비
-			conn = ConnectionManager.getConnnection();
-			String sql = "SELECT*FROM PROJECT2 ORDER BY SEQ";
-			psmt = conn.prepareStatement(sql);
-
-			// 3.statement 실행
-			ResultSet rs = psmt.executeQuery();
 			while (rs.next()) {
-				WorkerVO vo = new WorkerVO();
-
+				vo = new WorkerVO();
 				vo.setSeq(rs.getInt("seq"));
 				vo.setWname(rs.getString("wname"));
 				vo.setWstart(rs.getString("wstart"));
 				vo.setWend(rs.getString("wend"));
-				vo.setTotalTime(rs.getString("totaltime"));
+				vo.setTotalTime(rs.getString("totalTime"));
 				vo.setMoney(rs.getString("money"));
-
+				
 				list.add(vo);
 			}
-
-			// 4.결과저장
-		} catch (Exception e) {
+		} catch (SQLException e) {
 			e.printStackTrace();
-		} finally {
-			// 5.연결해제
 		}
-		return list; // 6.반환
-
+		return list;
 	}
 
-	public WorkerVO getWorker(String wname) { // 단건 조회
+	public void getInsert(String id) {
 		WorkerVO vo = new WorkerVO();
-
 		try {
-			// 1. db연결
-			Connection conn = null;
-			PreparedStatement psmt = null;
+			psmt = conn.prepareStatement(WORKER_INSERT);
+			
+			psmt.setString(1, id);
+			/*
+			 * psmt.setString(2, workervo.getWname()); 
+			 * psmt.setString(3, workervo.getWstart()); 
+			 * psmt.setString(4, workervo.getWend());
+			 * psmt.setString(5, workervo.getTotalTime()); 
+			 * smt.setString(5, workervo.getMoney());
+			 */
+			
+			psmt.executeUpdate();			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
 
-			// 2. 쿼리준비
-			conn = ConnectionManager.getConnnection();
-			String sql = "select * form worker where wname = ?";
-			psmt = conn.prepareStatement(sql);
-			psmt.setInt(1, seq);
+	public WorkerVO getUpdate(WorkerVO workervo) {
+		WorkerVO vo = new WorkerVO();
+		try {
+			psmt = conn.prepareStatement(WORKER_UPDATE);
+			psmt.setString(1, workervo.getWname());
+			psmt.executeUpdate();
 
-			// 3.statement 실행
-			ResultSet rs = psmt.executeQuery();
 			if (rs.next()) {
-
 				vo.setSeq(rs.getInt("seq"));
 				vo.setWname(rs.getString("wname"));
-				vo.setWstart(rs.getString("wstart"));p
+				vo.setWstart(rs.getString("wstart"));
 				vo.setWend(rs.getString("wend"));
 				vo.setTotalTime(rs.getString("totalTime"));
 				vo.setMoney(rs.getString("money"));
-			} else {
-
 			}
-			// 4. 결과저장
-		} catch (Exception e) {
+		} catch (SQLException e) {
 			e.printStackTrace();
-		} finally {
-			// 5. 연결해제
+		}
+		return vo;
+
+	}
+
+
+	public WorkerVO getDelete(String wname) {
+		WorkerVO vo = new WorkerVO();
+		try {
+			psmt = conn.prepareStatement(WORKER_DELETE);
+			psmt.setString(1, wname);
+			psmt.executeUpdate();
+
+			if (rs.next()) {
+				vo.setSeq(rs.getInt("seq"));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
 
 		}
-		return vo; // 6. 리턴
+		return vo;
 	}
-
-	private void setWend(String string) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	public int workerUpdate(WorkerVO worker) {
-				int r = 0;
-				Connection conn = null;
-				PrepareStatement psmt = null;
-				try {
-					//1.연결
-					conn =ConnectionManager.getConnnection();
-					
-					//2.sql 쿼리준비
-					String sql = "update worker set seq=?, wname=?, wstart=?, wend=?, totalTime=?, money=?";
-					
-					psmt = conn.prepareStatement(sql);
-					
-					//3.실행
-					psmt.setInt(1, worker.getSeq());
-					psmt.setString(2, worker.getWname());
-					psmt.setString(3, worker.getWstart());
-					psmt.setString(4, worker.getWend());
-					psmt.setString(5, worker.getTotalTime());
-					psmt.setString(6, worker.getMoney());
-					
-					r = psmt.executeUpdate();
-					
-					//4.결과처리
-					System.out.println(r+ "건이 등록되었습니다.");
-					
-				}catch (Exception e) {
-					e.printStackTrace();
-				}finally {
-					//5.연결해제 or  List로 넘어감
-					ConnectionManager.close(conn);
-				}
-					//6.리턴
-				return r;	
-					
-				}//end of class
-
-} //end of workerDAO
+}

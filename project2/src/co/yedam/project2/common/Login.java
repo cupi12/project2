@@ -13,30 +13,30 @@ import co.yedam.project2.member.MemberVO;
 
 public class Login implements Command {
 
-   @Override
-   public String exec(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-      String path=null;
-      String id = request.getParameter("id");
-      String pwd = request.getParameter("pwd");
+	@Override
+	public String exec(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String path = null;
+		String id = request.getParameter("id");
+		String pwd = request.getParameter("pwd");
 
-      MemberDAO dao = new MemberDAO();
-      MemberVO vo = new MemberVO();
-      vo = dao.getMember(id);
+		MemberDAO dao = new MemberDAO();
+		MemberVO vo = new MemberVO();
+		vo = dao.getMember(id);
 
-      if (vo.getId() == null && vo.getId() != id) {
-         request.setAttribute("errorMsg", "id오류");
-         path="common/login.jsp";
-      } else if (!vo.getPwd().equals(pwd)) {
-         request.setAttribute("errorMsg", "pwd오류");
-         path="common/login.jsp";
-      } else {
-         HttpSession session = request.getSession();
-         session.setAttribute("loginId", id);
-         session.setAttribute("loginPwd", pwd);
-         path="main.do";
-      }
+		if (vo.getId() == null && vo.getId() != id) {
+			request.setAttribute("errorMsg", "id오류");
+			path = "common/login.jsp";
+		} else if (!vo.getPwd().equals(pwd)) {
+			request.setAttribute("errorMsg", "pwd오류");
+			path = "common/login.jsp";
+		} else {
+			HttpSession session = request.getSession();
+			session.setAttribute("loginId", id);
+			session.setAttribute("loginPwd", pwd);
+			path = "main.do";
+		}
 
-      return path;
-   }
+		return path;
+	}
 
 }

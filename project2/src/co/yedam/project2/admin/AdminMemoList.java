@@ -1,33 +1,26 @@
-package co.yedam.project2.wmemo;
+package co.yedam.project2.admin;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import co.yedam.project2.common.Command;
+import co.yedam.project2.memo.MemoDAO;
+import co.yedam.project2.memo.MemoVO;
 
-public class MemoInsert implements Command {
+public class AdminMemoList implements Command {
 
-	@Override
+	
 	public String exec(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
+		MemoDAO dao = new MemoDAO();
 		
-		WmemoDAO dao = new WmemoDAO();
+		List<MemoVO> list = dao.getMemoList();
+		request.setAttribute("memoList", list);
 		
-		//파라미터 받기
-		
-		//첨무파일 처리
-		
-		//서비스 로직 처리
-		
-		//등록처리
-		
-		//목록페이지 이동
-		
-		//리턴
-		return "wmemo/wmemoInsert.jsp";
+		return "memo/memoList.jsp";
 	}
-
 }

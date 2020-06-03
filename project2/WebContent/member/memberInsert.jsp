@@ -274,10 +274,6 @@ a.button:hover {
 				cnt++;
 			}
 		}
-		if (cnt == 0) {
-			alert("성별 선택");
-			return;
-		}
 		if (confirm("회원가입을 하시겠습니까?")) {
 
 			frm.submit();
@@ -299,19 +295,12 @@ a.button:hover {
 			<span id="result"></span><br>
 			<form action="MemberInsert.do" Method="post" name="frm">
 				<input type="text" name="id" id="id" placeholder="아이디"
-					onchange="idDupCheck()"><br>
+					onchange="idDupCheck()"/>
 				<input type="password" name="pwd" id="pwd" placeholder="비밀번호" /><br>
 				<input type="password" name="pwd2" id="pwd2" placeholder="비밀번호 확인" /><br>
 				<input type="text" name="name" id="name" placeholder="이름" /><br>
 				<input type="text" name="age" id="age" placeholder="나이" /><br>
-				<input type="text" name="phone" id="phone" placeholder="전화번호"><br>
-				  <div class="gender">
-    				<input type="radio" value="None" id="male" name="gender" checked/>
-    				<label for="male" class="radio" chec>Male</label>
-   					 <input type="radio" value="None" id="female" name="gender" />
-   					 <label for="female" class="radio">Female</label>
-   					</div> 
-				<br>
+				<input type="text" name="phone" id="phone" placeholder="전화번호"><br>		
 				
 				
 				 <a href="MemberInsert.do" class="button" onclick="memberCheck()">가입</a>

@@ -81,7 +81,7 @@ public class MenuDAO extends DAO{
 		List<MenuVO> list = new ArrayList<MenuVO>();
 		try {			
 			psmt = conn.prepareStatement(menuList);
-			psmt.executeQuery();
+			rs=psmt.executeQuery();
 			while(rs.next()) {
 				MenuVO vo = new MenuVO();
 				vo.setmName(rs.getString("mname"));
