@@ -5,6 +5,8 @@
 <!DOCTYPE html>
 <html>
 <head>
+
+
 <style type="text/css">
 body {
 	font-family: Arial, Helvetica, sans-serif;
@@ -165,9 +167,8 @@ table tr:hover td {
 		<h1>후기 게시판</h1>
 		
 		<div>
-			<button onclick="location.href='BoardInsertMenu.do'">후기 등록</button>
+			<button onclick="location.href='BoardInsertPath.do'">후기 등록</button>
 		</div>
-
 		<div>
 			<table border="1">
 				<tr>
@@ -194,7 +195,7 @@ table tr:hover td {
 						<td>${Board.star}</td>
 						<td>${Board.recommand}</td>
 						<c:if test="${loginId=='admin'}">
-							<td><button type="submit" onclick="deleteCheck()">게시글삭제</button></td>
+							<td><button type="submit" onclick="deleteCheck()" name="frm">게시글삭제</button></td>
 						</c:if>
 					</tr>
 				</c:forEach>

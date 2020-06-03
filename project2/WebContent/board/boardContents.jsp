@@ -27,8 +27,10 @@ function del(){
 			<div>
 			<!-- ID값이 sessionID와 같을때 보이기-->
 				<button type="submit">수정</button>
-				<button onclick="del()">삭제</button>
 				</form>
+				<div>
+				<button type="button" onclick="location.href='BoardDelete.do' ">바로삭제 </button>
+				<button onclick="del()">삭제</button>
 			</div>
 			<div>
 				<button>홈으로</button>
