@@ -32,11 +32,7 @@ import co.yedam.project2.board.BoardInsert;
 import co.yedam.project2.board.BoardInsertMenu;
 import co.yedam.project2.board.BoardList;
 import co.yedam.project2.board.BoardView;
-<<<<<<< HEAD
 import co.yedam.project2.deadLine.Chart;
-=======
-
->>>>>>> branch 'master' of https://github.com/cupi12/project2
 import co.yedam.project2.member.MemberDelete;
 import co.yedam.project2.member.MemberInsert;
 import co.yedam.project2.member.MemberInsertMenu;
@@ -49,41 +45,54 @@ public class FrontController extends HttpServlet {
 	HashMap<String, Command> comm = null;
 
 	public void init(ServletConfig config) throws ServletException {
+		comm = new HashMap<String, Command>();
+		// Common
+		comm.put("/main.do", new Main()); // 컨트롤러 밑에 추가해주세요^^
+		comm.put("/Menu.do", new Menu());
+		comm.put("/Login.do", new Login());
+		comm.put("/LoginForm.do", new LoginForm());
+		comm.put("/Logout.do", new Logout());
+		comm.put("/Pay.do", new Pay());
 
-	comm = new HashMap<String,Command>();
-	//Common 
-	comm.put("/main.do", new Main());   //컨트롤러 밑에 추가해주세요^^
-	comm.put("/Menu.do", new Menu());
-	comm.put("/Login.do", new Login());
-	comm.put("/LoginForm.do", new LoginForm());
-	comm.put("/Logout.do", new Logout());
-	comm.put("/Pay.do", new Pay());
-	
-	//Member
-	comm.put("/MemberList.do", new MemberList());
-	comm.put("/MemberInsert.do", new MemberInsert());
-	comm.put("/MemberDelete.do", new MemberDelete());
-	comm.put("/MemberUpdate.do", new MemberUpdate());
-	comm.put("/MemberInsertMenu.do", new MemberInsertMenu());
-	
-	//Admin
-	comm.put("/AdminMenu.do", new AdminMenu());
-	comm.put("/AdminMenuEdit.do", new AdminMenuEdit());
-	comm.put("/AdminMenuDelete.do", new AdminMenuDelete());
-	comm.put("/AdminMenuUpdate.do", new AdminMenuUpdate());
-	comm.put("/AdminMenuInsert.do", new AdminMenuInsert());
-	comm.put("/StoreManage.do", new StoreManage());
-	
-	//Chart
-	comm.put("/Chart.do", new Chart());
-	//Board
-	comm.put("/BoardList.do",new BoardList());
-	comm.put("/BoardInsert.do", new BoardInsert());
-	comm.put("/BoardInsertMenu.do", new BoardInsertMenu());
-	comm.put("/BoardDelete.do", new BoardDelete());
-	comm.put("/BoardView.do", new BoardView());	
-	comm.put("/BoardContents.do", new BoardContents());	
-	
+		// Member
+		comm.put("/MemberList.do", new MemberList());
+		comm.put("/MemberInsert.do", new MemberInsert());
+		comm.put("/MemberDelete.do", new MemberDelete());
+		comm.put("/MemberUpdate.do", new MemberUpdate());
+		comm.put("/MemberInsertMenu.do", new MemberInsertMenu());
+
+		// Admin
+		comm.put("/AdminMenu.do", new AdminMenu());
+		comm.put("/AdminMenuEdit.do", new AdminMenuEdit());
+		comm.put("/AdminMenuDelete.do", new AdminMenuDelete());
+		comm.put("/AdminMenuUpdate.do", new AdminMenuUpdate());
+		comm.put("/AdminMenuInsert.do", new AdminMenuInsert());
+		comm.put("/StoreManage.do", new StoreManage());
+
+		// Admin Worker
+		comm.put("/AdminWorker.do", new AdminWorker());
+		comm.put("/AdminWorkerDelete.do", new AdminWorkerDelete());
+		comm.put("/AdminWorkerEdit.do", new AdminWorkerEdit());
+		comm.put("/AdminWorkerInsert.do", new AdminWorkerInsert());
+		comm.put("/AdminWorkerList.do", new AdminWorkerList());
+
+		// Admin Memo
+		comm.put("/AdminMemo.do", new AdminMemo());
+		comm.put("/AdminMemoDelete.do", new AdminMemoDelete());
+		comm.put("/AdminMemoEdit.do", new AdminMemoEdit());
+		comm.put("/AdminMemoInsert.do", new AdminMemoInsert());
+		comm.put("/AdminMemoList.do", new AdminMemoList());
+
+		// Chart
+		comm.put("/Chart.do", new Chart());
+		// Board
+		comm.put("/BoardList.do", new BoardList());
+		comm.put("/BoardInsert.do", new BoardInsert());
+		comm.put("/BoardInsertMenu.do", new BoardInsertMenu());
+		comm.put("/BoardDelete.do", new BoardDelete());
+		comm.put("/BoardView.do", new BoardView());
+		comm.put("/BoardContents.do", new BoardContents());
+
 	}
 
 	protected void service(HttpServletRequest request, HttpServletResponse response)

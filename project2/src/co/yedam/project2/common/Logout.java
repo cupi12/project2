@@ -11,7 +11,9 @@ public class Logout implements Command {
 	@Override
 	public String exec(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.getSession().invalidate();	
-		return "/main.do";
+		
+		
+		return "main.do";
 	}
 
 }

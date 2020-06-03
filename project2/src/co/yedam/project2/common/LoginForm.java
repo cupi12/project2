@@ -8,9 +8,9 @@ import javax.servlet.http.HttpServletResponse;
 
 public class LoginForm implements Command {
 
-	@Override
-	public String exec(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		return "common/login.jsp";
-	}
+   @Override
+   public String exec(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+      return "common/login.jsp";
+   }
 
 }

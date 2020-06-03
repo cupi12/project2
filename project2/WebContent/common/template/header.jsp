@@ -40,7 +40,7 @@
 			<div id="menu" class="container" align="right">
 				<ul>
 					<c:if test="${loginId == null }">
-						<li><a href="/project2/common/login.jsp">로그인</a></li>
+						<li><a href="common/login.jsp">로그인</a></li>
 						<li><a href="MemberInsertMenu.do">회원가입</a></li>
 					</c:if>
 					<!-- 사용자메뉴 -->
@@ -53,7 +53,7 @@
 						<li><a href="MemberUpdate.do">정보수정</a></li>
 						<li><a href="Logout.do" onclick="logout()">로그아웃</a></li>
 					 </c:if> 
-					  </c:if> 
+					  </c:if>
 
 					<!-- admin메뉴 -->
 					 <c:if test="${loginId == 'admin'}">
