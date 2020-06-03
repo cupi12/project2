@@ -22,8 +22,7 @@ import co.yedam.project2.board.BoardInsert;
 import co.yedam.project2.board.BoardInsertMenu;
 import co.yedam.project2.board.BoardList;
 import co.yedam.project2.board.BoardView;
-import co.yedam.project2.deadLine.Chart;
-import co.yedam.project2.deadLine.DeadLine;
+
 import co.yedam.project2.member.MemberDelete;
 import co.yedam.project2.member.MemberInsert;
 import co.yedam.project2.member.MemberInsertMenu;
@@ -45,6 +44,7 @@ public class FrontController extends HttpServlet {
 	comm.put("/main.do", new Main());   //컨트롤러 밑에 추가해주세요^^
 	comm.put("/Menu.do", new Menu());
 	comm.put("/Login.do", new Login());
+	comm.put("/LoginForm.do", new LoginForm());
 	comm.put("/Logout.do", new Logout());
 	comm.put("/Pay.do", new Pay());
 	

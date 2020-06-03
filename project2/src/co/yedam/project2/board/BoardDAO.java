@@ -45,7 +45,7 @@ public class BoardDAO extends DAO {
 		List<BoardVO> list = new ArrayList<BoardVO>();
 		try {
 			psmt = conn.prepareStatement(BOARD_SELECT_LIST);
-			psmt.executeQuery();
+			rs=psmt.executeQuery();
 			while(rs.next()){
 				BoardVO boardvo = new BoardVO();
 				boardvo.setSeq(rs.getInt("seq"));
@@ -147,4 +147,8 @@ public class BoardDAO extends DAO {
 		return vo;
 	}
 
+	void updateViewCnt(Integer articlNo) throws Exception {	
+}
+	
+	
 }

@@ -324,7 +324,7 @@ if("${errorMsg}" != ""){
     </div>
         
         <div class="form-content">
-      <form action="../Login.do" method="post" name="frm">
+      <form action="/project2/Login.do" method="post" name="frm">
         <div class="form-group">
           <label for="username">ID</label>
           <input type="text" id="id" name="id" required="required"/>
@@ -334,9 +334,9 @@ if("${errorMsg}" != ""){
           <label for="password">Password</label>
           <input type="password" id="pwd" name="pwd" required="required"/>
         </div>
+        <div></div>
+        <div></div>
         <span>${errorMsg}</span>
-        <div></div>
-        <div></div>
         <div class="form-group">
           <button type="submit">LogIn</button>
         </div>

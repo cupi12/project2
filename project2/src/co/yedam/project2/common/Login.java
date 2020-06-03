@@ -25,17 +25,19 @@ public class Login implements Command {
 
       if (vo.getId() == null && vo.getId() != id) {
          request.setAttribute("errorMsg", "id오류");
-         path="common/login.jsp";
+         path="/common/login.jsp";
+     	 
       } else if (!vo.getPwd().equals(pwd)) {
          request.setAttribute("errorMsg", "pwd오류");
-         path="common/login.jsp";
+         path="/common/login.jsp";
+
       } else {
          HttpSession session = request.getSession();
          session.setAttribute("loginId", id);
          session.setAttribute("loginPwd", pwd);
-         path="main.do";
+         path="/main.do";
       }
-
+     
       return path;
    }
 

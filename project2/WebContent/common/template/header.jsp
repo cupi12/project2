@@ -40,7 +40,7 @@
 			<div id="menu" class="container" align="right">
 				<ul>
 					<c:if test="${loginId == null }">
-						<li><a href="common/login.jsp">로그인</a></li>
+						<li><a href="/project2/common/login.jsp">로그인</a></li>
 						<li><a href="MemberInsertMenu.do">회원가입</a></li>
 					</c:if>
 					<!-- 사용자메뉴 -->
