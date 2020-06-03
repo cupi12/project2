@@ -23,6 +23,7 @@ public class MemberInsert implements Command {
 		vo.setAge(request.getParameter("age"));
 		vo.setPhone(request.getParameter("phone"));
 
+		
 			try {
 				dao.memberInsert(vo);
 			} catch (SQLException e) {
