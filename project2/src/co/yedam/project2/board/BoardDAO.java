@@ -131,19 +131,16 @@ public class BoardDAO extends DAO {
 		return boardvo;	
 	}
 
-	public BoardVO boardDelete(int seq) {
-		BoardVO vo = new BoardVO();
+		
+	public void boardDelete(int seq) {
 		try {
 			psmt = conn.prepareStatement(BOARD_DELETE);
 			psmt.setInt(1,seq);
-			psmt.executeQuery();
-			if(rs.next()) {
-				vo.setSeq(rs.getInt("seq"));
-			}
+			psmt.executeUpdate();
+		
 		}catch(SQLException e) {
 			e.printStackTrace();
 		}
-		return vo;
 	}
 
 }

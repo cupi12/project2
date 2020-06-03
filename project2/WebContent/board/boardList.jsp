@@ -147,30 +147,39 @@ table tr:hover td {
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <script>
-	function deleteCheck() {
+
+	function del(param) {
+		frm.seq.value = param
 		if (confirm("정말 삭제하시겠습니까?")) {
 			frm.submit();
 		}
 	}
+
 	function GoContents(param) {
-		frm2.seq.value=param;
+		frm2.seq.value = param;
 		frm2.submit();
 	}
+	
 </script>
+
 </head>
 <jsp:include page="/common/template/header.jsp" />
 <body>
-<form id="frm2" name="frm2" action="BoardContents.do" method="post">
+	<form id="frm2" name="frm2" action="BoardContents.do" method="post">
 		<input type="hidden" id="seq" name="seq">
+	</form>
+
+	<form action="BoardDelete.do" id="frm" name="frm" method="post">
+		<input type="hidden" id="seq" name="seq" />
 	</form>
 	<div align="center">
 		<h1>후기 게시판</h1>
-		
+
 		<div>
 			<button onclick="location.href='BoardInsertPath.do'">후기 등록</button>
 		</div>
 		<div>
-			<table border="1">
+			<table >
 				<tr>
 					<th>글번호</th>
 					<th>제목</th>
@@ -184,18 +193,18 @@ table tr:hover td {
 				</tr>
 
 				<c:forEach items="${Board }" var="Board">
-					<tr onclick="GoContents('${Board.seq}')">
-						<td>${Board.seq}</td>
-						<td>${Board.title}</td>
-						<td>${Board.regdt}</td>
+					<tr>
+						<td onclick="GoContents('${Board.seq}')">${Board.seq}</td>
+						<td onclick="GoContents('${Board.seq}')">${Board.title}</td>
+						<td onclick="GoContents('${Board.seq}')">${Board.regdt}</td>
 						<%--<td>
 						 <fmt:parseDate value="${board.date}" var="fmtDt" pattern="yyyy-MM-dd HH:mm"/>
 	 					<fmt:formatDate value="${fmtDt}" pattern="MM-dd일 HH시"/> </td>--%>
-						<td>${Board.id}</td>
-						<td>${Board.star}</td>
-						<td>${Board.recommand}</td>
+						<td onclick="GoContents('${Board.seq}')">${Board.id}</td>
+						<td onclick="GoContents('${Board.seq}')">${Board.star}</td>
+						<td onclick="GoContents('${Board.seq}')">${Board.recommand}</td>
 						<c:if test="${loginId=='admin'}">
-							<td><button type="submit" onclick="deleteCheck()" name="frm">게시글삭제</button></td>
+							<td><button type="button" onclick="del('${Board.seq }')">삭제</button></td>
 						</c:if>
 					</tr>
 				</c:forEach>
