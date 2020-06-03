@@ -348,7 +348,7 @@ table tr:hover td {
 					id="amount" value="0">
 			</div>
 		</c:forEach>
-		<hr>
+		<hr>  
 		<br> 합계:<input type="text" readonly name="sum" id="sum" value="0">
 		<button type="button" onclick="pay('${frm.sum.value}')">주문</button>
 		</form>
