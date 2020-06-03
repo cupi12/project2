@@ -145,20 +145,25 @@ table tr:hover td {
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <script>
-function deleteCheck(){
-	if(confirm("정말 삭제하시겠습니까?")){
-		frm.submit();
+	function deleteCheck() {
+		if (confirm("정말 삭제하시겠습니까?")) {
+			frm.submit();
+		}
 	}
-}
-function GoContents(param){
-	location.href="BoardContents.do?seq="+param;
-}
+	function GoContents(param) {
+		frm2.seq.value=param;
+		frm2.submit();
+	}
 </script>
 </head>
 <jsp:include page="/common/template/header.jsp" />
 <body>
+<form id="frm2" name="frm2" action="BoardContents.do" method="post">
+		<input type="hidden" id="seq" name="seq">
+	</form>
 	<div align="center">
 		<h1>후기 게시판</h1>
+		
 		<div>
 			<button onclick="location.href='BoardInsertMenu.do'">후기 등록</button>
 		</div>
@@ -177,27 +182,24 @@ function GoContents(param){
 					</c:if>
 				</tr>
 
-				<c:forEach var="board" items="${Board}">
-					<form name="frm" method="post" action="BoardContents.do">
-					<tr onclick="GoContents(${board.seq})">
-						<td>${board.seq}</td>
-						<td>${board.title}</td>
-						<td>${board.regdt}</td>
+				<c:forEach items="${Board }" var="Board">
+					<tr onclick="GoContents('${Board.seq}')">
+						<td>${Board.seq}</td>
+						<td>${Board.title}</td>
+						<td>${Board.regdt}</td>
 						<%--<td>
 						 <fmt:parseDate value="${board.date}" var="fmtDt" pattern="yyyy-MM-dd HH:mm"/>
 	 					<fmt:formatDate value="${fmtDt}" pattern="MM-dd일 HH시"/> </td>--%>
-						<td>${board.id}</td>
-						<td>${board.star}</td>
-						<td>${board.recommand}</td>
+						<td>${Board.id}</td>
+						<td>${Board.star}</td>
+						<td>${Board.recommand}</td>
 						<c:if test="${loginId=='admin'}">
-							<td><button type="submit" onclick="deleteCheck()">게시글
-									삭제</button></td>
+							<td><button type="submit" onclick="deleteCheck()">게시글삭제</button></td>
 						</c:if>
 					</tr>
-					</form>
 				</c:forEach>
 			</table>
-			<button type="button" onclick="memberInsert()">홈으로</button>
+			<button type="button" onclick="location.href='main.do'">홈으로</button>
 		</div>
 	</div>
 

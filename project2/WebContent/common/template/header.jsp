@@ -60,10 +60,11 @@
 						<li><a href="AdminMenu.do">메뉴관리</a></li>
 						<li><a href="MemberList.do">회원관리</a></li>
 						<li><a href="BoardList.do">게시판 관리</a></li>
-						<li><a href="StoreManage.do">매장관리</a></li>	
+						<li><a href="StoreManage.do">매장관리</a></li>
+						<li><a href="Chart.do">차트</a></li>		
 						<li><a href="Logout.do" onclick="logout()">로그아웃</a></li>			
 					  </c:if> 
-				<li class = "userId">${sessionScope.loginId} ${sessionScope.loginMember.name}님</li>
+				
 
 				</ul>
 			</div>

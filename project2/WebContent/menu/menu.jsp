@@ -317,19 +317,19 @@ table tr:hover td {
 </head>
 <jsp:include page="/common/template/header.jsp" />
 <div align="center">
-<c:if test=""></c:if>
+	<c:if test=""></c:if>
 	<form name="frm" action="Pay.do" method="post">
 		<table border="1">
 			<tr>
 				<td colspan="3">메뉴목록</td>
 			</tr>
 			<c:forEach items="${menuList}" var="vo">
-					<c:if test="${vo.mName }==frm.menuname.value">
+				<c:if test="${vo.mName }==frm.menuname.value">
 					<tr class="btnAdd">
-					</c:if>
+				</c:if>
 				<tr class="btnAdd"
 					onclick="total(${vo.mPrice}); amount('${vo.mName }', '${vo.mPrice}'); add('${vo.mName }');">
-					
+
 					<td>${vo.mName }</td>
 
 					<td><img src="menu/image/${vo.fileName}" width="300"
@@ -348,7 +348,7 @@ table tr:hover td {
 		</c:forEach>
 		<hr>
 		<br> 합계:<input type="text" readonly name="sum" id="sum" value="0">
-		<button type="button" onclick="window.open()">주문</button>
+		<button type="button" onclick="window.open('Pay.do')">주문</button>
 		<br>
 		<button type="button" onclick="modal()">test</button>
 	</form>
