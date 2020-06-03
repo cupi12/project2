@@ -14,9 +14,8 @@ public class MemberDAO extends DAO {
 
 	private final String MEMBER_SELECT_LIST = "SELECT * FROM MEMBER ORDER BY ID DESC";
 	private final String getMember = "SELECT * FROM MEMBER WHERE id=?";
-	private final String MEMBER_INSERT = "INSERT INTO MEMBER(id,pwd,name,age,phone,regdt) "
-											+ "VALUES(?,?,?,?,?,SYSDATE)";
-	private final String MEMBER_UPDATE = "UPDATE MEMBER SET(ID=?, PWD=?, NAME=?, AGE=?, GENDER=?,PHONE=?)";
+	private final String MEMBER_INSERT = "INSERT INTO MEMBER(id ,pwd ,name ,age ,phone ,regdt) VALUES(? ,? ,? ,? ,? ,SYSDATE)";
+	private final String MEMBER_UPDATE = "UPDATE MEMBER SET(ID=?, PWD=?, NAME=?, AGE=?, PHONE=?)";
 	private final String MEMBER_DELETE = "DELETE FROM MEMBER WHERE ID=?";
 
 	public MemberDAO() {
@@ -34,7 +33,6 @@ public class MemberDAO extends DAO {
 				membervo.setPwd(rs.getString("pwd"));
 				membervo.setName(rs.getString("name"));
 				membervo.setAge(rs.getString("age"));
-				membervo.setGender(rs.getString("gender"));
 				membervo.setPhone(rs.getString("phone"));
 				membervo.setRegdt(rs.getString("regdt"));
 
@@ -61,7 +59,6 @@ public class MemberDAO extends DAO {
 				membervo.setPwd(rs.getString("pwd"));
 				membervo.setName(rs.getString("name"));
 				membervo.setAge(rs.getString("age"));
-				membervo.setGender(rs.getString("gender"));
 				membervo.setPhone(rs.getString("phone"));
 				membervo.setRegdt(rs.getString("regdt"));
 			}
@@ -78,15 +75,16 @@ public class MemberDAO extends DAO {
 	}
 
 	// 등록
-	public void memberInsert(MemberVO membervo) throws SQLException {
+	public void memberInsert(MemberVO vo) throws SQLException {
+	
 		try {
 			psmt = conn.prepareStatement(MEMBER_INSERT);
 
-			psmt.setString(1, membervo.getId());
-			psmt.setString(2, membervo.getPwd());
-			psmt.setString(3, membervo.getName());
-			psmt.setString(4, membervo.getAge());
-			psmt.setString(5, membervo.getPhone());
+			psmt.setString(1, vo.getId());
+			psmt.setString(2, vo.getPwd());
+			psmt.setString(3, vo.getName());
+			psmt.setString(4, vo.getAge());
+			psmt.setString(5, vo.getPhone());
 
 			psmt.executeUpdate();
 
@@ -117,7 +115,6 @@ public class MemberDAO extends DAO {
 				membervo.setPwd(rs.getString("pwd"));
 				membervo.setName(rs.getString("name"));
 				membervo.setAge(rs.getString("age"));
-				membervo.setGender(rs.getString("gender"));
 				membervo.setPhone(rs.getString("phone"));
 				membervo.setRegdt(rs.getString("regdt"));
 			}

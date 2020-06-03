@@ -300,10 +300,10 @@ a.button:hover {
 				<input type="password" name="pwd2" id="pwd2" placeholder="비밀번호 확인" /><br>
 				<input type="text" name="name" id="name" placeholder="이름" /><br>
 				<input type="text" name="age" id="age" placeholder="나이" /><br>
-				<input type="text" name="phone" id="phone" placeholder="전화번호"><br>		
-				
-				
-				 <a href="MemberInsert.do" class="button" onclick="memberCheck()">가입</a>
+				<input type="text" name="phone" id="phone" placeholder="전화번호">		
+				<br>		
+				<button type="button" onclick="memberCheck()">회원가입</button>
+				 <a href="MemberInsert.do" class="button">가입</a>
 			</form>
 		</div>
 	</div>
