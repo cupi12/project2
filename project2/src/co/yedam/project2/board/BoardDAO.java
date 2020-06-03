@@ -45,7 +45,11 @@ public class BoardDAO extends DAO {
 		List<BoardVO> list = new ArrayList<BoardVO>();
 		try {
 			psmt = conn.prepareStatement(BOARD_SELECT_LIST);
+<<<<<<< HEAD
 			rs=psmt.executeQuery();
+=======
+			rs= psmt.executeQuery();
+>>>>>>> branch 'master' of https://github.com/cupi12/project2.git
 			while(rs.next()){
 				BoardVO boardvo = new BoardVO();
 				boardvo.setSeq(rs.getInt("seq"));
@@ -69,7 +73,7 @@ public class BoardDAO extends DAO {
 		try {
 			psmt = conn.prepareStatement(BOARD_SELECT);
 			psmt.setInt(1, seq);
-			psmt.executeQuery();
+			rs= psmt.executeQuery();
 			if(rs.next()) {			
 				boardvo.setSeq(rs.getInt("seq"));
 				boardvo.setTitle(rs.getString("title"));

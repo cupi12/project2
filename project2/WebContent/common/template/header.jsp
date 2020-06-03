@@ -53,7 +53,7 @@
 						<li><a href="MemberUpdate.do">정보수정</a></li>
 						<li><a href="Logout.do" onclick="logout()">로그아웃</a></li>
 					 </c:if> 
-					  </c:if>
+					  </c:if> 
 
 					<!-- admin메뉴 -->
 					 <c:if test="${loginId == 'admin'}">
@@ -61,7 +61,6 @@
 						<li><a href="MemberList.do">회원관리</a></li>
 						<li><a href="BoardList.do">게시판 관리</a></li>
 						<li><a href="StoreManage.do">매장관리</a></li>
-						<li><a href="Chart.do">차트</a></li>		
 						<li><a href="Logout.do" onclick="logout()">로그아웃</a></li>			
 					  </c:if> 
 				
