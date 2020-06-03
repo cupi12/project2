@@ -48,8 +48,8 @@ h3 {
 
 .banner ul li {
 	float: left;
-	width: 340px;
-	height: 210px;
+	width: 800px;
+	height: 300px;
 	margin: 0;
 	padding: 0;
 }
@@ -126,14 +126,14 @@ h3 {
 		<div class="banner">
 			<ul>
 				<li><img
-					src="WebContent/menu/image/대연곰탕.jpg"
-					width="340" height="210px"></li>
+					src="menu/image/gt.jpg"
+					width="800" height="300px"></li>
 				<li><img
-					src="WebContent/menu/image/대연순대.jpg"
-					width="340" height="210px"></li>
+					src="menu/image/sd.jpg"
+					width="800" height="300px"></li>
 				<li><img
-					src="WebContent/menu/image/대연육게장.jpg"
-					width="340" height="210px"></li>
+					src="menu/image/ug.jpg"
+					width="800" height="300px"></li>
 				
 			</ul>
 		</div>

@@ -17,7 +17,7 @@ public class MemberDAO extends DAO {
 	private final String MEMBER_INSERT = "INSERT INTO MEMBER(id,pwd,name,age,phone,regdt) "
 											+ "VALUES(?,?,?,?,?,SYSDATE)";
 	private final String MEMBER_UPDATE = "UPDATE MEMBER SET(ID=?, PWD=?, NAME=?, AGE=?, GENDER=?,PHONE=?)";
-	private final String MEMBER_DELETE = "DELETE FROM MEMBER WHERE ID=?";
+	private final String MEMBER_DELETE = "DELETE FROM MEMBER cascade WHERE ID=";
 
 	public MemberDAO() {
 		super();
@@ -119,7 +119,6 @@ public class MemberDAO extends DAO {
 				membervo.setAge(rs.getString("age"));
 				membervo.setGender(rs.getString("gender"));
 				membervo.setPhone(rs.getString("phone"));
-				membervo.setRegdt(rs.getString("regdt"));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();

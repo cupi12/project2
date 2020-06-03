@@ -48,7 +48,7 @@ public class BoardVO {
 	public String getRegdt() {
 		return regdt;
 	}
-	public void setRegdt(String regDt) {
+	public void setRegdt(String regdt) {
 		this.regdt = regdt;
 	}
 	

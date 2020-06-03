@@ -22,7 +22,6 @@ public class Login implements Command {
 		MemberDAO dao = new MemberDAO();
 		MemberVO vo = new MemberVO();
 		vo = dao.getMember(id);
-
 		if (vo.getId() == null && vo.getId() != id) {
 			request.setAttribute("errorMsg", "id오류");
 			path = "common/login.jsp";
@@ -38,5 +37,7 @@ public class Login implements Command {
 
 		return path;
 	}
+   }
+
 
 }
