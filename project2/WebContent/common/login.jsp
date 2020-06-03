@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>projectschedule/memberLogin.jsp</title>
+<title>memberLogin.jsp</title>
 <style rel="stylesheet">
 
 html {
@@ -324,7 +324,7 @@ if("${errorMsg}" != ""){
     </div>
         
         <div class="form-content">
-      <form action="/project2/Login.do" method="post" name="frm">
+      <form action="../Login.do" method="post" name="frm">
         <div class="form-group">
           <label for="username">ID</label>
           <input type="text" id="id" name="id" required="required"/>

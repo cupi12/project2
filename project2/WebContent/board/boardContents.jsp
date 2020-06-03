@@ -7,8 +7,9 @@
 <head>
 <title>하준원</title>
 <script>
-	function recommand() {
-		location.href = "BoardRecommand.do"
+	function recommand(param) {
+		frm2.seq.value = param
+		frm2.submit();
 	}
 
 	function del(param) {
@@ -17,11 +18,14 @@
 			frm.submit();
 		}
 	}
-
 </script>
 </head>
 <jsp:include page="/common/template/header.jsp" />
 <body>
+	<form action="Recommand.do" id="frm2" name="frm2" method="post">
+		<input type="hidden" id="seq" name="seq" />
+	</form>
+	
 	<form action="BoardDelete.do" id="frm" name="frm" method="post">
 		<input type="hidden" id="seq" name="seq" />
 	</form>
@@ -29,12 +33,11 @@
 		<form action="BoardUpdate.do" method="post" name="post">
 			제목 <input readonly value="${getBoard.title }" name="title" id="title"><br>
 			작성자<input readonly value="${getBoard.id }" name="id" id="id"><br>
-			<textarea rows="30px" cols="140px" readonly name="contents"
+			<textarea rows="10px"" readonly name="contents"
 				id="contents">${getBoard.contents }</textarea>
-			<br> <label>별점 : ${getBoard.star }</label><br> <label>추천수
-				: ${getBoard.recommand }</label>
-			<button type="button" onclick="recommand()">추천하기</button>
-			<br>
+			<br> <label>별점 : ${getBoard.star }</label><br> 
+			<label>추천수:${getBoard.recommand }<button type="button" onclick="recommand('${getBoard.seq}')">추천하기</button>
+			</label> <br>
 			<div>
 				<div>
 					<!-- ID값이 sessionID와 같을때 보이기-->

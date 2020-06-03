@@ -8,14 +8,13 @@ import javax.servlet.http.HttpServletResponse;
 
 import co.yedam.project2.common.Command;
 
-public class BoardRecommand implements Command {	
+public class Recommand implements Command {
 
 	@Override
 	public String exec(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
 		BoardDAO dao = new BoardDAO();
 		
-		dao.recommand();
+		dao.recommand(Integer.parseInt(request.getParameter("seq")));
 		
 		return "BoardContents.do";
 	}

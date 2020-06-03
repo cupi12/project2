@@ -318,7 +318,10 @@ table tr:hover td {
 </head>
 <jsp:include page="/common/template/header.jsp" />
 <div align="center">
-	<c:if test=""></c:if>
+<h1>동해감자국밥 메뉴</h1>
+<c:if test="${loginId == null }">
+		<h3>(주문은 회원제입니다.)</h3>
+		</c:if>
 	<form name="frm" action="Pay.do" method="post">
 		<table border="1">
 			<tr>
@@ -340,21 +343,25 @@ table tr:hover td {
 				</tr>
 			</c:forEach>
 		</table>
-		<form>
-		<c:forEach var="menu" items="b">
-			<div class="buttons">
-				<br> 메뉴:<input type="text" name="menuname" id="menuname"
-					readonly> 수량:<input type="text" readonly name="amount"
-					id="amount" value="0">
-			</div>
-		</c:forEach>
-		<hr>  
-		<br> 합계:<input type="text" readonly name="sum" id="sum" value="0">
-		<button type="button" onclick="pay('${frm.sum.value}')">주문</button>
-		</form>
-		<br>
-		<button type="button" onclick="IMP.request_pay(amount,paid_amount)">test</button>
 		
+		<c:if test="${loginId != null }">
+			<form>
+				<c:forEach var="menu" items="b">
+					<div class="buttons">
+						<br> 메뉴:<input type="text" name="menuname" id="menuname"
+							readonly> 수량:<input type="text" readonly name="amount"
+							id="amount" value="0">
+					</div>
+				</c:forEach>
+				<hr>
+				<br> 합계:<input type="text" readonly name="sum" id="sum"
+					value="0">
+				<button type="button" onclick="pay('${frm.sum.value}')">주문</button>
+			</form>
+			<br>
+			<button type="button" onclick="IMP.request_pay(amount,paid_amount)">test</button>
+
+		</c:if>
 	</form>
 </div>
 <jsp:include page="/common/template/footer.jsp" />

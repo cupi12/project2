@@ -33,6 +33,7 @@ import co.yedam.project2.board.BoardInsertMenu;
 import co.yedam.project2.board.BoardInsertPath;
 import co.yedam.project2.board.BoardList;
 import co.yedam.project2.board.BoardView;
+import co.yedam.project2.board.Recommand;
 import co.yedam.project2.deadLine.Chart;
 import co.yedam.project2.member.MemberDelete;
 import co.yedam.project2.member.MemberInsert;
@@ -95,6 +96,7 @@ public class FrontController extends HttpServlet {
 		comm.put("/BoardDelete.do", new BoardDelete());
 		comm.put("/BoardView.do", new BoardView());
 		comm.put("/BoardContents.do", new BoardContents());
+		comm.put("/Recommand.do", new Recommand());
 		
 		//Order
 		comm.put("/OrderInsert.do", new OrderInsert());
