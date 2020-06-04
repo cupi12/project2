@@ -6,9 +6,9 @@
 <html>
 <head>
 <script>
-	function a() {
+	function delMenu(param) {
 		if (result = confirm("정말 삭제하시겠습니까?")) {
-			location.href = 'AdminMenuDelete.do';
+			location.href = 'AdminMenuDelete.do?mName='+param;
 		}
 	}
 	
@@ -30,10 +30,10 @@
 	<input type="text" value="${getMenu.mPrice }" name="mPrice" id="mPrice">
 	<br>
 	<input type="button" onclick="update()" value="수정" />
-	<input type="button" onclick="a()" value="삭제" />
+	
+	
 	</form>
-
-
+	<input type="button" onclick="delMenu('${getMenu.mName}')" value="삭제" />
 
 </body>
 <jsp:include page="/common/template/footer.jsp" />

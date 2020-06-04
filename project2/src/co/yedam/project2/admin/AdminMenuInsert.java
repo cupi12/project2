@@ -85,9 +85,6 @@ public class AdminMenuInsert extends HttpServlet implements Command {
 	}
 	
 	
-	
-	
-	
 	@Override
 	public String exec(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		System.out.println(request.getParameter("filename")+" exec 부분 ");

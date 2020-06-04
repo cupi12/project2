@@ -8,7 +8,16 @@ public class BoardVO {
 	private int	recommand;
 	private String id;
 	private String regdt;
+	private String fileName;
 	
+	
+	
+	public String getFileName() {
+		return fileName;
+	}
+	public void setFileName(String fileName) {
+		this.fileName = fileName;
+	}
 	public int getSeq() {
 		return seq;
 	}

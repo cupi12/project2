@@ -12,26 +12,18 @@ public class BoardUpdatePath implements Command {
 
 	@Override
 	public String exec(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-			
-		String id = request.getParameter("id");
-		String title = request.getParameter("title");
-		String contents = request.getParameter("contents");
-		String regdt = request.getParameter("regdt");
-		int star = Integer.parseInt(request.getParameter("star"));
-		int recommand = Integer.parseInt(request.getParameter("recommand"));
 		
+		int seq = Integer.parseInt(request.getParameter("seq"));
+
 		BoardDAO dao = new BoardDAO();
-		BoardVO boardvo = new BoardVO();
+		BoardVO vo = new BoardVO();
+		vo = dao.getBoard(seq);
+
+		request.setAttribute("getBoard", vo);
+
 		
-		boardvo.setId(id);
-		boardvo.setTitle(title);
-		boardvo.setContents(contents);
-		boardvo.setRegdt(regdt);
-		boardvo.setStar(star);
-		boardvo.setRecommand(recommand);
-		
-		dao.boardUpdate(boardvo);
 		return "board/boardUpdate.jsp";
 	}
 
 }
+

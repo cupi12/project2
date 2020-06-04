@@ -13,12 +13,11 @@ public class BoardDAO extends DAO {
 	private PreparedStatement psmt = null;
 	private ResultSet rs = null;
 
-	private final String BOARD_SELECT_LIST = "SELECT * FROM BOARD ORDER BY SEQ asc";
+	private final String BOARD_SELECT_LIST = "SELECT * FROM BOARD ORDER BY SEQ DESC";
 	private final String BOARD_SELECT = "SELECT * FROM BOARD WHERE SEQ=?";
-	private final String BOARD_INSERT = "INSERT INTO BOARD(seq, title, contents, star, recommand, id, regdt) "
-			+ "VALUES((select nvl(max(seq),0)+1 from board),?,?,?,0,?,sysdate)";
-	private final String BOARD_UPDATE = "UPDATE BOARD SET TITLE=?,CONTENTS=?,"
-			+ "REGDT=?, ID=?, FILENAME=? WHERE SEQ=?";
+	private final String BOARD_INSERT = "INSERT INTO BOARD(seq, title, contents, star, recommand,filename, id, regdt) "
+			+ "VALUES((select nvl(max(seq),0)+1 from board),?,?,?,0,?,?,sysdate)";
+	private final String BOARD_UPDATE = "update board set title = ?, contents= ? where seq=? ";
 	private final String BOARD_DELETE = "delete FROM BOARD WHERE SEQ=?";
 	private final String recommand = "update board set recommand=(select nvl(max(recommand),0)+1 from board where seq=?) where seq=?";
 
@@ -75,6 +74,7 @@ public class BoardDAO extends DAO {
 				boardvo.setContents(rs.getString("contents"));
 				boardvo.setRegdt(rs.getString("regdt"));
 				boardvo.setId(rs.getString("id"));
+				boardvo.setFileName(rs.getString("fileName"));
 				boardvo.setStar(rs.getInt("star"));
 				boardvo.setRecommand(rs.getInt("recommand"));
 
@@ -91,14 +91,15 @@ public class BoardDAO extends DAO {
 		return boardvo;
 	}
 
-	public void boardInsert(BoardVO boardvo) {
+	public void boardInsert(BoardVO vo) {
 		try {
 			psmt = conn.prepareStatement(BOARD_INSERT);
 
-			psmt.setString(1, boardvo.getTitle());
-			psmt.setString(2, boardvo.getContents());
-			psmt.setInt(3, boardvo.getStar());
-			psmt.setString(4, boardvo.getId());
+			psmt.setString(1, vo.getTitle());
+			psmt.setString(2, vo.getContents());
+			psmt.setInt(3, vo.getStar());
+			psmt.setString(4, vo.getFileName());
+			psmt.setString(5, vo.getId());
 
 			psmt.executeUpdate();
 
@@ -108,25 +109,21 @@ public class BoardDAO extends DAO {
 
 	}
 
-	public BoardVO boardUpdate(BoardVO boardvo) {
+	public BoardVO boardUpdate(BoardVO vo) {
 		try {
-			psmt = conn.prepareStatement(BOARD_UPDATE);
-			psmt.setInt(1, boardvo.getSeq());
-			rs = psmt.executeQuery();
-			if (rs.next()) {
-				boardvo.setSeq(rs.getInt("seq"));
-				boardvo.setTitle(rs.getString("title"));
-				boardvo.setContents(rs.getString("contents"));
-				boardvo.setRegdt(rs.getString("regdt"));
-				boardvo.setId(rs.getString("id"));
-				boardvo.setStar(rs.getInt("star"));
-				boardvo.setRecommand(rs.getInt("recommand"));
-			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		return boardvo;
+		psmt = conn.prepareStatement(BOARD_UPDATE);
+		
+		psmt.setString(1, vo.getTitle());
+		psmt.setString(2, vo.getContents());
+		psmt.setInt(3, vo.getSeq());
+			
+		psmt.executeUpdate();
+		
+	}catch(SQLException e) {
+		e.printStackTrace();
 	}
+	return vo;	
+}
 
 	public void boardDelete(int seq) {
 		try {

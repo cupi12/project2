@@ -1,28 +1,29 @@
 package co.yedam.project2.order;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import co.yedam.project2.common.Command;
+import co.yedam.project2.member.MemberDAO;
+import co.yedam.project2.member.MemberVO;
 
-public class OrderInsert implements Command {
+public class OrderView implements Command {
 
 	@Override
 	public String exec(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		OrderVO vo = new OrderVO();
+		
 		OrderDAO dao = new OrderDAO();
 		
-		vo.setId(request.getParameter("id"));
-		vo.setAmount(Integer.parseInt(request.getParameter("amount")));
-		vo.setPrice(Integer.parseInt(request.getParameter("price")));
-		 
-		dao.orderInsert(vo);
-				
 		
-		return "Pay.do";
+		List<OrderVO> list = dao.getorder(request.getParameter("id"));
+		
+		request.setAttribute("list", list );
+		
+		return "order/orderView.jsp";
 	}
 
 }

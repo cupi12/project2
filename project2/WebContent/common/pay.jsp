@@ -21,7 +21,7 @@
             pay_method : 'card',
             merchant_uid : 'merchant_' + new Date().getTime(),
             name : '동해감자국밥',
-            amount : '130000',
+            amount : '15000',
             buyer_email : 'yedam@ac.kr',
             buyer_name : '서강',
             buyer_tel : '010-1598-1521',

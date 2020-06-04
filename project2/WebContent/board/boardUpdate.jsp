@@ -126,7 +126,12 @@ table tr:hover td{
 }
 
 </style>
-
+<script>
+function updateGo(param) {
+	document.frm.seq.value = param;
+		frm.submit();
+}
+</script>
 
 <meta charset="UTF-8">
 <title>Insert title here</title>
@@ -136,16 +141,31 @@ table tr:hover td{
 <div align="center"></div>
 <h1>후기 수정</h1>
 <div>
-	<div>
-		<span>이름:</span><input type="text" name="name" id="name" readonly="readonly" value="${board.name}" /><br />
-		 비밀번호: <input type="password" name="pwd" id="pwd"  value="${board.pwd}" /><br />  
-		 나이: <input type="text" name="age" id="age"/> <br/>  
-		전화번호:	<input type="text" name="phone" id="phone"/><br/> 
-		작성:<input type="text" name="title" id="title" /><br/>
-			<textarea rows="35" cols="80">내용입력</textarea><br/>	
+	<div align="center">
+		<form action="BoardUpdate.do" method="post" name="frm" id="frm">
+		<input name="seq" id="seq" type="hidden" value="${getBoard.seq}">
+			제목 <input  value="${getBoard.title }" name="title" id="title"><br>
+			작성자<input readonly value="${getBoard.id }" name="id" id="id"><br>
+			<textarea rows="30px" cols="140px"  name="contents"
+				id="contents">${getBoard.contents }</textarea>
+			<br> <label>별점 : ${getBoard.star }</label><br>
+			<br>
+			<div>
+				<div>
+					<!-- ID값이 sessionID와 같을때 보이기-->
+					<c:if test="${loginId == getBoard.id}">
+					</c:if>
+		</form>
+
+			<button type="button" onclick="updateGo('${getBoard.seq }')">수정완료</button>
+	
+
+		<div>
+			<button>홈으로</button>
+		</div>
 	</div>
 
-</div>
+	</div>
 </body>
 <jsp:include page="/common/template/footer.jsp" />
 </html>

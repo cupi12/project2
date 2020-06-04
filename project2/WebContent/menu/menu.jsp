@@ -195,7 +195,6 @@ table tr:hover td {
 </div>
 <!--End Modal-->
 <script>
-
     $(function (){
         var IMP = window.IMP; // 생략가능
         IMP.init('iamport'); // 'iamport' 대신 부여받은 "가맹점 식별코드"를 사용
@@ -277,9 +276,9 @@ table tr:hover td {
 	function total(price) {		
 		var value = parseInt(price);
 		
-		var sum = parseInt(document.frm.sum.value); 
-		sum += value;
-		document.frm.sum.value = sum;		
+		var price = parseInt(document.frm.price.value); 
+		price += value;
+		document.frm.price.value = price;		
 	}
 	
 	function amount(name, price){
@@ -314,15 +313,20 @@ table tr:hover td {
 		}
         }; // end add() 
 	 */
+	 function order(param1){
+        	alert("결제페이지로 이동합니다.");
+        	frm.submit();
+        }
+	 
 </script>
 </head>
 <jsp:include page="/common/template/header.jsp" />
 <div align="center">
-<h1>동해감자국밥 메뉴</h1>
-<c:if test="${loginId == null }">
+	<h1>동해감자국밥 메뉴</h1>
+	<c:if test="${loginId == null }">
 		<h3>(주문은 회원제입니다.)</h3>
-		</c:if>
-	<form name="frm" action="Pay.do" method="post">
+	</c:if>
+	<form name="frm" action="OrderInsert.do" method="post">
 		<table border="1">
 			<tr>
 				<td colspan="3">메뉴목록</td>
@@ -343,9 +347,8 @@ table tr:hover td {
 				</tr>
 			</c:forEach>
 		</table>
-		
+
 		<c:if test="${loginId != null }">
-			<form>
 				<c:forEach var="menu" items="b">
 					<div class="buttons">
 						<br> 메뉴:<input type="text" name="menuname" id="menuname"
@@ -354,13 +357,12 @@ table tr:hover td {
 					</div>
 				</c:forEach>
 				<hr>
-				<br> 합계:<input type="text" readonly name="sum" id="sum"
+				<br> 합계:<input type="text" name="price" id="price" readonly
 					value="0">
-				<button type="button" onclick="pay('${frm.sum.value}')">주문</button>
-			</form>
+					<input type="hidden" name="id" id="id" value="${loginId }">
+				<button type="button" onclick="order()">주문</button>
 			<br>
-			<button type="button" onclick="IMP.request_pay(amount,paid_amount)">test</button>
-
+			<button type="button" onclick="IMP.request_pay(amount,paid_amount)">결제</button>
 		</c:if>
 	</form>
 </div>

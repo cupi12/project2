@@ -32,6 +32,8 @@ import co.yedam.project2.board.BoardInsert;
 import co.yedam.project2.board.BoardInsertMenu;
 import co.yedam.project2.board.BoardInsertPath;
 import co.yedam.project2.board.BoardList;
+import co.yedam.project2.board.BoardUpdate;
+import co.yedam.project2.board.BoardUpdatePath;
 import co.yedam.project2.board.BoardView;
 import co.yedam.project2.board.Recommand;
 import co.yedam.project2.deadLine.Chart;
@@ -47,6 +49,7 @@ import co.yedam.project2.memo.MemoList;
 import co.yedam.project2.memo.MemoUpdate;
 import co.yedam.project2.menu.Menu;
 import co.yedam.project2.order.OrderInsert;
+import co.yedam.project2.order.OrderView;
 
 public class FrontController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -108,10 +111,13 @@ public class FrontController extends HttpServlet {
 		comm.put("/BoardDelete.do", new BoardDelete());
 		comm.put("/BoardView.do", new BoardView());
 		comm.put("/BoardContents.do", new BoardContents());
+		comm.put("/BoardUpdate.do", new BoardUpdate());
+		comm.put("/BoardUpdatePath.do", new BoardUpdatePath());
 		comm.put("/Recommand.do", new Recommand());
 		
 		//Order
 		comm.put("/OrderInsert.do", new OrderInsert());
+		comm.put("/OrderView.do", new OrderView());
 
 	}
 
