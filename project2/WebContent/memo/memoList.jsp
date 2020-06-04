@@ -182,7 +182,7 @@ table tr:hover td {
 					<td>${List.seq}</td>
 					<td>${List.memo}</td>
 					<td>${List.regdt}</td>
-					<td><button type="button" onclick="update('${List.seq}')">수정</button>
+					<td><%-- <button type="button" onclick="update('${List.seq}')">수정</button> --%>
 					<button type="button" onclick="location.href='MemoDelete.do?seq=${List.seq}'">삭제</button></td>
 					<tr>
 				</c:forEach>
