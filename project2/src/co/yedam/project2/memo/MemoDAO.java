@@ -16,7 +16,7 @@ public class MemoDAO extends DAO {
 	private final String MEMO_SELECT = "SELECT * FROM MEMO WHERE SEQ=?";
 	private final String MEMO_INSERT = "INSERT INTO MEMO(seq,regdt,memo) VALUES((select nvl(max(seq),0)+1 from memo),sysdate,?)";
 	private final String MEMO_UPDATE = "UPDATE MEMO SET REGDT=?, MEMO=?, WHERE=SEQ=?";
-	private final String MEMO_DELETE = "ALTER TABLE MEMO DROP COLUMN SEQ=?";
+	private final String MEMO_DELETE = "delete from memo where SEQ=?";
 
 	public MemoDAO() {
 		super();
@@ -46,13 +46,14 @@ public class MemoDAO extends DAO {
 	}
 
 	public List<MemoVO> getMemoList() {
-		MemoVO vo = new MemoVO();
+		MemoVO vo;
 		List<MemoVO> list = new ArrayList<MemoVO>();
 		try {
 			psmt = conn.prepareStatement(MEMO_SELSECT_LIST);
 			rs = psmt.executeQuery();
 
 			while (rs.next()) {
+				vo = new MemoVO();
 				vo.setSeq(rs.getInt("seq"));
 				vo.setRegdt(rs.getString("regdt"));
 				vo.setMemo(rs.getString("memo"));
@@ -82,32 +83,24 @@ public class MemoDAO extends DAO {
 			psmt = conn.prepareStatement(MEMO_UPDATE);
 
 			psmt.setInt(1, memoUpdate.getSeq());
-			rs = psmt.executeQuery();
+			psmt.executeUpdate();
 
-			if (rs.next()) {
-				memoUpdate.setSeq(rs.getInt("seq"));
-				memoUpdate.setRegdt(rs.getString("regdt"));
-				memoUpdate.setMemo(rs.getString("memo"));
-			}
+			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 		return memoUpdate;
 	}
 
-	public MemoVO memoDelete(int seq) {
-		MemoVO memoDel = new MemoVO();
+	public void memoDelete(int seq) {
 		try {
 			psmt = conn.prepareStatement(MEMO_DELETE);
-			psmt.setInt(1, memoDel.getSeq());
-			rs = psmt.executeQuery();
-			if (rs.next()) {
-				memoDel.setSeq(rs.getInt("seq"));
-			}
+			psmt.setInt(1, seq);
+			psmt.executeUpdate();
+			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		return memoDel;
 
 	} // public class MemoDAO extends DAO
 }// public class MemoDAO

@@ -147,20 +147,19 @@ table tr:hover td {
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <script>
-	function formSubmit(str) {
-		var result = confirm("정말 삭제하시겠습니까?");
-		if(result){
-			frm.id.value = str;
+	/* function del(str) {		
+		if(confirm("정말 삭제하시겠습니까?")){
+			document.frm.seq.value = str;
 			frm.submit();
 		};
-	}
+	} */
 </script>
 
 </head>
 <jsp:include page="/common/template/header.jsp" />
 <body>
-   <form id="frm" name="frm" action="MemoDelete.do" method="post">
-		<input type="hidden" id="id" name="id">
+	  <form id="frm" name="frm" action="MemoDelete.do" method="post">
+		<input type="hidden" id="seq" name="seq">
 	</form>
 
  
@@ -183,7 +182,8 @@ table tr:hover td {
 					<td>${List.seq}</td>
 					<td>${List.memo}</td>
 					<td>${List.regdt}</td>
-					<td><button type="button" onclick="update('${vo.seq}')">수정</button><button onclick="del('${vo.seq}')">삭제</button></td>
+					<td><button type="button" onclick="update('${List.seq}')">수정</button>
+					<button type="button" onclick="location.href='MemoDelete.do?seq=${List.seq}'">삭제</button></td>
 					<tr>
 				</c:forEach>
 			</tr>

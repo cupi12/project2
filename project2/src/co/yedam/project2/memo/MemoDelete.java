@@ -20,6 +20,7 @@ public class MemoDelete implements Command {
 		MemoDAO dao = new MemoDAO();
 		
 		dao.memoDelete(seq);
+		
 		return "MemoList.do";
 	}
 }
