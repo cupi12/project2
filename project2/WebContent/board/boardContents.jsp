@@ -7,40 +7,59 @@
 <head>
 <title>하준원</title>
 <script>
-function update(param) {
-	document.frm2.seq.value = param;
+	function update(param) {
+		document.frm2.seq.value = param;
 		frm2.submit();
-}
-
-function del(param) {
-	frm.seq.value = param;
-	if (confirm("정말 삭제하시겠습니까?")) {
-		frm.submit();
 	}
-}
 
+	function del(param) {
+		frm.seq.value = param;
+		if (confirm("정말 삭제하시겠습니까?")) {
+			frm.submit();
+		}
+	}
+
+/* 	function recommand(param) {
+		location.href = "BoardRecommand.do?=seq" + param;
+	} */
+	
+	function recommand(param) {
+		document.frm4.seq.value = param;
+		frm4.submit();
+	}
+
+	
 </script>
 </head>
 <jsp:include page="/common/template/header.jsp" />
 <body>
+
 	<form action="BoardUpdatePath.do" id="frm2" name="frm2" method="post">
 		<input type="hidden" id="seq" name="seq" />
 	</form>
-	
+
+	<form action="Recommand.do" id="frm4" name="frm4" method="post">
+		<input type="hidden" id="seq" name="seq" />
+	</form>
+
 	<form action="BoardDelete.do" id="frm" name="frm" method="post">
 		<input type="hidden" id="seq" name="seq" />
 	</form>
 	<div align="center">
-<form action="BoardUpdatePath.do" method="post" name="frm3" id="frm3">
-		<input name="seq" id="seq" type="hidden" value="${getBoard.seq}">
-			제목 <input readonly value="${getBoard.title }" name="title" id="title"><br>
-			작성자<input readonly value="${getBoard.id }" name="id" id="id"><br>
-			<textarea rows="30px" cols="140px" readonly name="contents"
-				id="contents">${getBoard.contents } </textarea>
-				<img src="board/boardImage/${getBoard.fileName}" width="300" height="200" />
-			<br> <label>별점 : ${getBoard.star }</label><br> <label>추천수
-				: ${getBoard.recommand }</label><br> 
-			<label>추천수:${getBoard.recommand }<button type="button" onclick="recommand('${getBoard.seq}')">추천하기</button>
+		<form action="BoardUpdatePath.do" method="post" name="frm3" id="frm3">
+			<br> <label value="${getBoard.id }" name="id" id="id">작성자 : ${getBoard.id }</label><br> 
+			<input name="seq" id="seq" type="hidden" value="${getBoard.seq}">
+			<br> 제목<h2 name="title" id="title">${getBoard.title}</h2><p></p>
+			
+			내용 <p style="font-size: 24px; color: black;" cols="30" rows="10"
+				name="contents" id="contents">${getBoard.contents }</p>
+				
+				<img src="board/boardImage/${getBoard.fileName}"
+				width="300" height="200" onerror="this.style.display='none';" /><p></p><p></p><p></p>
+				
+			<br> <label>별점 : ${getBoard.star }</label><br> 
+			 <label>추천수:${getBoard.recommand }
+				<button type="button" onclick="recommand('${getBoard.seq}')">추천하기</button>
 			</label> <br>
 			<div>
 				<div>
