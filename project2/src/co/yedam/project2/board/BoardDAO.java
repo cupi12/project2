@@ -108,25 +108,21 @@ public class BoardDAO extends DAO {
 
 	}
 
-	public BoardVO boardUpdate(BoardVO boardvo) {
+	public BoardVO boardUpdate(BoardVO vo) {
 		try {
-			psmt = conn.prepareStatement(BOARD_UPDATE);
-			psmt.setInt(1, boardvo.getSeq());
-			rs = psmt.executeQuery();
-			if (rs.next()) {
-				boardvo.setSeq(rs.getInt("seq"));
-				boardvo.setTitle(rs.getString("title"));
-				boardvo.setContents(rs.getString("contents"));
-				boardvo.setRegdt(rs.getString("regdt"));
-				boardvo.setId(rs.getString("id"));
-				boardvo.setStar(rs.getInt("star"));
-				boardvo.setRecommand(rs.getInt("recommand"));
-			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		return boardvo;
+		psmt = conn.prepareStatement(BOARD_UPDATE);
+		
+		psmt.setString(1, vo.getTitle());
+		psmt.setString(2, vo.getContents());
+		psmt.setInt(3, vo.getSeq());
+			
+		psmt.executeUpdate();
+		
+	}catch(SQLException e) {
+		e.printStackTrace();
 	}
+	return vo;	
+}
 
 	public void boardDelete(int seq) {
 		try {
