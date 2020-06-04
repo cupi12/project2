@@ -36,7 +36,8 @@ function del(param) {
 			제목 <input readonly value="${getBoard.title }" name="title" id="title"><br>
 			작성자<input readonly value="${getBoard.id }" name="id" id="id"><br>
 			<textarea rows="30px" cols="140px" readonly name="contents"
-				id="contents">${getBoard.contents }</textarea>
+				id="contents">${getBoard.contents } </textarea>
+				<img src="board/boardImage/${getBoard.fileName}" width="300" height="200" />
 			<br> <label>별점 : ${getBoard.star }</label><br> <label>추천수
 				: ${getBoard.recommand }</label><br> 
 			<label>추천수:${getBoard.recommand }<button type="button" onclick="recommand('${getBoard.seq}')">추천하기</button>

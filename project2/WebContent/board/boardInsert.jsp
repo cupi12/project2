@@ -134,11 +134,13 @@ table tr:hover td{
 		<div>
 			<h1>후기 작성</h1>
 		</div>
-		<form action="BoardInsert.do" method="post" name="frm">
+		<form action="BoardInsert.do" method="post" name="frm" enctype="multipart/form-data">
 		제목 : <input type="text" name="title" id="title" /><br>
 		작성자 : <input type="text" name="id" id="id" value="${loginId}" readonly/><br> 
 		<textarea rows="20" cols="40" name="contents" id="contents" placeholder="내용입력"></textarea><br>
+		첨부파일<input type = "file" name = "filename" id="filename"><br>
 		별점주기:<input type="text" id="star" name="star"><br>
+		
 		
 		<button type="submit">등록</button>
 		<input type="reset" value="지우기" />
