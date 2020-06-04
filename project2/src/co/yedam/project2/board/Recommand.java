@@ -16,7 +16,7 @@ public class Recommand implements Command {
 		
 		dao.recommand(Integer.parseInt(request.getParameter("seq")));
 		
-		return "BoardList.do";
+		return "BoardContents.do";
 	}
 
 }

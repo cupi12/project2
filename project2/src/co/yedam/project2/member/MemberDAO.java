@@ -1,10 +1,12 @@
 package co.yedam.project2.member;
 
+import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+
 
 import co.yedam.project2.common.DAO;
 
@@ -20,6 +22,38 @@ public class MemberDAO extends DAO {
 
 	public MemberDAO() {
 		super();
+	}
+	
+	public int getCount(String title, String contents) {
+		String strWhere = " where 1 = 1";
+		if (title != null && !title.isEmpty()) {
+			strWhere += " and title = ?";
+		}
+		if (contents != null && !contents.isEmpty()) {
+			strWhere += " and contents like '%' || ? || '%'";
+		}
+		int cnt = 0;
+
+		
+		try {
+			String sql = "select count(*) AS cnt from member" + strWhere ;
+			psmt = conn.prepareStatement(sql);
+			int position = 1;
+			if (title != null && !title.isEmpty()) {
+				psmt.setString(position++, title);
+			}
+			if (contents != null && !contents.isEmpty()) {
+				psmt.setString(position++, contents);
+			}
+			rs = psmt.executeQuery();
+			if (rs.next()) {
+				cnt = rs.getInt("cnt");
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return cnt;
 	}
 
 	public List<MemberVO> getMemberList() {
@@ -98,7 +132,7 @@ public class MemberDAO extends DAO {
 		try {
 			psmt = conn.prepareStatement(MEMBER_DELETE);
 			psmt.setString(1, id);
-			rs = psmt.executeQuery();
+			psmt.executeUpdate();
 
 		} catch (SQLException e) {
 			e.printStackTrace();

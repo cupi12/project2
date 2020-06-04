@@ -217,11 +217,7 @@ table tr:hover td {
 						<td onclick="GoContents('${Board.seq}')">${Board.seq}</td>
 						<td onclick="GoContents('${Board.seq}')">${Board.title}</td>
 						<td onclick="GoContents('${Board.seq}')">${Board.regdt}</td>
-						<%--<td>
-                   <fmt:parseDate value="${board.date}" var="fmtDt" pattern="yyyy-MM-dd HH:mm"/>
-                   <fmt:formatDate value="${fmtDt}" pattern="MM-dd일 HH시"/> </td>--%>
 						<td onclick="GoContents('${Board.seq}')">${Board.id}</td>
-			<%-- 			<td onclick="GoContents('${Board.seq}')">${Board.star}</td> --%>
 						<td  onclick="GoContents('${Board.seq}')">
 						<c:forEach begin="1" end="${Board.star}" step="1">
 						<img src="board/starImage/star.png"

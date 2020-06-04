@@ -9,7 +9,8 @@
 <jsp:include page="/common/template/header.jsp" />
 <body>
 	<div align="center">
-		<table>
+		<h2>결제내역</h2>
+		<table border="1">
 			<tr>
 				<td>주문날짜</td>
 				<td>주문수량</td>
@@ -19,7 +20,7 @@
 				<tr>
 					<td>${vo.regdt }</td>
 					<td>${vo.amount }</td>
-					<td>${vo.price }</td>					
+					<td>${vo.price }</td>
 				</tr>
 			</c:forEach>
 		</table>

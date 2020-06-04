@@ -22,8 +22,8 @@ h3 {
 }
 
 .contents {
-   width: 1200px;
-   height: 800px;
+   width: 800px;
+   height: 500px;
    background-color: #F3F3F3;
    margin: 0 auto;
 }

@@ -18,29 +18,30 @@ public class OrderDAO extends DAO {
 
 	public List<OrderVO> getorder(String id) {
 		List<OrderVO> list = new ArrayList<OrderVO>();
-		OrderVO vo = new OrderVO();
+		OrderVO vo;
 		try {
 			psmt = conn.prepareStatement(getOrder);
 			psmt.setString(1, id);
 			rs = psmt.executeQuery();
-			
-			if (rs.next()) {
+
+			while (rs.next()) {
+				vo = new OrderVO();
 				vo.setId(rs.getString("id"));
 				vo.setAmount(rs.getInt("amount"));
 				vo.setPrice(rs.getInt("price"));
 				vo.setSeq(rs.getInt("seq"));
 				vo.setRegdt(rs.getString("regdt"));
-				
+
 				list.add(vo);
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 		return list;
-		
+
 	}
 
-	/* STRING(regdt id),  INT(seq amount price) */
+	/* STRING(regdt id), INT(seq amount price) */
 
 	public void orderInsert(OrderVO vo) {
 		try {

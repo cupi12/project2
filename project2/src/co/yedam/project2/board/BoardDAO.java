@@ -13,7 +13,7 @@ public class BoardDAO extends DAO {
 	private PreparedStatement psmt = null;
 	private ResultSet rs = null;
 
-	private final String BOARD_SELECT_LIST = "SELECT * FROM BOARD ORDER BY SEQ asc";
+	private final String BOARD_SELECT_LIST = "SELECT * FROM BOARD ORDER BY SEQ desc";
 	private final String BOARD_SELECT = "SELECT * FROM BOARD WHERE SEQ=?";
 	private final String BOARD_INSERT = "INSERT INTO BOARD(seq, title, contents, star, recommand,filename, id, regdt) "
 			+ "VALUES((select nvl(max(seq),0)+1 from board),?,?,?,0,?,?,sysdate)";
@@ -41,16 +41,17 @@ public class BoardDAO extends DAO {
 
 	public List<BoardVO> getBoardList() {
 		List<BoardVO> list = new ArrayList<BoardVO>();
+		BoardVO boardvo;
 		try {
 			psmt = conn.prepareStatement(BOARD_SELECT_LIST);
 			rs = psmt.executeQuery();
 			while (rs.next()) {
-				BoardVO boardvo = new BoardVO();
+				boardvo = new BoardVO();
 				boardvo.setSeq(rs.getInt("seq"));
 				boardvo.setTitle(rs.getString("title"));
 				boardvo.setContents(rs.getString("contents"));
-				boardvo.setRegdt(rs.getString("regdt"));
 				boardvo.setId(rs.getString("id"));
+				boardvo.setRegdt(rs.getString("regdt"));
 				boardvo.setStar(rs.getInt("star"));
 				boardvo.setRecommand(rs.getInt("recommand"));
 
