@@ -43,6 +43,10 @@ import co.yedam.project2.member.MemberInsertMenu;
 import co.yedam.project2.member.MemberList;
 import co.yedam.project2.member.MemberUpdate;
 import co.yedam.project2.member.MemberUpdateView;
+import co.yedam.project2.memo.MemoDelete;
+import co.yedam.project2.memo.MemoInsert;
+import co.yedam.project2.memo.MemoList;
+import co.yedam.project2.memo.MemoUpdate;
 import co.yedam.project2.menu.Menu;
 import co.yedam.project2.order.OrderInsert;
 import co.yedam.project2.order.OrderView;
@@ -85,11 +89,17 @@ public class FrontController extends HttpServlet {
 		comm.put("/AdminWorkerList.do", new AdminWorkerList());
 
 		// Admin Memo
-		comm.put("/AdminMemo.do", new AdminMemo());
-		comm.put("/AdminMemoDelete.do", new AdminMemoDelete());
+		comm.put("/Memo.do", new AdminMemo());
+		comm.put("/MemoDelete.do", new AdminMemoDelete());
 		comm.put("/AdminMemoEdit.do", new AdminMemoEdit());
 		comm.put("/AdminMemoInsert.do", new AdminMemoInsert());
 		comm.put("/AdminMemoList.do", new AdminMemoList());
+		
+		comm.put("/MemoList.do", new MemoList());
+		comm.put("/MemoUpdate.do", new MemoUpdate());
+		comm.put("/MemoInsert.do", new MemoInsert());
+		comm.put("/MemoDelete.do", new MemoDelete());
+		
 
 		// Chart
 		comm.put("/Chart.do", new Chart());

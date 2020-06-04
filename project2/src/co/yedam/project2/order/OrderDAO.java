@@ -23,7 +23,6 @@ public class OrderDAO extends DAO {
 			psmt = conn.prepareStatement(getOrder);
 			psmt.setString(1, id);
 			rs = psmt.executeQuery();
-
 			while (rs.next()) {
 				vo = new OrderVO();
 				vo.setId(rs.getString("id"));

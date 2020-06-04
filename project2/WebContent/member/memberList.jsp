@@ -173,7 +173,17 @@ table tr:hover td {
 		<div>
 			<h1>회원 목록</h1>
 		</div>
+<<<<<<< HEAD
 		
+=======
+		<form name="searchfrm">
+			<input name="p" value="1" type="hidden">
+
+			<samp> ID </samp>
+			<input name="id" /><br>
+			<button>검색</button>
+		</form>
+>>>>>>> branch 'master' of https://github.com/cupi12/project2
 
 		<div>
 			<table>
