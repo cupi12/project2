@@ -50,7 +50,7 @@
 		</c:if>
 
 		<div>
-			<button>홈으로</button>
+			<button type="button" onclick="location.href='BoardList.do'">홈으로</button>
 		</div>
 	</div>
 

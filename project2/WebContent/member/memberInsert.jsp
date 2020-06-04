@@ -231,6 +231,12 @@ font-size: 14px;
 <title>Insert title here</title>
 </head>
 <script>
+
+
+
+
+
+
 	function idDupCheck() {
 		//1. xhr 객체 생성
 		var xhttp = new XMLHttpRequest();
@@ -313,8 +319,25 @@ font-size: 14px;
 		}
 
 	}
+		
+	
+	 function checkPwd(){
+		  var f1 = document.forms[0];
+		  var pw1 = f1.pwd.value;
+		  var pw2 = f1.pwd2.value;
+		  if(pw1!=pw2){
+		   document.getElementById('checkPwd').style.color = "red";
+		   document.getElementById('checkPwd').innerHTML = "비밀번호 불일치";
+		  }else{
+		   document.getElementById('checkPwd').style.color = "green";
+		   document.getElementById('checkPwd').innerHTML = "비밀번호 일치";
+		   
+		  }
+		  
+		 }
+		
+		
 </script>
-
 <body>
 	<div align="center">
 		<div>
@@ -328,8 +351,9 @@ font-size: 14px;
 			<form action="MemberInsert.do" Method="post" name="frm">
 				<input type="text" name="id" id="id" placeholder="아이디"
 					onchange="idDupCheck()"/>
-				<input type="password" name="pwd" id="pwd" placeholder="비밀번호" /><br>
-				<input type="password" name="pwd2" id="pwd2" placeholder="비밀번호 확인" /><br>
+				<input type="password" name="pwd" id="pwd" placeholder="비밀번호" />
+				<input type="password" name="pwd2" id="pwd2"  onkeyup="checkPwd()" placeholder="비밀번호 확인" /><br>
+        		<span id="checkPwd"></span><br>
 				<input type="text" name="name" id="name" placeholder="이름" /><br>
 				<input type="text" name="age" id="age" placeholder="나이" /><br>
 				<input type="text" name="phone" id="phone" placeholder="전화번호">		

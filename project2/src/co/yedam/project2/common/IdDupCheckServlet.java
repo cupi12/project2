@@ -28,7 +28,7 @@ public class IdDupCheckServlet extends HttpServlet implements Command {
 		response.setContentType("text/html; charset=utf-8");
 		PrintWriter out = response.getWriter();
 		try {
-			Thread.sleep(1500);
+			Thread.sleep(500);
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
