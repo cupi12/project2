@@ -14,7 +14,7 @@ public class BoardDAO extends DAO {
 	private ResultSet rs = null;
 
 
-	private final String BOARD_SELECT_LIST = "SELECT * FROM BOARD ORDER BY SEQ DESC";
+	private final String BOARD_SELECT_LIST = "SELECT * FROM BOARD ORDER BY SEQ desc";
 	private final String BOARD_SELECT = "SELECT * FROM BOARD WHERE SEQ=?";
 	private final String BOARD_INSERT = "INSERT INTO BOARD(seq, title, contents, star, recommand,filename, id, regdt) "
 			+ "VALUES((select nvl(max(seq),0)+1 from board),?,?,?,0,?,?,sysdate)";

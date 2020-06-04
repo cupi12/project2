@@ -89,6 +89,7 @@ public class MemberDAO extends DAO {
 
 			rs = psmt.executeQuery();
 			if (rs.next()) {
+				
 				membervo.setId(rs.getString("id"));
 				membervo.setPwd(rs.getString("pwd"));
 				membervo.setName(rs.getString("name"));

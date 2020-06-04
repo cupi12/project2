@@ -166,24 +166,19 @@ table tr:hover td {
 </script>
 
 <body>
-	<form id="frm" name="frm" action="MemberDelete.do" method="post">
+	<form id="frm" name="frm" action="AdminMemberDelete.do" method="post">
 		<input type="hidden" id="id" name="id">
 	</form>
 	<div align="center">
 		<div>
 			<h1>회원 목록</h1>
-		</div>
-<<<<<<< HEAD
-		
-=======
+		</div><br>
 		<form name="searchfrm">
 			<input name="p" value="1" type="hidden">
 
-			<samp> ID </samp>
-			<input name="id" /><br>
-			<button>검색</button>
+			
+			<input name="id"  placeholder="아이디 검색"/><button>검색</button>
 		</form>
->>>>>>> branch 'master' of https://github.com/cupi12/project2
 
 		<div>
 			<table>

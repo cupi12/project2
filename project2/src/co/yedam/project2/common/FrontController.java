@@ -37,6 +37,7 @@ import co.yedam.project2.board.BoardUpdatePath;
 import co.yedam.project2.board.BoardView;
 import co.yedam.project2.board.Recommand;
 import co.yedam.project2.deadLine.Chart;
+import co.yedam.project2.member.AdminMemberDelete;
 import co.yedam.project2.member.MemberDelete;
 import co.yedam.project2.member.MemberInsert;
 import co.yedam.project2.member.MemberInsertMenu;
@@ -72,6 +73,7 @@ public class FrontController extends HttpServlet {
 		comm.put("/MemberUpdate.do", new MemberUpdate());
 		comm.put("/MemberInsertMenu.do", new MemberInsertMenu());
 		comm.put("/MemberUpdateView.do", new MemberUpdateView());
+		comm.put("/AdminMemberDelete.do", new AdminMemberDelete());
 
 		// Admin
 		comm.put("/AdminMenu.do", new AdminMenu());

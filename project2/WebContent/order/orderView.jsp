@@ -146,12 +146,9 @@ table tr:hover td {
 <jsp:include page="/common/template/header.jsp" />
 <body>
 	<div align="center">
-<<<<<<< HEAD
 		<h2>결제내역</h2>
 		<table border="1">
-=======
 		<table align="center">
->>>>>>> branch 'master' of https://github.com/cupi12/project2
 			<tr>
 				<th>주문날짜</th>
 				<th>주문수량</th>
