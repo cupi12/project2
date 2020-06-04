@@ -17,8 +17,7 @@ public class BoardDAO extends DAO {
 	private final String BOARD_SELECT = "SELECT * FROM BOARD WHERE SEQ=?";
 	private final String BOARD_INSERT = "INSERT INTO BOARD(seq, title, contents, star, recommand, id, regdt) "
 			+ "VALUES((select nvl(max(seq),0)+1 from board),?,?,?,0,?,sysdate)";
-	private final String BOARD_UPDATE = "UPDATE BOARD SET TITLE=?,CONTENTS=?,"
-			+ "REGDT=?, ID=?, FILENAME=? WHERE SEQ=?";
+	private final String BOARD_UPDATE = "update board set title = ?, contents= ? where seq=? ";
 	private final String BOARD_DELETE = "delete FROM BOARD WHERE SEQ=?";
 	private final String recommand = "update board set recommand=(select nvl(max(recommand),0)+1 from board where seq=?) where seq=?";
 
