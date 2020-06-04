@@ -15,23 +15,22 @@ public class MemberUpdate implements Command {
 	public String exec(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		String name = request.getParameter("name");
+		String pwd = request.getParameter("pwd");
 		String age = request.getParameter("age");
-		String gender = request.getParameter("gender");
 		String phone = request.getParameter("phone");
-		String regdt = request.getParameter("regdt");
+		String id = request.getParameter("id");
 		
 		MemberDAO dao = new MemberDAO();
-		MemberVO membervo = new MemberVO();
+		MemberVO vo = new MemberVO();
 		
-		membervo.setName(name);
-		membervo.setAge(age);
-		membervo.setGender(gender);
-		membervo.setPhone(phone);
-		membervo.setRegdt(regdt);
-	
+		vo.setName(name);
+		vo.setPwd(pwd);
+		vo.setAge(age);
+		vo.setPhone(phone);
+		vo.setId(id);
 		
 		
-		dao.memberUpdate(membervo); //jsp에쓰는거 이름 , 돌려주는 객체
+		dao.memberUpdate(vo); //jsp에쓰는거 이름 , 돌려주는 객체
 		return "MemberUpdateView.do";
 	}
 

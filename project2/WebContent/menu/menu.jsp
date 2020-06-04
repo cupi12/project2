@@ -195,7 +195,6 @@ table tr:hover td {
 </div>
 <!--End Modal-->
 <script>
-
     $(function (){
         var IMP = window.IMP; // 생략가능
         IMP.init('iamport'); // 'iamport' 대신 부여받은 "가맹점 식별코드"를 사용
@@ -360,7 +359,6 @@ table tr:hover td {
 			</form>
 			<br>
 			<button type="button" onclick="IMP.request_pay(amount,paid_amount)">test</button>
-
 		</c:if>
 	</form>
 </div>
