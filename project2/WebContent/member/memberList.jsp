@@ -177,15 +177,6 @@ table tr:hover td {
 
 			<samp> ID </samp>
 			<input name="id" /><br>
-			<samp>성별</samp>
-			<samp>
-				<select name="gender">
-					<option value="">전체</option>
-					<option value="m">남자
-						</osption>
-					<option value="f">여자</option>
-				</select>
-			</samp>
 			<button>검색</button>
 		</form>
 
