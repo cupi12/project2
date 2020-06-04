@@ -16,7 +16,6 @@ public class BoardView implements Command {
 		
 		
 		BoardDAO dao = new BoardDAO();
-		BoardVO boardvo = new BoardVO();
 		
 		
 		dao.getBoard(seq);

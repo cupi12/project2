@@ -52,7 +52,7 @@
 					<c:if test="${loginId != null }">
 						<c:if test="${loginId !='admin'}">
 							<li><a href="Menu.do">메뉴</a></li>
-							<li><a href="Pay.do">결제</a></li>
+							<li><a href="OrderView.do?id=${loginId }">결제내역</a></li>
 							<li><a href="BoardList.do">후기</a></li>
 							<li ><a href="MemberUpdateView.do?id=${loginId }">정보수정</a></li>
 							<li><a href="Logout.do" onclick="logout()">로그아웃</a></li>
