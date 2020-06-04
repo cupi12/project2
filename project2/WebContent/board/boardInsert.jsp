@@ -125,6 +125,18 @@ table tr:hover td{
 }
 
 </style>
+
+<script type="text/javascript">
+function check(){
+	if(document.frm.star.value >5 && document.frm.star.value == null){
+		alert("5점까지 입력해주세요")
+		frm.star.focus();
+		return;
+	}else{
+		frm.submit();
+	}
+}
+</script>
 <meta charset="utf-8">
 <title>Insert title here</title>
 </head>
@@ -139,10 +151,10 @@ table tr:hover td{
 		작성자 : <input type="text" name="id" id="id" value="${loginId}" readonly/><br> 
 		<textarea rows="20" cols="40" name="contents" id="contents" placeholder="내용입력"></textarea><br>
 		첨부파일<input type = "file" name = "filename" id="filename"><br>
-		별점주기:<input type="text" id="star" name="star"><br>
+		별점주기:<input type="number" id="star" name="star" value="3" min="1" max="5"><br>
 		
 		
-		<button type="submit">등록</button>
+		<button type="button" onclick="check()">등록</button>
 		<input type="reset" value="지우기" />
 		</form>
 	</div>

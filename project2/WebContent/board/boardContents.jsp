@@ -57,7 +57,13 @@
             <img src="board/boardImage/${getBoard.fileName}"
             width="300" height="200" onerror="this.style.display='none';" /><p></p><p></p><p></p>
             
-         <br> <label>별점 : ${getBoard.star }</label><br> 
+         <br> <label>별점 - 
+         			<c:forEach begin="1" end="${getBoard.star}" step="1">
+						<img src="board/starImage/star.png"
+						width="18" height="18" onerror="this.style.display='none';"/>
+						</c:forEach></label><br>
+         
+          
           <label>추천수:${getBoard.recommand }
             <button type="button" onclick="recommand('${getBoard.seq}')">추천하기</button>
          </label> <br>
