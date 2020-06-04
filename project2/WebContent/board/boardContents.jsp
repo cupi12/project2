@@ -7,18 +7,17 @@
 <head>
 <title>하준원</title>
 <script>
-function update(param) {
-	document.frm2.seq.value = param;
+	function update(param) {
+		document.frm2.seq.value = param;
 		frm2.submit();
-}
-
-function del(param) {
-	frm.seq.value = param;
-	if (confirm("정말 삭제하시겠습니까?")) {
-		frm.submit();
 	}
-}
 
+	function del(param) {
+		frm.seq.value = param;
+		if (confirm("정말 삭제하시겠습니까?")) {
+			frm.submit();
+		}
+	}
 </script>
 </head>
 <jsp:include page="/common/template/header.jsp" />
@@ -26,21 +25,26 @@ function del(param) {
 	<form action="BoardUpdatePath.do" id="frm2" name="frm2" method="post">
 		<input type="hidden" id="seq" name="seq" />
 	</form>
-	
+
 	<form action="BoardDelete.do" id="frm" name="frm" method="post">
 		<input type="hidden" id="seq" name="seq" />
 	</form>
 	<div align="center">
-<form action="BoardUpdatePath.do" method="post" name="frm3" id="frm3">
-		<input name="seq" id="seq" type="hidden" value="${getBoard.seq}">
+		<form action="BoardUpdatePath.do" method="post" name="frm3" id="frm3">
+			<input name="seq" id="seq" type="hidden" value="${getBoard.seq}">
 			제목 <input readonly value="${getBoard.title }" name="title" id="title"><br>
 			작성자<input readonly value="${getBoard.id }" name="id" id="id"><br>
-			<textarea rows="30px" cols="140px" readonly name="contents"
+			<textarea rows="10px" cols="" readonly name="contents"
 				id="contents">${getBoard.contents }</textarea>
 			<br> <label>별점 : ${getBoard.star }</label><br> <label>추천수
-				: ${getBoard.recommand }</label><br> 
-			<label>추천수:${getBoard.recommand }<button type="button" onclick="recommand('${getBoard.seq}')">추천하기</button>
-			</label> <br>
+				: ${getBoard.recommand }</label><br>
+			<c:if test="${loginId!=null}">
+				<label>추천수:${getBoard.recommand }
+					<button type="button" onclick="recommand('${getBoard.seq}')">추천하기</button>
+
+				</label>
+			</c:if>
+			<br>
 			<div>
 				<div>
 					<!-- ID값이 sessionID와 같을때 보이기-->

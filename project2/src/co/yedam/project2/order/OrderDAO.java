@@ -3,6 +3,8 @@ package co.yedam.project2.order;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import co.yedam.project2.common.DAO;
 
@@ -14,11 +16,12 @@ public class OrderDAO extends DAO {
 			+ " values(sysdate, ?, (select nvl(max(seq),0)+1 from forder), ?, ?  )";
 	private final String getOrder = "select * from forder where id=?";
 
-	public OrderVO getorder(String id) {
+	public List<OrderVO> getorder(String id) {
+		List<OrderVO> list = new ArrayList<OrderVO>();
 		OrderVO vo = new OrderVO();
 		try {
 			psmt = conn.prepareStatement(getOrder);
-			psmt.setString(1, vo.getId());
+			psmt.setString(1, id);
 			rs = psmt.executeQuery();
 			
 			if (rs.next()) {
@@ -27,11 +30,13 @@ public class OrderDAO extends DAO {
 				vo.setPrice(rs.getInt("price"));
 				vo.setSeq(rs.getInt("seq"));
 				vo.setRegdt(rs.getString("regdt"));
+				
+				list.add(vo);
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		return vo;
+		return list;
 		
 	}
 

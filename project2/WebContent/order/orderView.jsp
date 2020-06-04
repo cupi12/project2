@@ -15,14 +15,11 @@
 				<td>주문수량</td>
 				<td>결제가격</td>
 			</tr>
-			<c:forEach items="${vo }" var="vo">
+			<c:forEach items="${list }" var="vo">
 				<tr>
 					<td>${vo.regdt }</td>
-					<td>${vo.amount }</td> 
-					<td>${vo.price }</td>
-					<c:if test="${vo.regdt ==null }">
-						<td></td>
-					</c:if>
+					<td>${vo.amount }</td>
+					<td>${vo.price }</td>					
 				</tr>
 			</c:forEach>
 		</table>
