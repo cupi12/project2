@@ -16,6 +16,9 @@ public class AdminMenuDelete implements Command {
 	@Override
 	public String exec(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
+		
+		
+		
 		MenuDAO dao = new MenuDAO();
 
 		try {
