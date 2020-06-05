@@ -15,6 +15,8 @@ public class OrderInsert implements Command {
 		OrderVO vo = new OrderVO();
 		OrderDAO dao = new OrderDAO();
 		
+		request.getSession().getAttribute("price");
+		
 		vo.setId(request.getParameter("id"));
 		vo.setAmount(Integer.parseInt(request.getParameter("amount")));
 		vo.setPrice(Integer.parseInt(request.getParameter("price")));

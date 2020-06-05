@@ -173,12 +173,6 @@ table tr:hover td {
 		<div>
 			<h1>회원 목록</h1>
 		</div><br>
-		<form name="searchfrm">
-			<input name="p" value="1" type="hidden">
-
-			
-			<input name="id"  placeholder="아이디 검색"/><button>검색</button>
-		</form>
 
 		<div>
 			<table>

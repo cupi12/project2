@@ -194,7 +194,7 @@ table tr:hover td {
 		<h1>후기 게시판</h1>
 
 		<c:if test="${loginId != null }">
-			<div>
+			<div> 
 				<button onclick="location.href='BoardInsertPath.do'">후기 등록</button>
 			</div>
 		</c:if>

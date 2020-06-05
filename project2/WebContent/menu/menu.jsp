@@ -362,7 +362,6 @@ table tr:hover td {
 					<input type="hidden" name="id" id="id" value="${loginId }">
 				<button type="button" onclick="order()">주문</button>
 			<br>
-			<button type="button" onclick="IMP.request_pay(amount,paid_amount)">결제</button>
 		</c:if>
 	</form>
 </div>

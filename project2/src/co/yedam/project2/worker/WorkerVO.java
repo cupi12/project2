@@ -54,6 +54,7 @@ public class WorkerVO {
 		return "WorkerVO [seq=" + seq + ", wname=" + wname + ", wstart=" + wstart + ", wend=" + wend + ", totalTime="
 				+ totalTime + ", money=" + money + "]";
 	}
+
 	
 	
 	

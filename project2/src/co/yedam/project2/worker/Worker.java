@@ -8,12 +8,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import co.yedam.project2.common.Command;
-import co.yedam.project2.menu.MenuDAO;
-import co.yedam.project2.menu.MenuVO;
+
 
 public class Worker {
 
-	public class Menu implements Command {
+	public class worker implements Command {
 
 		@Override
 		public String exec(HttpServletRequest request, HttpServletResponse response)

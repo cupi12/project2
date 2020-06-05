@@ -25,6 +25,9 @@ import co.yedam.project2.admin.AdminWorkerDelete;
 import co.yedam.project2.admin.AdminWorkerEdit;
 import co.yedam.project2.admin.AdminWorkerInsert;
 import co.yedam.project2.admin.AdminWorkerList;
+import co.yedam.project2.admin.AdminWorkerMoney;
+import co.yedam.project2.admin.AdminWorkerTotalTime;
+import co.yedam.project2.admin.AdminWorkerWstart;
 import co.yedam.project2.admin.StoreManage;
 import co.yedam.project2.board.BoardContents;
 import co.yedam.project2.board.BoardDelete;
@@ -89,6 +92,10 @@ public class FrontController extends HttpServlet {
 		comm.put("/AdminWorkerEdit.do", new AdminWorkerEdit());
 		comm.put("/AdminWorkerInsert.do", new AdminWorkerInsert());
 		comm.put("/AdminWorkerList.do", new AdminWorkerList());
+		comm.put("/AdminWorkerWstart.do", new AdminWorkerWstart());
+		comm.put("/AdminWorkerWend.do", new AdminWorker());
+		comm.put("/AdminWorkerTotalTime.do", new AdminWorkerTotalTime());
+		comm.put("/AdminWorkerMoney.do", new AdminWorkerMoney());
 
 		// Admin Memo
 		comm.put("/Memo.do", new AdminMemo());
@@ -96,12 +103,11 @@ public class FrontController extends HttpServlet {
 		comm.put("/AdminMemoEdit.do", new AdminMemoEdit());
 		comm.put("/AdminMemoInsert.do", new AdminMemoInsert());
 		comm.put("/AdminMemoList.do", new AdminMemoList());
-		
+
 		comm.put("/MemoList.do", new MemoList());
 		comm.put("/MemoUpdate.do", new MemoUpdate());
 		comm.put("/MemoInsert.do", new MemoInsert());
 		comm.put("/MemoDelete.do", new MemoDelete());
-		
 
 		// Chart
 		comm.put("/Chart.do", new Chart());
@@ -116,8 +122,8 @@ public class FrontController extends HttpServlet {
 		comm.put("/BoardUpdate.do", new BoardUpdate());
 		comm.put("/BoardUpdatePath.do", new BoardUpdatePath());
 		comm.put("/Recommand.do", new Recommand());
-		
-		//Order
+
+		// Order
 		comm.put("/OrderInsert.do", new OrderInsert());
 		comm.put("/OrderView.do", new OrderView());
 
